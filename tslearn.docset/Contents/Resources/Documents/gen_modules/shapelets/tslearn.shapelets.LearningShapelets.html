@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>tslearn.shapelets.LearningShapelets — tslearn 0.5.0.5 documentation</title>
+<link href="../../_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/bootstrap-sphinx.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/custom.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/gallery.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/gallery-binder.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/gallery-dataframe.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/gallery-rendered-html.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+<script src="../../_static/jquery.js"></script>
+<script src="../../_static/underscore.js"></script>
+<script src="../../_static/doctools.js"></script>
+<script src="../../_static/custom.js"></script>
+<script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+<link href="../../genindex.html" rel="index" title="Index"/>
+<link href="../../search.html" rel="search" title="Search"/>
+<meta charset="utf-8"/>
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1" name="viewport"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<script src="../../_static/js/jquery-1.11.0.min.js " type="text/javascript"></script>
+<script src="../../_static/js/jquery-fix.js " type="text/javascript"></script>
+<script src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js " type="text/javascript"></script>
+<script src="../../_static/bootstrap-sphinx.js " type="text/javascript"></script>
+</head><body>
+<div class="navbar navbar-default navbar-fixed-top" id="navbar">
+<div class="container">
+<div class="navbar-header">
+<!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+<button class="navbar-toggle" data-target=".nav-collapse" data-toggle="collapse" type="button">
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<a class="navbar-brand" href="../../index.html">
+          tslearn</a>
+<span class="navbar-text navbar-version pull-left"><b>0.5.0.5</b></span>
+</div>
+<div class="collapse navbar-collapse nav-collapse">
+<ul class="nav navbar-nav">
+<li><a href="../../quickstart.html">Quick Start</a></li>
+<li><a href="../../user_guide/userguide.html">User Guide</a></li>
+<li><a href="../../reference.html">API</a></li>
+<li><a href="../../auto_examples/index.html">Examples</a></li>
+<li><a href="../../citing.html">Citing tslearn</a></li>
+<li><a href="https://github.com/tslearn-team/tslearn/">Code on GitHub</a></li>
+<li class="dropdown globaltoc-container">
+<a data-target="#" data-toggle="dropdown" href="../../index.html" id="dLabelGlobalToc" role="button">Site map <b class="caret"></b></a>
+<ul aria-labelledby="dLabelGlobalToc" class="dropdown-menu globaltoc" role="menu"></ul>
+</li>
+</ul>
+<form action="../../search.html" class="navbar-form navbar-right" method="get">
+<div class="form-group">
+<input class="form-control" name="q" placeholder="Search" type="text"/>
+</div>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div>
+</div>
+<div class="container">
+<div class="row">
+<div class="body col-md-12 content" role="main">
+<div class="section" id="tslearn-shapelets-learningshapelets">
+<span id="class-tslearn-shapelets-learningshapelets"></span><h1><a class="reference internal" href="../tslearn.shapelets.html#module-tslearn.shapelets" title="tslearn.shapelets"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tslearn.shapelets</span></code></a>.LearningShapelets<a class="headerlink" href="#tslearn-shapelets-learningshapelets" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="tslearn.shapelets.LearningShapelets"><a name="//apple_ref/cpp/Class/tslearn.shapelets.LearningShapelets"></a>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">tslearn.shapelets.</span></code><code class="sig-name descname"><span class="pre">LearningShapelets</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_shapelets_per_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_iter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">256</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimizer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sgd'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight_regularizer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shapelet_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.15</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">total_lengths</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/shapelets/shapelets.py#L212-L886"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.shapelets.LearningShapelets" title="Permalink to this definition">¶</a></dt>
+<dd><p>Learning Time-Series Shapelets model.</p>
+<p>Learning Time-Series Shapelets was originally presented in <a class="reference internal" href="#r51bcd089414a-1" id="id1">[1]</a>.</p>
+<p>From an input (possibly multidimensional) time series <span class="math notranslate nohighlight">\(x\)</span> and a set
+of shapelets <span class="math notranslate nohighlight">\(\{s_i\}_i\)</span>, the <span class="math notranslate nohighlight">\(i\)</span>-th coordinate of the Shapelet
+transform is computed as:</p>
+<div class="math notranslate nohighlight">
+\[ST(x, s_i) = \min_t \sum_{\delta_t}
+    \left\|x(t+\delta_t) - s_i(\delta_t)\right\|_2^2\]</div>
+<p>The Shapelet model consists in a logistic regression layer on top of this
+transform. Shapelet coefficients as well as logistic regression weights are
+optimized by gradient descent on a L2-penalized cross-entropy loss.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>n_shapelets_per_size: dict (default: None)</strong></dt><dd><p>Dictionary giving, for each shapelet size (key),
+the number of such shapelets to be trained (value). 
+If None, <cite>grabocka_params_to_shapelet_size_dict</cite> is used and the
+size used to compute is that of the shortest time series passed at fit 
+time.</p>
+</dd>
+<dt><strong>max_iter: int (default: 10,000)</strong></dt><dd><p>Number of training epochs.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.3: </span>default value for max_iter is set to 10,000 instead of 100</p>
+</div>
+</dd>
+<dt><strong>batch_size: int (default: 256)</strong></dt><dd><p>Batch size to be used.</p>
+</dd>
+<dt><strong>verbose: {0, 1, 2} (default: 0)</strong></dt><dd><p><cite>keras</cite> verbose level.</p>
+</dd>
+<dt><strong>optimizer: str or keras.optimizers.Optimizer (default: “sgd”)</strong></dt><dd><p><cite>keras</cite> optimizer to use for training.</p>
+</dd>
+<dt><strong>weight_regularizer: float or None (default: 0.)</strong></dt><dd><p>Strength of the L2 regularizer to use for training the classification
+(softmax) layer. If 0, no regularization is performed.</p>
+</dd>
+<dt><strong>shapelet_length: float (default: 0.15)</strong></dt><dd><p>The length of the shapelets, expressed as a fraction of the time 
+series length.
+Used only if <cite>n_shapelets_per_size</cite> is None.</p>
+</dd>
+<dt><strong>total_lengths: int (default: 3)</strong></dt><dd><p>The number of different shapelet lengths. Will extract shapelets of
+length i * shapelet_length for i in [1, total_lengths]
+Used only if <cite>n_shapelets_per_size</cite> is None.</p>
+</dd>
+<dt><strong>max_size: int or None (default: None)</strong></dt><dd><p>Maximum size for time series to be fed to the model. If None, it is 
+set to the size (number of timestamps) of the training time series.</p>
+</dd>
+<dt><strong>scale: bool (default: False)</strong></dt><dd><p>Whether input data should be scaled for each feature of each time 
+series to lie in the [0-1] interval.
+Default for this parameter is set to <cite>False</cite> in version 0.4 to ensure
+backward compatibility, but is likely to change in a future version.</p>
+</dd>
+<dt><strong>random_state</strong><span class="classifier">int or None, optional (default: None)</span></dt><dd><p>The seed of the pseudo random number generator to use when shuffling
+the data.  If int, random_state is the seed used by the random number
+generator; If None, the random number generator is the RandomState
+instance used by <cite>np.random</cite>.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Attributes</dt>
+<dd class="field-even"><dl>
+<dt><strong>shapelets_</strong><span class="classifier">numpy.ndarray of objects, each object being a time series</span></dt><dd><p>Set of time-series shapelets.</p>
+</dd>
+<dt><a class="reference internal" href="#tslearn.shapelets.LearningShapelets.shapelets_as_time_series_" title="tslearn.shapelets.LearningShapelets.shapelets_as_time_series_"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shapelets_as_time_series_</span></code></a><span class="classifier">numpy.ndarray of shape (n_shapelets, sz_shp, d) where <cite>sz_shp</cite> is the maximum of all shapelet sizes</span></dt><dd><p>Set of time-series shapelets formatted as a <code class="docutils literal notranslate"><span class="pre">tslearn</span></code> time series dataset.</p>
+</dd>
+<dt><strong>transformer_model_</strong><span class="classifier">keras.Model</span></dt><dd><p>Transforms an input dataset of timeseries into distances to the
+learned shapelets.</p>
+</dd>
+<dt><strong>locator_model_</strong><span class="classifier">keras.Model</span></dt><dd><p>Returns the indices where each of the shapelets can be found (minimal
+distance) within each of the timeseries of the input dataset.</p>
+</dd>
+<dt><strong>model_</strong><span class="classifier">keras.Model</span></dt><dd><p>Directly predicts the class probabilities for the input timeseries.</p>
+</dd>
+<dt><strong>history_</strong><span class="classifier">dict</span></dt><dd><p>Dictionary of losses and metrics recorded during fit.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<dl class="citation">
+<dt class="label" id="r51bcd089414a-1"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><ol class="upperalpha simple" start="10">
+<li><p>Grabocka et al. Learning Time-Series Shapelets. SIGKDD 2014.</p></li>
+</ol>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">tslearn.generators</span> <span class="kn">import</span> <span class="n">random_walk_blobs</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">random_walk_blobs</span><span class="p">(</span><span class="n">n_ts_per_blob</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">sz</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_blobs</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span> <span class="o">=</span> <span class="n">LearningShapelets</span><span class="p">(</span><span class="n">n_shapelets_per_size</span><span class="o">=</span><span class="p">{</span><span class="mi">4</span><span class="p">:</span> <span class="mi">5</span><span class="p">},</span> 
+<span class="gp">... </span>                        <span class="n">max_iter</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">shapelets_</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(5,)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">shapelets_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(4, 2)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(30,)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(30, 3)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(30, 5)</span>
+</pre></div>
+</div>
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%"/>
+<col style="width: 90%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tslearn.shapelets.LearningShapelets.fit" title="tslearn.shapelets.LearningShapelets.fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></a>(X, y)</p></td>
+<td><p>Learn time-series shapelets.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tslearn.shapelets.LearningShapelets.fit_transform" title="tslearn.shapelets.LearningShapelets.fit_transform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit_transform</span></code></a>(X[, y])</p></td>
+<td><p>Fit to data, then transform it.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tslearn.shapelets.LearningShapelets.from_hdf5" title="tslearn.shapelets.LearningShapelets.from_hdf5"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_hdf5</span></code></a>(path)</p></td>
+<td><p>Load model from a HDF5 file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tslearn.shapelets.LearningShapelets.from_json" title="tslearn.shapelets.LearningShapelets.from_json"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_json</span></code></a>(path)</p></td>
+<td><p>Load model from a JSON file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tslearn.shapelets.LearningShapelets.from_pickle" title="tslearn.shapelets.LearningShapelets.from_pickle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_pickle</span></code></a>(path)</p></td>
+<td><p>Load model from a pickle file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tslearn.shapelets.LearningShapelets.get_params" title="tslearn.shapelets.LearningShapelets.get_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_params</span></code></a>([deep])</p></td>
+<td><p>Get parameters for this estimator.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tslearn.shapelets.LearningShapelets.get_weights" title="tslearn.shapelets.LearningShapelets.get_weights"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_weights</span></code></a>([layer_name])</p></td>
+<td><p>Return model weights (or weights for a given layer if <cite>layer_name</cite> is provided).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tslearn.shapelets.LearningShapelets.locate" title="tslearn.shapelets.LearningShapelets.locate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">locate</span></code></a>(X)</p></td>
+<td><p>Compute shapelet match location for a set of time series.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tslearn.shapelets.LearningShapelets.predict" title="tslearn.shapelets.LearningShapelets.predict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">predict</span></code></a>(X)</p></td>
+<td><p>Predict class for a given set of time series.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tslearn.shapelets.LearningShapelets.predict_proba" title="tslearn.shapelets.LearningShapelets.predict_proba"><code class="xref py py-obj docutils literal notranslate"><span class="pre">predict_proba</span></code></a>(X)</p></td>
+<td><p>Predict class probability for a given set of time series.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tslearn.shapelets.LearningShapelets.score" title="tslearn.shapelets.LearningShapelets.score"><code class="xref py py-obj docutils literal notranslate"><span class="pre">score</span></code></a>(X, y[, sample_weight])</p></td>
+<td><p>Return the mean accuracy on the given test data and labels.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tslearn.shapelets.LearningShapelets.set_params" title="tslearn.shapelets.LearningShapelets.set_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_params</span></code></a>(**params)</p></td>
+<td><p>Set the parameters of this estimator.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tslearn.shapelets.LearningShapelets.set_weights" title="tslearn.shapelets.LearningShapelets.set_weights"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_weights</span></code></a>(weights[, layer_name])</p></td>
+<td><p>Set model weights (or weights for a given layer if <cite>layer_name</cite> is provided).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tslearn.shapelets.LearningShapelets.to_hdf5" title="tslearn.shapelets.LearningShapelets.to_hdf5"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_hdf5</span></code></a>(path)</p></td>
+<td><p>Save model to a HDF5 file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tslearn.shapelets.LearningShapelets.to_json" title="tslearn.shapelets.LearningShapelets.to_json"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_json</span></code></a>(path)</p></td>
+<td><p>Save model to a JSON file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tslearn.shapelets.LearningShapelets.to_pickle" title="tslearn.shapelets.LearningShapelets.to_pickle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_pickle</span></code></a>(path)</p></td>
+<td><p>Save model to a pickle file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tslearn.shapelets.LearningShapelets.transform" title="tslearn.shapelets.LearningShapelets.transform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transform</span></code></a>(X)</p></td>
+<td><p>Generate shapelet transform for a set of time series.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="tslearn.shapelets.LearningShapelets.fit"><a name="//apple_ref/cpp/Method/tslearn.shapelets.LearningShapelets.fit"></a>
+<code class="sig-name descname"><span class="pre">fit</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/shapelets/shapelets.py#L405-L452"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.shapelets.LearningShapelets.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Learn time-series shapelets.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">array-like of shape=(n_ts, sz, d)</span></dt><dd><p>Time series dataset.</p>
+</dd>
+<dt><strong>y</strong><span class="classifier">array-like of shape=(n_ts, )</span></dt><dd><p>Time series labels.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="tslearn.shapelets.LearningShapelets.fit_transform"><a name="//apple_ref/cpp/Method/tslearn.shapelets.LearningShapelets.fit_transform"></a>
+<code class="sig-name descname"><span class="pre">fit_transform</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">fit_params</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/../sklearn/base.py#L671-L702"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.shapelets.LearningShapelets.fit_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit to data, then transform it.</p>
+<p>Fits transformer to <cite>X</cite> and <cite>y</cite> with optional parameters <cite>fit_params</cite>
+and returns a transformed version of <cite>X</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">array-like of shape (n_samples, n_features)</span></dt><dd><p>Input samples.</p>
+</dd>
+<dt><strong>y</strong><span class="classifier">array-like of shape (n_samples,) or (n_samples, n_outputs),                 default=None</span></dt><dd><p>Target values (None for unsupervised transformations).</p>
+</dd>
+<dt><strong>**fit_params</strong><span class="classifier">dict</span></dt><dd><p>Additional fit parameters.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>X_new</strong><span class="classifier">ndarray array of shape (n_samples, n_features_new)</span></dt><dd><p>Transformed array.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="tslearn.shapelets.LearningShapelets.from_hdf5"><a name="//apple_ref/cpp/Method/tslearn.shapelets.LearningShapelets.from_hdf5"></a>
+<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">from_hdf5</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/bases/bases.py#L185-L210"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.shapelets.LearningShapelets.from_hdf5" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load model from a HDF5 file.
+Requires <code class="docutils literal notranslate"><span class="pre">h5py</span></code> <a class="reference external" href="http://docs.h5py.org/">http://docs.h5py.org/</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>path</strong><span class="classifier">str</span></dt><dd><p>Full path to file.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>Model instance</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="tslearn.shapelets.LearningShapelets.from_json"><a name="//apple_ref/cpp/Method/tslearn.shapelets.LearningShapelets.from_json"></a>
+<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">from_json</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/bases/bases.py#L225-L255"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.shapelets.LearningShapelets.from_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load model from a JSON file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>path</strong><span class="classifier">str</span></dt><dd><p>Full path to file.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>Model instance</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="tslearn.shapelets.LearningShapelets.from_pickle"><a name="//apple_ref/cpp/Method/tslearn.shapelets.LearningShapelets.from_pickle"></a>
+<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">from_pickle</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/bases/bases.py#L270-L286"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.shapelets.LearningShapelets.from_pickle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load model from a pickle file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>path</strong><span class="classifier">str</span></dt><dd><p>Full path to file.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>Model instance</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="tslearn.shapelets.LearningShapelets.get_params"><a name="//apple_ref/cpp/Method/tslearn.shapelets.LearningShapelets.get_params"></a>
+<code class="sig-name descname"><span class="pre">get_params</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/../sklearn/base.py#L178-L200"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.shapelets.LearningShapelets.get_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get parameters for this estimator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>deep</strong><span class="classifier">bool, default=True</span></dt><dd><p>If True, will return the parameters for this estimator and
+contained subobjects that are estimators.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>params</strong><span class="classifier">dict</span></dt><dd><p>Parameter names mapped to their values.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="tslearn.shapelets.LearningShapelets.get_weights"><a name="//apple_ref/cpp/Method/tslearn.shapelets.LearningShapelets.get_weights"></a>
+<code class="sig-name descname"><span class="pre">get_weights</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">layer_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/shapelets/shapelets.py#L750-L786"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.shapelets.LearningShapelets.get_weights" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return model weights (or weights for a given layer if <cite>layer_name</cite>
+is provided).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>layer_name: str or None (default: None)</strong></dt><dd><p>Name of the layer for which  weights should be returned.
+If None, all model weights are returned.
+Available layer names with weights are:</p>
+<ul class="simple">
+<li><p>“shapelets_i_j” with i an integer for the shapelet id and j an
+integer for the dimension</p></li>
+<li><p>“classification” for the final classification layer</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>list</dt><dd><p>list of model (or layer) weights</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">tslearn.generators</span> <span class="kn">import</span> <span class="n">random_walk_blobs</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">random_walk_blobs</span><span class="p">(</span><span class="n">n_ts_per_blob</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">sz</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_blobs</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span> <span class="o">=</span> <span class="n">LearningShapelets</span><span class="p">(</span><span class="n">n_shapelets_per_size</span><span class="o">=</span><span class="p">{</span><span class="mi">10</span><span class="p">:</span> <span class="mi">5</span><span class="p">},</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="gp">... </span>                    <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">get_weights</span><span class="p">(</span><span class="s2">"classification"</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(5, 3)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">get_weights</span><span class="p">(</span><span class="s2">"shapelets_0_0"</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(5, 10)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">clf</span><span class="o">.</span><span class="n">get_weights</span><span class="p">(</span><span class="s2">"shapelets_0_0"</span><span class="p">))</span>
+<span class="go">1</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="py method">
+<dt id="tslearn.shapelets.LearningShapelets.locate"><a name="//apple_ref/cpp/Method/tslearn.shapelets.LearningShapelets.locate"></a>
+<code class="sig-name descname"><span class="pre">locate</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/shapelets/shapelets.py#L541-L585"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.shapelets.LearningShapelets.locate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute shapelet match location for a set of time series.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">array-like of shape=(n_ts, sz, d)</span></dt><dd><p>Time series dataset.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>array of shape=(n_ts, n_shapelets)</dt><dd><p>Location of the shapelet matches for the provided time series.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">tslearn.generators</span> <span class="kn">import</span> <span class="n">random_walk_blobs</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span><span class="mi">7</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Data is all zeros except a motif 1-2-3 in the first time series</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span> <span class="o">=</span> <span class="n">LearningShapelets</span><span class="p">(</span><span class="n">n_shapelets_per_size</span><span class="o">=</span><span class="p">{</span><span class="mi">3</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="gp">... </span>                    <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">_</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">weights_shapelet</span> <span class="o">=</span> <span class="p">[</span>
+<span class="gp">... </span>    <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
+<span class="gp">... </span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">set_weights</span><span class="p">(</span><span class="n">weights_shapelet</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">"shapelets_0_0"</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">locate</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="go">array([[4],</span>
+<span class="go">       [0],</span>
+<span class="go">       [0]])</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="py method">
+<dt id="tslearn.shapelets.LearningShapelets.predict"><a name="//apple_ref/cpp/Method/tslearn.shapelets.LearningShapelets.predict"></a>
+<code class="sig-name descname"><span class="pre">predict</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/shapelets/shapelets.py#L454-L480"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.shapelets.LearningShapelets.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predict class for a given set of time series.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">array-like of shape=(n_ts, sz, d)</span></dt><dd><p>Time series dataset.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>array of shape=(n_ts, ) or (n_ts, n_classes), depending on the shape</dt><dd></dd>
+<dt>of the label vector provided at training time.</dt><dd><p>Index of the cluster each sample belongs to or class probability
+matrix, depending on what was provided at training time.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="tslearn.shapelets.LearningShapelets.predict_proba"><a name="//apple_ref/cpp/Method/tslearn.shapelets.LearningShapelets.predict_proba"></a>
+<code class="sig-name descname"><span class="pre">predict_proba</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/shapelets/shapelets.py#L482-L512"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.shapelets.LearningShapelets.predict_proba" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predict class probability for a given set of time series.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">array-like of shape=(n_ts, sz, d)</span></dt><dd><p>Time series dataset.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>array of shape=(n_ts, n_classes),</dt><dd><p>Class probability matrix.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="tslearn.shapelets.LearningShapelets.score"><a name="//apple_ref/cpp/Method/tslearn.shapelets.LearningShapelets.score"></a>
+<code class="sig-name descname"><span class="pre">score</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/../sklearn/base.py#L475-L500"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.shapelets.LearningShapelets.score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the mean accuracy on the given test data and labels.</p>
+<p>In multi-label classification, this is the subset accuracy
+which is a harsh metric since you require for each sample that
+each label set be correctly predicted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">array-like of shape (n_samples, n_features)</span></dt><dd><p>Test samples.</p>
+</dd>
+<dt><strong>y</strong><span class="classifier">array-like of shape (n_samples,) or (n_samples, n_outputs)</span></dt><dd><p>True labels for <cite>X</cite>.</p>
+</dd>
+<dt><strong>sample_weight</strong><span class="classifier">array-like of shape (n_samples,), default=None</span></dt><dd><p>Sample weights.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>score</strong><span class="classifier">float</span></dt><dd><p>Mean accuracy of <code class="docutils literal notranslate"><span class="pre">self.predict(X)</span></code> wrt. <cite>y</cite>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="tslearn.shapelets.LearningShapelets.set_params"><a name="//apple_ref/cpp/Method/tslearn.shapelets.LearningShapelets.set_params"></a>
+<code class="sig-name descname"><span class="pre">set_params</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/../sklearn/base.py#L202-L244"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.shapelets.LearningShapelets.set_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the parameters of this estimator.</p>
+<p>The method works on simple estimators as well as on nested objects
+(such as <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="(in scikit-learn v0.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code></a>). The latter have
+parameters of the form <code class="docutils literal notranslate"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></code> so that it’s
+possible to update each component of a nested object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>**params</strong><span class="classifier">dict</span></dt><dd><p>Estimator parameters.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>self</strong><span class="classifier">estimator instance</span></dt><dd><p>Estimator instance.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="tslearn.shapelets.LearningShapelets.set_weights"><a name="//apple_ref/cpp/Method/tslearn.shapelets.LearningShapelets.set_weights"></a>
+<code class="sig-name descname"><span class="pre">set_weights</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weights</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layer_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/shapelets/shapelets.py#L788-L825"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.shapelets.LearningShapelets.set_weights" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set model weights (or weights for a given layer if <cite>layer_name</cite>
+is provided).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>weights: list of ndarrays</strong></dt><dd><p>Weights to set for the model / target layer</p>
+</dd>
+<dt><strong>layer_name: str or None (default: None)</strong></dt><dd><p>Name of the layer for which  weights should be set.
+If None, all model weights are set.
+Available layer names with weights are:</p>
+<ul class="simple">
+<li><p>“shapelets_i_j” with i an integer for the shapelet id and j an
+integer for the dimension</p></li>
+<li><p>“classification” for the final classification layer</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">tslearn.generators</span> <span class="kn">import</span> <span class="n">random_walk_blobs</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">random_walk_blobs</span><span class="p">(</span><span class="n">n_ts_per_blob</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">sz</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_blobs</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span> <span class="o">=</span> <span class="n">LearningShapelets</span><span class="p">(</span><span class="n">n_shapelets_per_size</span><span class="o">=</span><span class="p">{</span><span class="mi">3</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="gp">... </span>                    <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">_</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">weights_shapelet</span> <span class="o">=</span> <span class="p">[</span>
+<span class="gp">... </span>    <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
+<span class="gp">... </span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">set_weights</span><span class="p">(</span><span class="n">weights_shapelet</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">"shapelets_0_0"</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">shapelets_as_time_series_</span>
+<span class="go">array([[[1.],</span>
+<span class="go">        [2.],</span>
+<span class="go">        [3.]]])</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="py method">
+<dt id="tslearn.shapelets.LearningShapelets.shapelets_as_time_series_"><a name="//apple_ref/cpp/Method/tslearn.shapelets.LearningShapelets.shapelets_as_time_series_"></a>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">shapelets_as_time_series_</span></code><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/shapelets.py"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.shapelets.LearningShapelets.shapelets_as_time_series_" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set of time-series shapelets formatted as a <code class="docutils literal notranslate"><span class="pre">tslearn</span></code> time series
+dataset.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">tslearn.generators</span> <span class="kn">import</span> <span class="n">random_walk_blobs</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">random_walk_blobs</span><span class="p">(</span><span class="n">n_ts_per_blob</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">sz</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_blobs</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">LearningShapelets</span><span class="p">(</span><span class="n">n_shapelets_per_size</span><span class="o">=</span><span class="p">{</span><span class="mi">3</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
+<span class="gp">... </span>                      <span class="n">max_iter</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">_</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">shapelets_as_time_series_</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(3, 4, 1)</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="py method">
+<dt id="tslearn.shapelets.LearningShapelets.to_hdf5"><a name="//apple_ref/cpp/Method/tslearn.shapelets.LearningShapelets.to_hdf5"></a>
+<code class="sig-name descname"><span class="pre">to_hdf5</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/bases/bases.py#L164-L183"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.shapelets.LearningShapelets.to_hdf5" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save model to a HDF5 file.
+Requires <code class="docutils literal notranslate"><span class="pre">h5py</span></code> <a class="reference external" href="http://docs.h5py.org/">http://docs.h5py.org/</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>path</strong><span class="classifier">str</span></dt><dd><p>Full file path. File must not already exist.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><dl class="simple">
+<dt>FileExistsError</dt><dd><p>If a file with the same path already exists.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="tslearn.shapelets.LearningShapelets.to_json"><a name="//apple_ref/cpp/Method/tslearn.shapelets.LearningShapelets.to_json"></a>
+<code class="sig-name descname"><span class="pre">to_json</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/bases/bases.py#L212-L223"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.shapelets.LearningShapelets.to_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save model to a JSON file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>path</strong><span class="classifier">str</span></dt><dd><p>Full file path.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="tslearn.shapelets.LearningShapelets.to_pickle"><a name="//apple_ref/cpp/Method/tslearn.shapelets.LearningShapelets.to_pickle"></a>
+<code class="sig-name descname"><span class="pre">to_pickle</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/bases/bases.py#L257-L268"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.shapelets.LearningShapelets.to_pickle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save model to a pickle file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>path</strong><span class="classifier">str</span></dt><dd><p>Full file path.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="tslearn.shapelets.LearningShapelets.transform"><a name="//apple_ref/cpp/Method/tslearn.shapelets.LearningShapelets.transform"></a>
+<code class="sig-name descname"><span class="pre">transform</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/shapelets/shapelets.py#L514-L539"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.shapelets.LearningShapelets.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate shapelet transform for a set of time series.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">array-like of shape=(n_ts, sz, d)</span></dt><dd><p>Time series dataset.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>array of shape=(n_ts, n_shapelets)</dt><dd><p>Shapelet-Transform of the provided time series.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<div class="section" id="examples-using-tslearn-shapelets-learningshapelets">
+<h2>Examples using <code class="docutils literal notranslate"><span class="pre">tslearn.shapelets.LearningShapelets</span></code><a class="headerlink" href="#examples-using-tslearn-shapelets-learningshapelets" title="Permalink to this headline">¶</a></h2>
+<div class="sphx-glr-thumbcontainer" tooltip='This example illustrates how the "Learning Shapelets" method can quickly find a set of shapelet...'><div class="figure align-default" id="id3">
+<img alt="Learning Shapelets" src="../../_images/sphx_glr_plot_shapelets_thumb.png"/>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../../auto_examples/classification/plot_shapelets.html#sphx-glr-auto-examples-classification-plot-shapelets-py"><span class="std std-ref">Learning Shapelets</span></a></span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip='This example illustrates the use of the "Learning Shapelets" method in order to learn a collect...'><div class="figure align-default" id="id4">
+<img alt="Aligning discovered shapelets with timeseries" src="../../_images/sphx_glr_plot_shapelet_locations_thumb.png"/>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../../auto_examples/classification/plot_shapelet_locations.html#sphx-glr-auto-examples-classification-plot-shapelet-locations-py"><span class="std std-ref">Aligning discovered shapelets with timeseries</span></a></span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip='This example illustrates the use of the "Learning Shapelets" method in order to learn a collect...'><div class="figure align-default" id="id5">
+<img alt="Learning Shapelets: decision boundaries in 2D distance space" src="../../_images/sphx_glr_plot_shapelet_distances_thumb.png"/>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../../auto_examples/classification/plot_shapelet_distances.html#sphx-glr-auto-examples-classification-plot-shapelet-distances-py"><span class="std std-ref">Learning Shapelets: decision boundaries in 2D distance space</span></a></span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="clearer"></div></div>
+</div>
+</div>
+</div>
+</div>
+<footer class="footer">
+<div class="container">
+<p class="pull-right">
+<a href="#">Back to top</a>
+</p>
+<p>
+        © Copyright 2017, Romain Tavenard.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
+</p>
+</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,14 @@
+﻿.. _fun-tslearn.metrics.subsequence_path:
+
+tslearn.metrics.subsequence_path
+================================
+
+.. currentmodule:: tslearn.metrics
+
+.. autofunction:: subsequence_path
+
+.. include:: ../backreferences/tslearn.metrics.subsequence_path.examples
+
+.. raw:: html
+
+     <div style='clear:both'></div>

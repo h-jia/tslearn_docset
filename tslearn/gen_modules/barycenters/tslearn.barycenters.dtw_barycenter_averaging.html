@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>tslearn.barycenters.dtw_barycenter_averaging &#8212; tslearn 0.5.0.5 documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery-rendered-html.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/custom.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="tslearn.barycenters.dtw_barycenter_averaging_subgradient" href="tslearn.barycenters.dtw_barycenter_averaging_subgradient.html" />
+    <link rel="prev" title="tslearn.barycenters.euclidean_barycenter" href="tslearn.barycenters.euclidean_barycenter.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js "></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../index.html">
+          tslearn</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.5.0.5</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../../quickstart.html">Quick Start</a></li>
+                <li><a href="../../user_guide/userguide.html">User Guide</a></li>
+                <li><a href="../../reference.html">API</a></li>
+                <li><a href="../../auto_examples/index.html">Examples</a></li>
+                <li><a href="../../citing.html">Citing tslearn</a></li>
+                <li><a href="https://github.com/tslearn-team/tslearn/">Code on GitHub</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../index.html">Site map <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"></ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <div class="section" id="tslearn-barycenters-dtw-barycenter-averaging">
+<span id="fun-tslearn-barycenters-dtw-barycenter-averaging"></span><h1>tslearn.barycenters.dtw_barycenter_averaging<a class="headerlink" href="#tslearn-barycenters-dtw-barycenter-averaging" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt id="tslearn.barycenters.dtw_barycenter_averaging">
+<code class="sig-prename descclassname"><span class="pre">tslearn.barycenters.</span></code><code class="sig-name descname"><span class="pre">dtw_barycenter_averaging</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">barycenter_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">init_barycenter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_iter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">30</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric_params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_init</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/barycenters/dba.py#L394-L511"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.barycenters.dtw_barycenter_averaging" title="Permalink to this definition">¶</a></dt>
+<dd><p>DTW Barycenter Averaging (DBA) method estimated through
+Expectation-Maximization algorithm.</p>
+<p>DBA was originally presented in <a class="reference internal" href="#r9a048dc1802e-1" id="id1">[1]</a>.
+This implementation is based on a idea from <a class="reference internal" href="#r9a048dc1802e-2" id="id2">[2]</a> (Majorize-Minimize Mean
+Algorithm).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">array-like, shape=(n_ts, sz, d)</span></dt><dd><p>Time series dataset.</p>
+</dd>
+<dt><strong>barycenter_size</strong><span class="classifier">int or None (default: None)</span></dt><dd><p>Size of the barycenter to generate. If None, the size of the barycenter
+is that of the data provided at fit
+time or that of the initial barycenter if specified.</p>
+</dd>
+<dt><strong>init_barycenter</strong><span class="classifier">array or None (default: None)</span></dt><dd><p>Initial barycenter to start from for the optimization process.</p>
+</dd>
+<dt><strong>max_iter</strong><span class="classifier">int (default: 30)</span></dt><dd><p>Number of iterations of the Expectation-Maximization optimization
+procedure.</p>
+</dd>
+<dt><strong>tol</strong><span class="classifier">float (default: 1e-5)</span></dt><dd><p>Tolerance to use for early stopping: if the decrease in cost is lower
+than this value, the
+Expectation-Maximization procedure stops.</p>
+</dd>
+<dt><strong>weights: None or array</strong></dt><dd><p>Weights of each X[i]. Must be the same size as len(X).
+If None, uniform weights are used.</p>
+</dd>
+<dt><strong>metric_params: dict or None (default: None)</strong></dt><dd><p>DTW constraint parameters to be used.
+See <a class="reference internal" href="../metrics/tslearn.metrics.dtw_path.html#fun-tslearn-metrics-dtw-path"><span class="std std-ref">tslearn.metrics.dtw_path</span></a> for
+a list of accepted parameters
+If None, no constraint is used for DTW computations.</p>
+</dd>
+<dt><strong>verbose</strong><span class="classifier">boolean (default: False)</span></dt><dd><p>Whether to print information about the cost at each iteration or not.</p>
+</dd>
+<dt><strong>n_init</strong><span class="classifier">int (default: 1)</span></dt><dd><p>Number of different initializations to be tried (useful only is
+init_barycenter is set to None, otherwise, all trials will reach the
+same performance)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>numpy.array of shape (barycenter_size, d) or (sz, d) if barycenter_size             is None</dt><dd><p>DBA barycenter of the provided time series dataset.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<dl class="citation">
+<dt class="label" id="r9a048dc1802e-1"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>F. Petitjean, A. Ketterlin &amp; P. Gancarski. A global averaging method
+for dynamic time warping, with applications to clustering. Pattern
+Recognition, Elsevier, 2011, Vol. 44, Num. 3, pp. 678-693</p>
+</dd>
+<dt class="label" id="r9a048dc1802e-2"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
+<dd><p>D. Schultz and B. Jain. Nonsmooth Analysis and Subgradient Methods
+for Averaging in Dynamic Time Warping Spaces.
+Pattern Recognition, 74, 340-358.</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">time_series</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dtw_barycenter_averaging</span><span class="p">(</span><span class="n">time_series</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="go">array([[1. ],</span>
+<span class="go">       [2. ],</span>
+<span class="go">       [3.5],</span>
+<span class="go">       [4.5]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">time_series</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dtw_barycenter_averaging</span><span class="p">(</span><span class="n">time_series</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="go">array([[1. ],</span>
+<span class="go">       [2. ],</span>
+<span class="go">       [3. ],</span>
+<span class="go">       [4. ],</span>
+<span class="go">       [4.5]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dtw_barycenter_averaging</span><span class="p">(</span><span class="n">time_series</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+<span class="gp">... </span>                         <span class="n">metric_params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;itakura_max_slope&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">})</span>
+<span class="go">array([[1. ],</span>
+<span class="go">       [2. ],</span>
+<span class="go">       [3. ],</span>
+<span class="go">       [3.5],</span>
+<span class="go">       [4.5]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dtw_barycenter_averaging</span><span class="p">(</span><span class="n">time_series</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">barycenter_size</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">array([[1.5       ],</span>
+<span class="go">       [3.        ],</span>
+<span class="go">       [4.33333333]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dtw_barycenter_averaging</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">]],</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="gp">... </span>                         <span class="n">weights</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">]))</span>
+<span class="go">array([[2.5],</span>
+<span class="go">       [2.5],</span>
+<span class="go">       [2.5]])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<div class="section" id="examples-using-tslearn-barycenters-dtw-barycenter-averaging">
+<h2>Examples using <code class="docutils literal notranslate"><span class="pre">tslearn.barycenters.dtw_barycenter_averaging</span></code><a class="headerlink" href="#examples-using-tslearn-barycenters-dtw-barycenter-averaging" title="Permalink to this headline">¶</a></h2>
+<div class="sphx-glr-thumbcontainer" tooltip="This example shows three methods to compute barycenters of time series. For an overview over th..."><div class="figure align-default" id="id5">
+<img alt="Barycenters" src="../../_images/sphx_glr_plot_barycenters_thumb.svg" /><p class="caption"><span class="caption-text"><a class="reference internal" href="../../auto_examples/clustering/plot_barycenters.html#sphx-glr-auto-examples-clustering-plot-barycenters-py"><span class="std std-ref">Barycenters</span></a></span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+</div>
+</div><div style='clear:both'></div></div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2017, Romain Tavenard.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

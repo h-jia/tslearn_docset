@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>tslearn.metrics.subsequence_path — tslearn 0.5.0.5 documentation</title>
+<link href="../../_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/bootstrap-sphinx.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/custom.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/gallery.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/gallery-binder.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/gallery-dataframe.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/gallery-rendered-html.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+<script src="../../_static/jquery.js"></script>
+<script src="../../_static/underscore.js"></script>
+<script src="../../_static/doctools.js"></script>
+<script src="../../_static/custom.js"></script>
+<script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+<link href="../../genindex.html" rel="index" title="Index"/>
+<link href="../../search.html" rel="search" title="Search"/>
+<link href="tslearn.metrics.subsequence_cost_matrix.html" rel="next" title="tslearn.metrics.subsequence_cost_matrix"/>
+<link href="tslearn.metrics.dtw_path_limited_warping_length.html" rel="prev" title="tslearn.metrics.dtw_path_limited_warping_length"/>
+<meta charset="utf-8"/>
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1" name="viewport"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<script src="../../_static/js/jquery-1.11.0.min.js " type="text/javascript"></script>
+<script src="../../_static/js/jquery-fix.js " type="text/javascript"></script>
+<script src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js " type="text/javascript"></script>
+<script src="../../_static/bootstrap-sphinx.js " type="text/javascript"></script>
+</head><body>
+<div class="navbar navbar-default navbar-fixed-top" id="navbar">
+<div class="container">
+<div class="navbar-header">
+<!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+<button class="navbar-toggle" data-target=".nav-collapse" data-toggle="collapse" type="button">
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<a class="navbar-brand" href="../../index.html">
+          tslearn</a>
+<span class="navbar-text navbar-version pull-left"><b>0.5.0.5</b></span>
+</div>
+<div class="collapse navbar-collapse nav-collapse">
+<ul class="nav navbar-nav">
+<li><a href="../../quickstart.html">Quick Start</a></li>
+<li><a href="../../user_guide/userguide.html">User Guide</a></li>
+<li><a href="../../reference.html">API</a></li>
+<li><a href="../../auto_examples/index.html">Examples</a></li>
+<li><a href="../../citing.html">Citing tslearn</a></li>
+<li><a href="https://github.com/tslearn-team/tslearn/">Code on GitHub</a></li>
+<li class="dropdown globaltoc-container">
+<a data-target="#" data-toggle="dropdown" href="../../index.html" id="dLabelGlobalToc" role="button">Site map <b class="caret"></b></a>
+<ul aria-labelledby="dLabelGlobalToc" class="dropdown-menu globaltoc" role="menu"></ul>
+</li>
+</ul>
+<form action="../../search.html" class="navbar-form navbar-right" method="get">
+<div class="form-group">
+<input class="form-control" name="q" placeholder="Search" type="text"/>
+</div>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div>
+</div>
+<div class="container">
+<div class="row">
+<div class="body col-md-12 content" role="main">
+<div class="section" id="tslearn-metrics-subsequence-path">
+<span id="fun-tslearn-metrics-subsequence-path"></span><h1>tslearn.metrics.subsequence_path<a class="headerlink" href="#tslearn-metrics-subsequence-path" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt id="tslearn.metrics.subsequence_path"><a name="//apple_ref/cpp/Function/tslearn.metrics.subsequence_path"></a>
+<code class="sig-prename descclassname"><span class="pre">tslearn.metrics.</span></code><code class="sig-name descname"><span class="pre">subsequence_path</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">acc_cost_mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idx_path_end</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/metrics/dtw_variants.py#L806-L843"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.metrics.subsequence_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the optimal path through a accumulated cost matrix given the
+endpoint of the sequence.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>acc_cost_mat: array, shape = (sz1, sz2)</strong></dt><dd><p>The accumulated cost matrix comparing subsequence from a longer
+sequence.</p>
+</dd>
+<dt><strong>idx_path_end: int</strong></dt><dd><p>The end position of the matched subsequence in the longer sequence.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>path: list of tuples of integer pairs</dt><dd><p>Matching path represented as a list of index pairs. In each pair, the
+first index corresponds to <cite>subseq</cite> and the second one corresponds to
+<cite>longseq</cite>. The startpoint of the Path is <span class="math notranslate nohighlight">\(P_0 = (0, ?)\)</span> and it
+ends at <span class="math notranslate nohighlight">\(P_L = (len(subseq)-1, idx\_path\_end)\)</span></p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="tslearn.metrics.dtw_subsequence_path.html#tslearn.metrics.dtw_subsequence_path" title="tslearn.metrics.dtw_subsequence_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtw_subsequence_path</span></code></a></dt><dd><p>Get the similarity score for DTW</p>
+</dd>
+<dt><a class="reference internal" href="tslearn.metrics.subsequence_cost_matrix.html#tslearn.metrics.subsequence_cost_matrix" title="tslearn.metrics.subsequence_cost_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">subsequence_cost_matrix</span></code></a></dt><dd><p>Calculate the required cost matrix</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">acc_cost_mat</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">4.</span><span class="p">],</span>
+<span class="gp">... </span>                            <span class="p">[</span><span class="mf">5.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># calculate the globally optimal path</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">optimal_end_point</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">acc_cost_mat</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">path</span> <span class="o">=</span> <span class="n">subsequence_path</span><span class="p">(</span><span class="n">acc_cost_mat</span><span class="p">,</span> <span class="n">optimal_end_point</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">path</span>
+<span class="go">[(0, 2), (1, 3)]</span>
+</pre></div>
+</div>
+</dd></dl>
+<div class="section" id="examples-using-tslearn-metrics-subsequence-path">
+<h2>Examples using <code class="docutils literal notranslate"><span class="pre">tslearn.metrics.subsequence_path</span></code><a class="headerlink" href="#examples-using-tslearn-metrics-subsequence-path" title="Permalink to this headline">¶</a></h2>
+<div class="sphx-glr-thumbcontainer" tooltip="This example illustrates how subsequent DTW can be used to find multiple matches of a sequence ..."><div class="figure align-default" id="id1">
+<img alt="sDTW multi path matching" src="../../_images/sphx_glr_plot_sdtw_thumb.svg"/><p class="caption"><span class="caption-text"><a class="reference internal" href="../../auto_examples/metrics/plot_sdtw.html#sphx-glr-auto-examples-metrics-plot-sdtw-py"><span class="std std-ref">sDTW multi path matching</span></a></span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+</div><div style="clear:both"></div></div>
+</div>
+</div>
+</div>
+</div>
+<footer class="footer">
+<div class="container">
+<p class="pull-right">
+<a href="#">Back to top</a>
+</p>
+<p>
+        © Copyright 2017, Romain Tavenard.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
+</p>
+</div>
+</footer>
+</body>
+</html>

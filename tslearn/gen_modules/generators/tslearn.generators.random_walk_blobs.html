@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>tslearn.generators.random_walk_blobs &#8212; tslearn 0.5.0.5 documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery-rendered-html.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/custom.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="tslearn.generators.random_walks" href="tslearn.generators.random_walks.html" />
+    <link rel="prev" title="tslearn.generators" href="../tslearn.generators.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js "></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../index.html">
+          tslearn</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.5.0.5</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../../quickstart.html">Quick Start</a></li>
+                <li><a href="../../user_guide/userguide.html">User Guide</a></li>
+                <li><a href="../../reference.html">API</a></li>
+                <li><a href="../../auto_examples/index.html">Examples</a></li>
+                <li><a href="../../citing.html">Citing tslearn</a></li>
+                <li><a href="https://github.com/tslearn-team/tslearn/">Code on GitHub</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../index.html">Site map <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"></ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <div class="section" id="tslearn-generators-random-walk-blobs">
+<span id="fun-tslearn-generators-random-walk-blobs"></span><h1>tslearn.generators.random_walk_blobs<a class="headerlink" href="#tslearn-generators-random-walk-blobs" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt id="tslearn.generators.random_walk_blobs">
+<code class="sig-prename descclassname"><span class="pre">tslearn.generators.</span></code><code class="sig-name descname"><span class="pre">random_walk_blobs</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_ts_per_blob</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sz</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">256</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_blobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/generators/generators.py#L57-L112"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.generators.random_walk_blobs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Blob-based random walk time series generator.</p>
+<p>Generate n_ts_per_blobs * n_blobs time series of size sz and
+dimensionality d.
+Generated time series follow the model:</p>
+<div class="math notranslate nohighlight">
+\[ts[t] = ts[t - 1] + a\]</div>
+<p>where <span class="math notranslate nohighlight">\(a\)</span> is drawn from a normal distribution of mean mu and
+standard deviation std.</p>
+<p>Each blob contains time series derived from a same seed time series with
+added white noise.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>n_ts_per_blob</strong><span class="classifier">int (default: 100)</span></dt><dd><p>Number of time series in each blob</p>
+</dd>
+<dt><strong>sz</strong><span class="classifier">int (default: 256)</span></dt><dd><p>Length of time series (number of time instants)</p>
+</dd>
+<dt><strong>d</strong><span class="classifier">int (default: 1)</span></dt><dd><p>Dimensionality of time series</p>
+</dd>
+<dt><strong>n_blobs</strong><span class="classifier">int (default: 2)</span></dt><dd><p>Number of blobs</p>
+</dd>
+<dt><strong>noise_level</strong><span class="classifier">float (default: 1.)</span></dt><dd><p>Standard deviation of white noise added to time series in each blob</p>
+</dd>
+<dt><strong>random_state</strong><span class="classifier">integer or numpy.RandomState or None (default: None)</span></dt><dd><p>Generator used to draw the time series. If an integer is given, it
+fixes the seed. Defaults to the global
+numpy random number generator.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>numpy.ndarray</dt><dd><p>A dataset of random walk time series</p>
+</dd>
+<dt>numpy.ndarray</dt><dd><p>Labels associated to random walk time series (blob id)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">random_walk_blobs</span><span class="p">(</span><span class="n">n_ts_per_blob</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">sz</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">n_blobs</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(300, 256, 5)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(300,)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<div class="section" id="examples-using-tslearn-generators-random-walk-blobs">
+<h2>Examples using <code class="docutils literal notranslate"><span class="pre">tslearn.generators.random_walk_blobs</span></code><a class="headerlink" href="#examples-using-tslearn-generators-random-walk-blobs" title="Permalink to this headline">¶</a></h2>
+<div class="sphx-glr-thumbcontainer" tooltip="This example illustrates the use of nearest neighbor methods for database search and classifica..."><div class="figure align-default" id="id1">
+<img alt="Nearest neighbors" src="../../_images/sphx_glr_plot_neighbors_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../../auto_examples/neighbors/plot_neighbors.html#sphx-glr-auto-examples-neighbors-plot-neighbors-py"><span class="std std-ref">Nearest neighbors</span></a></span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+</div><div style='clear:both'></div></div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2017, Romain Tavenard.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

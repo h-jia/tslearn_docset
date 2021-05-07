@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>tslearn.piecewise.SymbolicAggregateApproximation &#8212; tslearn 0.5.0.5 documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery-rendered-html.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/custom.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="tslearn.preprocessing" href="../tslearn.preprocessing.html" />
+    <link rel="prev" title="tslearn.piecewise.PiecewiseAggregateApproximation" href="tslearn.piecewise.PiecewiseAggregateApproximation.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js "></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../index.html">
+          tslearn</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.5.0.5</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../../quickstart.html">Quick Start</a></li>
+                <li><a href="../../user_guide/userguide.html">User Guide</a></li>
+                <li><a href="../../reference.html">API</a></li>
+                <li><a href="../../auto_examples/index.html">Examples</a></li>
+                <li><a href="../../citing.html">Citing tslearn</a></li>
+                <li><a href="https://github.com/tslearn-team/tslearn/">Code on GitHub</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../index.html">Site map <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"></ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <div class="section" id="tslearn-piecewise-symbolicaggregateapproximation">
+<span id="class-tslearn-piecewise-symbolicaggregateapproximation"></span><h1><a class="reference internal" href="../tslearn.piecewise.html#module-tslearn.piecewise" title="tslearn.piecewise"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tslearn.piecewise</span></code></a>.SymbolicAggregateApproximation<a class="headerlink" href="#tslearn-piecewise-symbolicaggregateapproximation" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="tslearn.piecewise.SymbolicAggregateApproximation">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">tslearn.piecewise.</span></code><code class="sig-name descname"><span class="pre">SymbolicAggregateApproximation</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_segments</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alphabet_size_avg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/piecewise/piecewise.py#L261-L501"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.piecewise.SymbolicAggregateApproximation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Symbolic Aggregate approXimation (SAX) transformation.</p>
+<p>SAX was originally presented in <a class="reference internal" href="#r83f60d91f77e-1" id="id1">[1]</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>n_segments</strong><span class="classifier">int (default: 1)</span></dt><dd><p>Number of PAA segments to compute</p>
+</dd>
+<dt><strong>alphabet_size_avg</strong><span class="classifier">int (default: 5)</span></dt><dd><p>Number of SAX symbols to use</p>
+</dd>
+<dt><strong>scale: bool (default: False)</strong></dt><dd><p>Whether input data should be scaled for each feature to have zero 
+mean and unit variance across the dataset passed at fit time.
+Default for this parameter is set to <cite>False</cite> in version 0.4 to ensure
+backward compatibility, but is likely to change in a future version.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Attributes</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>breakpoints_avg_</strong><span class="classifier">numpy.ndarray of shape (alphabet_size - 1, )</span></dt><dd><p>List of breakpoints used to generate SAX symbols</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This method requires a dataset of equal-sized time series.</p>
+<p class="rubric">References</p>
+<dl class="citation">
+<dt class="label" id="r83f60d91f77e-1"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>J. Lin, E. Keogh, L. Wei, et al. Experiencing SAX: a novel symbolic
+representation of time series. Data Mining and Knowledge Discovery,
+2007. vol. 15(107)</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sax</span> <span class="o">=</span> <span class="n">SymbolicAggregateApproximation</span><span class="p">(</span><span class="n">n_segments</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">alphabet_size_avg</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="p">[[</span><span class="o">-</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">3.2</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.</span><span class="p">]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sax_data</span> <span class="o">=</span> <span class="n">sax</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sax_data</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(2, 3, 1)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sax_data</span>
+<span class="go">array([[[1],</span>
+<span class="go">        [0],</span>
+<span class="go">        [1]],</span>
+
+<span class="go">       [[1],</span>
+<span class="go">        [0],</span>
+<span class="go">        [1]]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sax</span><span class="o">.</span><span class="n">distance_sax</span><span class="p">(</span><span class="n">sax_data</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">sax_data</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>  
+<span class="go">0.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sax</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>  
+<span class="go">0.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sax</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">sax_data</span><span class="p">)</span>
+<span class="go">array([[[ 0.67448975],</span>
+<span class="go">        [ 0.67448975],</span>
+<span class="go">        [-0.67448975],</span>
+<span class="go">        [-0.67448975],</span>
+<span class="go">        [ 0.67448975],</span>
+<span class="go">        [ 0.67448975]],</span>
+
+<span class="go">       [[ 0.67448975],</span>
+<span class="go">        [ 0.67448975],</span>
+<span class="go">        [-0.67448975],</span>
+<span class="go">        [-0.67448975],</span>
+<span class="go">        [ 0.67448975],</span>
+<span class="go">        [ 0.67448975]]])</span>
+</pre></div>
+</div>
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tslearn.piecewise.SymbolicAggregateApproximation.distance" title="tslearn.piecewise.SymbolicAggregateApproximation.distance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">distance</span></code></a>(ts1, ts2)</p></td>
+<td><p>Compute distance between SAX representations as defined in <a class="reference internal" href="#r903bd1ccd5d6-1" id="id3">[1]</a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tslearn.piecewise.SymbolicAggregateApproximation.distance_paa" title="tslearn.piecewise.SymbolicAggregateApproximation.distance_paa"><code class="xref py py-obj docutils literal notranslate"><span class="pre">distance_paa</span></code></a>(paa1, paa2)</p></td>
+<td><p>Compute distance between PAA representations as defined in <a class="reference internal" href="#rcf6105d7ab5f-1" id="id4">[1]</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tslearn.piecewise.SymbolicAggregateApproximation.distance_sax" title="tslearn.piecewise.SymbolicAggregateApproximation.distance_sax"><code class="xref py py-obj docutils literal notranslate"><span class="pre">distance_sax</span></code></a>(sax1, sax2)</p></td>
+<td><p>Compute distance between SAX representations as defined in <a class="reference internal" href="#r57607f5447ed-1" id="id5">[1]</a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tslearn.piecewise.SymbolicAggregateApproximation.fit" title="tslearn.piecewise.SymbolicAggregateApproximation.fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></a>(X[, y])</p></td>
+<td><p>Fit a SAX representation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tslearn.piecewise.SymbolicAggregateApproximation.fit_transform" title="tslearn.piecewise.SymbolicAggregateApproximation.fit_transform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit_transform</span></code></a>(X[, y])</p></td>
+<td><p>Fit a SAX representation and transform the data accordingly.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tslearn.piecewise.SymbolicAggregateApproximation.from_hdf5" title="tslearn.piecewise.SymbolicAggregateApproximation.from_hdf5"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_hdf5</span></code></a>(path)</p></td>
+<td><p>Load model from a HDF5 file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tslearn.piecewise.SymbolicAggregateApproximation.from_json" title="tslearn.piecewise.SymbolicAggregateApproximation.from_json"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_json</span></code></a>(path)</p></td>
+<td><p>Load model from a JSON file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tslearn.piecewise.SymbolicAggregateApproximation.from_pickle" title="tslearn.piecewise.SymbolicAggregateApproximation.from_pickle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_pickle</span></code></a>(path)</p></td>
+<td><p>Load model from a pickle file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tslearn.piecewise.SymbolicAggregateApproximation.get_params" title="tslearn.piecewise.SymbolicAggregateApproximation.get_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_params</span></code></a>([deep])</p></td>
+<td><p>Get parameters for this estimator.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tslearn.piecewise.SymbolicAggregateApproximation.inverse_transform" title="tslearn.piecewise.SymbolicAggregateApproximation.inverse_transform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">inverse_transform</span></code></a>(X)</p></td>
+<td><p>Compute time series corresponding to given SAX representations.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tslearn.piecewise.SymbolicAggregateApproximation.set_params" title="tslearn.piecewise.SymbolicAggregateApproximation.set_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_params</span></code></a>(**params)</p></td>
+<td><p>Set the parameters of this estimator.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tslearn.piecewise.SymbolicAggregateApproximation.to_hdf5" title="tslearn.piecewise.SymbolicAggregateApproximation.to_hdf5"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_hdf5</span></code></a>(path)</p></td>
+<td><p>Save model to a HDF5 file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tslearn.piecewise.SymbolicAggregateApproximation.to_json" title="tslearn.piecewise.SymbolicAggregateApproximation.to_json"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_json</span></code></a>(path)</p></td>
+<td><p>Save model to a JSON file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tslearn.piecewise.SymbolicAggregateApproximation.to_pickle" title="tslearn.piecewise.SymbolicAggregateApproximation.to_pickle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_pickle</span></code></a>(path)</p></td>
+<td><p>Save model to a pickle file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tslearn.piecewise.SymbolicAggregateApproximation.transform" title="tslearn.piecewise.SymbolicAggregateApproximation.transform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transform</span></code></a>(X[, y])</p></td>
+<td><p>Transform a dataset of time series into its SAX representation.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="tslearn.piecewise.SymbolicAggregateApproximation.distance">
+<code class="sig-name descname"><span class="pre">distance</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ts1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ts2</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/piecewise/piecewise.py#L454-L476"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.piecewise.SymbolicAggregateApproximation.distance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute distance between SAX representations as defined in <a class="reference internal" href="#r903bd1ccd5d6-1" id="id6">[1]</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>ts1</strong><span class="classifier">array-like</span></dt><dd><p>A time series</p>
+</dd>
+<dt><strong>ts2</strong><span class="classifier">array-like</span></dt><dd><p>Another time series</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>float</dt><dd><p>SAX distance</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<dl class="citation">
+<dt class="label" id="r903bd1ccd5d6-1"><span class="brackets">1</span><span class="fn-backref">(<a href="#id3">1</a>,<a href="#id6">2</a>)</span></dt>
+<dd><p>J. Lin, E. Keogh, L. Wei, et al. Experiencing SAX: a novel
+symbolic representation of time series. Data Mining and Knowledge
+Discovery, 2007. vol. 15(107)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tslearn.piecewise.SymbolicAggregateApproximation.distance_paa">
+<code class="sig-name descname"><span class="pre">distance_paa</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paa1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">paa2</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/piecewise/piecewise.py#L191-L213"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.piecewise.SymbolicAggregateApproximation.distance_paa" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute distance between PAA representations as defined in <a class="reference internal" href="#rcf6105d7ab5f-1" id="id8">[1]</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>paa1</strong><span class="classifier">array-like</span></dt><dd><p>PAA representation of a time series</p>
+</dd>
+<dt><strong>paa2</strong><span class="classifier">array-like</span></dt><dd><p>PAA representation of another time series</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>float</dt><dd><p>PAA distance</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<dl class="citation">
+<dt class="label" id="rcf6105d7ab5f-1"><span class="brackets">1</span><span class="fn-backref">(<a href="#id4">1</a>,<a href="#id8">2</a>)</span></dt>
+<dd><p>E. Keogh &amp; M. Pazzani. Scaling up dynamic time warping for
+datamining applications. SIGKDD 2000, pp. 285–289.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tslearn.piecewise.SymbolicAggregateApproximation.distance_sax">
+<code class="sig-name descname"><span class="pre">distance_sax</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sax1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sax2</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/piecewise/piecewise.py#L429-L452"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.piecewise.SymbolicAggregateApproximation.distance_sax" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute distance between SAX representations as defined in <a class="reference internal" href="#r57607f5447ed-1" id="id10">[1]</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>sax1</strong><span class="classifier">array-like</span></dt><dd><p>SAX representation of a time series</p>
+</dd>
+<dt><strong>sax2</strong><span class="classifier">array-like</span></dt><dd><p>SAX representation of another time series</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>float</dt><dd><p>SAX distance</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<dl class="citation">
+<dt class="label" id="r57607f5447ed-1"><span class="brackets">1</span><span class="fn-backref">(<a href="#id5">1</a>,<a href="#id10">2</a>)</span></dt>
+<dd><p>J. Lin, E. Keogh, L. Wei, et al. Experiencing SAX: a novel
+symbolic representation of time series.
+Data Mining and Knowledge Discovery, 2007. vol. 15(107)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tslearn.piecewise.SymbolicAggregateApproximation.fit">
+<code class="sig-name descname"><span class="pre">fit</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/piecewise/piecewise.py#L353-L368"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.piecewise.SymbolicAggregateApproximation.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit a SAX representation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">array-like of shape (n_ts, sz, d)</span></dt><dd><p>Time series dataset</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>SymbolicAggregateApproximation</dt><dd><p>self</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tslearn.piecewise.SymbolicAggregateApproximation.fit_transform">
+<code class="sig-name descname"><span class="pre">fit_transform</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">fit_params</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/piecewise/piecewise.py#L370-L385"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.piecewise.SymbolicAggregateApproximation.fit_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit a SAX representation and transform the data accordingly.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">array-like of shape (n_ts, sz, d)</span></dt><dd><p>Time series dataset</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>numpy.ndarray of integers with shape (n_ts, n_segments, d)</dt><dd><p>SAX-Transformed dataset</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tslearn.piecewise.SymbolicAggregateApproximation.from_hdf5">
+<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">from_hdf5</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/bases/bases.py#L185-L210"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.piecewise.SymbolicAggregateApproximation.from_hdf5" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load model from a HDF5 file.
+Requires <code class="docutils literal notranslate"><span class="pre">h5py</span></code> <a class="reference external" href="http://docs.h5py.org/">http://docs.h5py.org/</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>path</strong><span class="classifier">str</span></dt><dd><p>Full path to file.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>Model instance</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tslearn.piecewise.SymbolicAggregateApproximation.from_json">
+<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">from_json</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/bases/bases.py#L225-L255"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.piecewise.SymbolicAggregateApproximation.from_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load model from a JSON file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>path</strong><span class="classifier">str</span></dt><dd><p>Full path to file.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>Model instance</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tslearn.piecewise.SymbolicAggregateApproximation.from_pickle">
+<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">from_pickle</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/bases/bases.py#L270-L286"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.piecewise.SymbolicAggregateApproximation.from_pickle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load model from a pickle file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>path</strong><span class="classifier">str</span></dt><dd><p>Full path to file.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>Model instance</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tslearn.piecewise.SymbolicAggregateApproximation.get_params">
+<code class="sig-name descname"><span class="pre">get_params</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/../sklearn/base.py#L189-L219"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.piecewise.SymbolicAggregateApproximation.get_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get parameters for this estimator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>deep</strong><span class="classifier">bool, default=True</span></dt><dd><p>If True, will return the parameters for this estimator and
+contained subobjects that are estimators.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>params</strong><span class="classifier">mapping of string to any</span></dt><dd><p>Parameter names mapped to their values.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tslearn.piecewise.SymbolicAggregateApproximation.inverse_transform">
+<code class="sig-name descname"><span class="pre">inverse_transform</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/piecewise/piecewise.py#L478-L501"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.piecewise.SymbolicAggregateApproximation.inverse_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute time series corresponding to given SAX representations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">array-like of shape (n_ts, sz_sax, d)</span></dt><dd><p>A dataset of SAX series.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>numpy.ndarray of shape (n_ts, sz_original_ts, d)</dt><dd><p>A dataset of time series corresponding to the provided
+representation.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tslearn.piecewise.SymbolicAggregateApproximation.set_params">
+<code class="sig-name descname"><span class="pre">set_params</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/../sklearn/base.py#L221-L263"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.piecewise.SymbolicAggregateApproximation.set_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the parameters of this estimator.</p>
+<p>The method works on simple estimators as well as on nested objects
+(such as pipelines). The latter have parameters of the form
+<code class="docutils literal notranslate"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></code> so that it’s possible to update each
+component of a nested object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>**params</strong><span class="classifier">dict</span></dt><dd><p>Estimator parameters.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>self</strong><span class="classifier">object</span></dt><dd><p>Estimator instance.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tslearn.piecewise.SymbolicAggregateApproximation.to_hdf5">
+<code class="sig-name descname"><span class="pre">to_hdf5</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/bases/bases.py#L164-L183"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.piecewise.SymbolicAggregateApproximation.to_hdf5" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save model to a HDF5 file.
+Requires <code class="docutils literal notranslate"><span class="pre">h5py</span></code> <a class="reference external" href="http://docs.h5py.org/">http://docs.h5py.org/</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>path</strong><span class="classifier">str</span></dt><dd><p>Full file path. File must not already exist.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><dl class="simple">
+<dt>FileExistsError</dt><dd><p>If a file with the same path already exists.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tslearn.piecewise.SymbolicAggregateApproximation.to_json">
+<code class="sig-name descname"><span class="pre">to_json</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/bases/bases.py#L212-L223"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.piecewise.SymbolicAggregateApproximation.to_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save model to a JSON file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>path</strong><span class="classifier">str</span></dt><dd><p>Full file path.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tslearn.piecewise.SymbolicAggregateApproximation.to_pickle">
+<code class="sig-name descname"><span class="pre">to_pickle</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/bases/bases.py#L257-L268"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.piecewise.SymbolicAggregateApproximation.to_pickle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save model to a pickle file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>path</strong><span class="classifier">str</span></dt><dd><p>Full file path.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tslearn.piecewise.SymbolicAggregateApproximation.transform">
+<code class="sig-name descname"><span class="pre">transform</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/piecewise/piecewise.py#L410-L427"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.piecewise.SymbolicAggregateApproximation.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform a dataset of time series into its SAX representation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">array-like of shape (n_ts, sz, d)</span></dt><dd><p>Time series dataset</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>numpy.ndarray of integers with shape (n_ts, n_segments, d)</dt><dd><p>SAX-Transformed dataset</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<div class="section" id="examples-using-tslearn-piecewise-symbolicaggregateapproximation">
+<h2>Examples using <code class="docutils literal notranslate"><span class="pre">tslearn.piecewise.SymbolicAggregateApproximation</span></code><a class="headerlink" href="#examples-using-tslearn-piecewise-symbolicaggregateapproximation" title="Permalink to this headline">¶</a></h2>
+<div class="sphx-glr-thumbcontainer" tooltip="This example presents a comparison between PAA [1], SAX [2] and 1d-SAX [3] features."><div class="figure align-default" id="id12">
+<img alt="PAA and SAX features" src="../../_images/sphx_glr_plot_sax_thumb.svg" /><p class="caption"><span class="caption-text"><a class="reference internal" href="../../auto_examples/misc/plot_sax.html#sphx-glr-auto-examples-misc-plot-sax-py"><span class="std std-ref">PAA and SAX features</span></a></span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="clearer"></div></div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2017, Romain Tavenard.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

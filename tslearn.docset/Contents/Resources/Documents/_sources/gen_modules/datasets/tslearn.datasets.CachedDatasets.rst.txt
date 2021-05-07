@@ -1,0 +1,17 @@
+﻿.. _class-tslearn.datasets.CachedDatasets:
+
+:mod:`tslearn.datasets`.CachedDatasets
+=============================================
+
+.. currentmodule:: tslearn.datasets
+
+.. autoclass:: CachedDatasets
+   :members:
+   :inherited-members:
+
+
+.. include:: ../backreferences/tslearn.datasets.CachedDatasets.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

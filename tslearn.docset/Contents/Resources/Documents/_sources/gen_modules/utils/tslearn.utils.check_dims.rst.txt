@@ -1,0 +1,14 @@
+﻿.. _fun-tslearn.utils.check_dims:
+
+tslearn.utils.check_dims
+========================
+
+.. currentmodule:: tslearn.utils
+
+.. autofunction:: check_dims
+
+.. include:: ../backreferences/tslearn.utils.check_dims.examples
+
+.. raw:: html
+
+     <div style='clear:both'></div>

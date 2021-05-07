@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>tslearn.svm.TimeSeriesSVC &#8212; tslearn 0.5.0.5 documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery-rendered-html.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/custom.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="tslearn.svm.TimeSeriesSVR" href="tslearn.svm.TimeSeriesSVR.html" />
+    <link rel="prev" title="tslearn.svm" href="../tslearn.svm.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js "></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../index.html">
+          tslearn</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.5.0.5</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../../quickstart.html">Quick Start</a></li>
+                <li><a href="../../user_guide/userguide.html">User Guide</a></li>
+                <li><a href="../../reference.html">API</a></li>
+                <li><a href="../../auto_examples/index.html">Examples</a></li>
+                <li><a href="../../citing.html">Citing tslearn</a></li>
+                <li><a href="https://github.com/tslearn-team/tslearn/">Code on GitHub</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../index.html">Site map <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"></ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <div class="section" id="tslearn-svm-timeseriessvc">
+<span id="class-tslearn-svm-timeseriessvc"></span><h1><a class="reference internal" href="../tslearn.svm.html#module-tslearn.svm" title="tslearn.svm"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tslearn.svm</span></code></a>.TimeSeriesSVC<a class="headerlink" href="#tslearn-svm-timeseriessvc" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="tslearn.svm.TimeSeriesSVC">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">tslearn.svm.</span></code><code class="sig-name descname"><span class="pre">TimeSeriesSVC</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">C</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'gak'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">degree</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coef0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shrinking</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">probability</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">200</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_iter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decision_function_shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ovr'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/svm/svm.py#L68-L371"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.svm.TimeSeriesSVC" title="Permalink to this definition">¶</a></dt>
+<dd><p>Time-series specific Support Vector Classifier.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>C</strong><span class="classifier">float, optional (default=1.0)</span></dt><dd><p>Penalty parameter C of the error term.</p>
+</dd>
+<dt><strong>kernel</strong><span class="classifier">string, optional (default=’gak’)</span></dt><dd><p>Specifies the kernel type to be used in the algorithm.
+It must be one of ‘gak’ or a kernel accepted by <code class="docutils literal notranslate"><span class="pre">sklearn.svm.SVC</span></code>.
+If none is given, ‘gak’ will be used. If a callable is given it is
+used to pre-compute the kernel matrix from data matrices; that matrix
+should be an array of shape <code class="docutils literal notranslate"><span class="pre">(n_samples,</span> <span class="pre">n_samples)</span></code>.</p>
+</dd>
+<dt><strong>degree</strong><span class="classifier">int, optional (default=3)</span></dt><dd><p>Degree of the polynomial kernel function (‘poly’).
+Ignored by all other kernels.</p>
+</dd>
+<dt><strong>gamma</strong><span class="classifier">float, optional (default=’auto’)</span></dt><dd><p>Kernel coefficient for ‘gak’, ‘rbf’, ‘poly’ and ‘sigmoid’.
+If gamma is ‘auto’ then:</p>
+<ul class="simple">
+<li><p>for ‘gak’ kernel, it is computed based on a sampling of the training
+set (cf <a class="reference internal" href="../metrics/tslearn.metrics.gamma_soft_dtw.html#fun-tslearn-metrics-gamma-soft-dtw"><span class="std std-ref">tslearn.metrics.gamma_soft_dtw</span></a>)</p></li>
+<li><p>for other kernels (eg. ‘rbf’), 1/n_features will be used.</p></li>
+</ul>
+</dd>
+<dt><strong>coef0</strong><span class="classifier">float, optional (default=0.0)</span></dt><dd><p>Independent term in kernel function.
+It is only significant in ‘poly’ and ‘sigmoid’.</p>
+</dd>
+<dt><strong>shrinking</strong><span class="classifier">boolean, optional (default=True)</span></dt><dd><p>Whether to use the shrinking heuristic.</p>
+</dd>
+<dt><strong>probability</strong><span class="classifier">boolean, optional (default=False)</span></dt><dd><p>Whether to enable probability estimates. This must be enabled prior
+to calling <cite>fit</cite>, and will slow down that method.
+Also, probability estimates are not guaranteed to match predict output.
+See our <a class="reference internal" href="../../user_guide/kernel.html#kernels-ml"><span class="std std-ref">dedicated user guide section</span></a>
+for more details.</p>
+</dd>
+<dt><strong>tol</strong><span class="classifier">float, optional (default=1e-3)</span></dt><dd><p>Tolerance for stopping criterion.</p>
+</dd>
+<dt><strong>cache_size</strong><span class="classifier">float, optional (default=200.0)</span></dt><dd><p>Specify the size of the kernel cache (in MB).</p>
+</dd>
+<dt><strong>class_weight</strong><span class="classifier">{dict, ‘balanced’}, optional</span></dt><dd><p>Set the parameter C of class i to class_weight[i]*C for
+SVC. If not given, all classes are supposed to have
+weight one.
+The “balanced” mode uses the values of y to automatically adjust
+weights inversely proportional to class frequencies in the input data
+as <code class="docutils literal notranslate"><span class="pre">n_samples</span> <span class="pre">/</span> <span class="pre">(n_classes</span> <span class="pre">*</span> <span class="pre">np.bincount(y))</span></code></p>
+</dd>
+<dt><strong>n_jobs</strong><span class="classifier">int or None, optional (default=None)</span></dt><dd><p>The number of jobs to run in parallel for GAK cross-similarity matrix
+computations.
+<code class="docutils literal notranslate"><span class="pre">None</span></code> means 1 unless in a <code class="xref py py-obj docutils literal notranslate"><span class="pre">joblib.parallel_backend</span></code> context.
+<code class="docutils literal notranslate"><span class="pre">-1</span></code> means using all processors. See scikit-learns’
+<a class="reference external" href="https://scikit-learn.org/stable/glossary.html#term-n-jobs">Glossary</a>
+for more details.</p>
+</dd>
+<dt><strong>verbose</strong><span class="classifier">int, default: 0</span></dt><dd><p>Enable verbose output. Note that this setting takes advantage of a
+per-process runtime setting in libsvm that, if enabled, may not work
+properly in a multithreaded context.</p>
+</dd>
+<dt><strong>max_iter</strong><span class="classifier">int, optional (default=-1)</span></dt><dd><p>Hard limit on iterations within solver, or -1 for no limit.</p>
+</dd>
+<dt><strong>decision_function_shape</strong><span class="classifier">‘ovo’, ‘ovr’, default=’ovr’</span></dt><dd><p>Whether to return a one-vs-rest (‘ovr’) decision function of shape
+(n_samples, n_classes) as all other classifiers, or the original
+one-vs-one (‘ovo’) decision function of libsvm which has shape
+(n_samples, n_classes * (n_classes - 1) / 2).</p>
+</dd>
+<dt><strong>random_state</strong><span class="classifier">int, RandomState instance or None, optional (default=None)</span></dt><dd><p>The seed of the pseudo random number generator to use when shuffling
+the data.  If int, random_state is the seed used by the random number
+generator; If RandomState instance, random_state is the random number
+generator; If None, the random number generator is the RandomState
+instance used by <cite>np.random</cite>.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Attributes</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>support_</strong><span class="classifier">array-like, shape = [n_SV]</span></dt><dd><p>Indices of support vectors.</p>
+</dd>
+<dt><strong>n_support_</strong><span class="classifier">array-like, dtype=int32, shape = [n_class]</span></dt><dd><p>Number of support vectors for each class.</p>
+</dd>
+<dt><strong>support_vectors_</strong><span class="classifier">list of arrays of shape [n_SV, sz, d]</span></dt><dd><p>List of support vectors in tslearn dataset format, one array per class</p>
+</dd>
+<dt><strong>dual_coef_</strong><span class="classifier">array, shape = [n_class-1, n_SV]</span></dt><dd><p>Coefficients of the support vector in the decision function.
+For multiclass, coefficient for all 1-vs-1 classifiers.
+The layout of the coefficients in the multiclass case is somewhat
+non-trivial. See the section about multi-class classification in the
+SVM section of the User Guide of <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> for details.</p>
+</dd>
+<dt><strong>coef_</strong><span class="classifier">array, shape = [n_class-1, n_features]</span></dt><dd><p>Weights assigned to the features (coefficients in the primal
+problem). This is only available in the case of a linear kernel.
+<cite>coef_</cite> is a readonly property derived from <cite>dual_coef_</cite> and
+<cite>support_vectors_</cite>.</p>
+</dd>
+<dt><strong>intercept_</strong><span class="classifier">array, shape = [n_class * (n_class-1) / 2]</span></dt><dd><p>Constants in decision function.</p>
+</dd>
+<dt><strong>svm_estimator_</strong><span class="classifier">sklearn.svm.SVC</span></dt><dd><p>The underlying sklearn estimator</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<p>Fast Global Alignment Kernels.
+Marco Cuturi.
+ICML 2011.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">tslearn.generators</span> <span class="kn">import</span> <span class="n">random_walk_blobs</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">random_walk_blobs</span><span class="p">(</span><span class="n">n_ts_per_blob</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">sz</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_blobs</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span> <span class="o">=</span> <span class="n">TimeSeriesSVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;gak&quot;</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span> <span class="n">probability</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(20,)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sv</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">support_vectors_</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">sv</span><span class="p">)</span>  <span class="c1"># should be equal to the nr of classes in the clf problem</span>
+<span class="go">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>  
+<span class="go">(..., 64, 2)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sv_sum</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">sv_i</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">sv_i</span> <span class="ow">in</span> <span class="n">sv</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sv_sum</span> <span class="o">==</span> <span class="n">clf</span><span class="o">.</span><span class="n">svm_estimator_</span><span class="o">.</span><span class="n">n_support_</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">decision_function</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(20,)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">predict_log_proba</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(20, 2)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(20, 2)</span>
+</pre></div>
+</div>
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tslearn.svm.TimeSeriesSVC.decision_function" title="tslearn.svm.TimeSeriesSVC.decision_function"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decision_function</span></code></a>(X)</p></td>
+<td><p>Evaluates the decision function for the samples in X.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tslearn.svm.TimeSeriesSVC.fit" title="tslearn.svm.TimeSeriesSVC.fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></a>(X, y[, sample_weight])</p></td>
+<td><p>Fit the SVM model according to the given training data.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tslearn.svm.TimeSeriesSVC.get_params" title="tslearn.svm.TimeSeriesSVC.get_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_params</span></code></a>([deep])</p></td>
+<td><p>Get parameters for this estimator.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tslearn.svm.TimeSeriesSVC.predict" title="tslearn.svm.TimeSeriesSVC.predict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">predict</span></code></a>(X)</p></td>
+<td><p>Predict class for a given set of time series.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tslearn.svm.TimeSeriesSVC.predict_log_proba" title="tslearn.svm.TimeSeriesSVC.predict_log_proba"><code class="xref py py-obj docutils literal notranslate"><span class="pre">predict_log_proba</span></code></a>(X)</p></td>
+<td><p>Predict class log-probabilities for a given set of time series.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tslearn.svm.TimeSeriesSVC.predict_proba" title="tslearn.svm.TimeSeriesSVC.predict_proba"><code class="xref py py-obj docutils literal notranslate"><span class="pre">predict_proba</span></code></a>(X)</p></td>
+<td><p>Predict class probability for a given set of time series.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tslearn.svm.TimeSeriesSVC.score" title="tslearn.svm.TimeSeriesSVC.score"><code class="xref py py-obj docutils literal notranslate"><span class="pre">score</span></code></a>(X, y[, sample_weight])</p></td>
+<td><p>Return the mean accuracy on the given test data and labels.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tslearn.svm.TimeSeriesSVC.set_params" title="tslearn.svm.TimeSeriesSVC.set_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_params</span></code></a>(**params)</p></td>
+<td><p>Set the parameters of this estimator.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tslearn.svm.TimeSeriesSVC.support_vectors_time_series_" title="tslearn.svm.TimeSeriesSVC.support_vectors_time_series_"><code class="xref py py-obj docutils literal notranslate"><span class="pre">support_vectors_time_series_</span></code></a>([X])</p></td>
+<td><p>DEPRECATED: The use of <cite>support_vectors_time_series_</cite> is deprecated in tslearn v0.4 and will be removed in v0.6.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="tslearn.svm.TimeSeriesSVC.decision_function">
+<code class="sig-name descname"><span class="pre">decision_function</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/svm/svm.py#L309-L325"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.svm.TimeSeriesSVC.decision_function" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates the decision function for the samples in X.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">array-like of shape=(n_ts, sz, d)</span></dt><dd><p>Time series dataset.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>ndarray of shape (n_samples, n_classes * (n_classes-1) / 2)</dt><dd><p>Returns the decision function of the sample for each class
+in the model.
+If decision_function_shape=’ovr’, the shape is (n_samples,
+n_classes).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tslearn.svm.TimeSeriesSVC.fit">
+<code class="sig-name descname"><span class="pre">fit</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/svm/svm.py#L261-L289"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.svm.TimeSeriesSVC.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit the SVM model according to the given training data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">array-like of shape=(n_ts, sz, d)</span></dt><dd><p>Time series dataset.</p>
+</dd>
+<dt><strong>y</strong><span class="classifier">array-like of shape=(n_ts, )</span></dt><dd><p>Time series labels.</p>
+</dd>
+<dt><strong>sample_weight</strong><span class="classifier">array-like of shape (n_samples,), default=None</span></dt><dd><p>Per-sample weights. Rescale C per sample. Higher weights force the 
+classifier to put more emphasis on these points.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tslearn.svm.TimeSeriesSVC.get_params">
+<code class="sig-name descname"><span class="pre">get_params</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/../sklearn/base.py#L189-L219"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.svm.TimeSeriesSVC.get_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get parameters for this estimator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>deep</strong><span class="classifier">bool, default=True</span></dt><dd><p>If True, will return the parameters for this estimator and
+contained subobjects that are estimators.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>params</strong><span class="classifier">mapping of string to any</span></dt><dd><p>Parameter names mapped to their values.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tslearn.svm.TimeSeriesSVC.predict">
+<code class="sig-name descname"><span class="pre">predict</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/svm/svm.py#L291-L307"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.svm.TimeSeriesSVC.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predict class for a given set of time series.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">array-like of shape=(n_ts, sz, d)</span></dt><dd><p>Time series dataset.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>array of shape=(n_ts, ) or (n_ts, n_classes), depending on the shape</dt><dd></dd>
+<dt>of the label vector provided at training time.</dt><dd><p>Index of the cluster each sample belongs to or class probability
+matrix, depending on what was provided at training time.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tslearn.svm.TimeSeriesSVC.predict_log_proba">
+<code class="sig-name descname"><span class="pre">predict_log_proba</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/svm/svm.py#L327-L346"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.svm.TimeSeriesSVC.predict_log_proba" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predict class log-probabilities for a given set of time series.</p>
+<p>Note that probability estimates are not guaranteed to match predict 
+output.
+See our <a class="reference internal" href="../../user_guide/kernel.html#kernels-ml"><span class="std std-ref">dedicated user guide section</span></a>
+for more details.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">array-like of shape=(n_ts, sz, d)</span></dt><dd><p>Time series dataset.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>array of shape=(n_ts, n_classes),</dt><dd><p>Class probability matrix.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tslearn.svm.TimeSeriesSVC.predict_proba">
+<code class="sig-name descname"><span class="pre">predict_proba</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/svm/svm.py#L348-L367"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.svm.TimeSeriesSVC.predict_proba" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predict class probability for a given set of time series.</p>
+<p>Note that probability estimates are not guaranteed to match predict 
+output.
+See our <a class="reference internal" href="../../user_guide/kernel.html#kernels-ml"><span class="std std-ref">dedicated user guide section</span></a>
+for more details.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">array-like of shape=(n_ts, sz, d)</span></dt><dd><p>Time series dataset.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>array of shape=(n_ts, n_classes),</dt><dd><p>Class probability matrix.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tslearn.svm.TimeSeriesSVC.score">
+<code class="sig-name descname"><span class="pre">score</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/../sklearn/base.py#L474-L499"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.svm.TimeSeriesSVC.score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the mean accuracy on the given test data and labels.</p>
+<p>In multi-label classification, this is the subset accuracy
+which is a harsh metric since you require for each sample that
+each label set be correctly predicted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">array-like of shape (n_samples, n_features)</span></dt><dd><p>Test samples.</p>
+</dd>
+<dt><strong>y</strong><span class="classifier">array-like of shape (n_samples,) or (n_samples, n_outputs)</span></dt><dd><p>True labels for X.</p>
+</dd>
+<dt><strong>sample_weight</strong><span class="classifier">array-like of shape (n_samples,), default=None</span></dt><dd><p>Sample weights.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>score</strong><span class="classifier">float</span></dt><dd><p>Mean accuracy of self.predict(X) wrt. y.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tslearn.svm.TimeSeriesSVC.set_params">
+<code class="sig-name descname"><span class="pre">set_params</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/../sklearn/base.py#L221-L263"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.svm.TimeSeriesSVC.set_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the parameters of this estimator.</p>
+<p>The method works on simple estimators as well as on nested objects
+(such as pipelines). The latter have parameters of the form
+<code class="docutils literal notranslate"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></code> so that it’s possible to update each
+component of a nested object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>**params</strong><span class="classifier">dict</span></dt><dd><p>Estimator parameters.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>self</strong><span class="classifier">object</span></dt><dd><p>Estimator instance.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tslearn.svm.TimeSeriesSVC.support_vectors_time_series_">
+<code class="sig-name descname"><span class="pre">support_vectors_time_series_</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/../sklearn/utils/deprecation.py#L237-L247"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.svm.TimeSeriesSVC.support_vectors_time_series_" title="Permalink to this definition">¶</a></dt>
+<dd><p>DEPRECATED: The use of <cite>support_vectors_time_series_</cite> is deprecated in tslearn v0.4 and will be removed in v0.6. Use <cite>support_vectors_</cite> property instead.</p>
+</dd></dl>
+
+</dd></dl>
+
+<div class="section" id="examples-using-tslearn-svm-timeseriessvc">
+<h2>Examples using <code class="docutils literal notranslate"><span class="pre">tslearn.svm.TimeSeriesSVC</span></code><a class="headerlink" href="#examples-using-tslearn-svm-timeseriessvc" title="Permalink to this headline">¶</a></h2>
+<div class="sphx-glr-thumbcontainer" tooltip="This example illustrates the use of the global alignment kernel (GAK) for support vector classi..."><div class="figure align-default" id="id1">
+<img alt="SVM and GAK" src="../../_images/sphx_glr_plot_svm_thumb.svg" /><p class="caption"><span class="caption-text"><a class="reference internal" href="../../auto_examples/classification/plot_svm.html#sphx-glr-auto-examples-classification-plot-svm-py"><span class="std std-ref">SVM and GAK</span></a></span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="clearer"></div></div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2017, Romain Tavenard.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

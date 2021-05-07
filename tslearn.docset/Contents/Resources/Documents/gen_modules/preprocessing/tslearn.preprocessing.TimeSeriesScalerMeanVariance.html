@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>tslearn.preprocessing.TimeSeriesScalerMeanVariance — tslearn 0.5.0.5 documentation</title>
+<link href="../../_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/bootstrap-sphinx.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/custom.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/gallery.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/gallery-binder.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/gallery-dataframe.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/gallery-rendered-html.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+<script src="../../_static/jquery.js"></script>
+<script src="../../_static/underscore.js"></script>
+<script src="../../_static/doctools.js"></script>
+<script src="../../_static/custom.js"></script>
+<script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+<link href="../../genindex.html" rel="index" title="Index"/>
+<link href="../../search.html" rel="search" title="Search"/>
+<link href="tslearn.preprocessing.TimeSeriesScalerMinMax.html" rel="next" title="tslearn.preprocessing.TimeSeriesScalerMinMax"/>
+<link href="../tslearn.preprocessing.html" rel="prev" title="tslearn.preprocessing"/>
+<meta charset="utf-8"/>
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1" name="viewport"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<script src="../../_static/js/jquery-1.11.0.min.js " type="text/javascript"></script>
+<script src="../../_static/js/jquery-fix.js " type="text/javascript"></script>
+<script src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js " type="text/javascript"></script>
+<script src="../../_static/bootstrap-sphinx.js " type="text/javascript"></script>
+</head><body>
+<div class="navbar navbar-default navbar-fixed-top" id="navbar">
+<div class="container">
+<div class="navbar-header">
+<!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+<button class="navbar-toggle" data-target=".nav-collapse" data-toggle="collapse" type="button">
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<a class="navbar-brand" href="../../index.html">
+          tslearn</a>
+<span class="navbar-text navbar-version pull-left"><b>0.5.0.5</b></span>
+</div>
+<div class="collapse navbar-collapse nav-collapse">
+<ul class="nav navbar-nav">
+<li><a href="../../quickstart.html">Quick Start</a></li>
+<li><a href="../../user_guide/userguide.html">User Guide</a></li>
+<li><a href="../../reference.html">API</a></li>
+<li><a href="../../auto_examples/index.html">Examples</a></li>
+<li><a href="../../citing.html">Citing tslearn</a></li>
+<li><a href="https://github.com/tslearn-team/tslearn/">Code on GitHub</a></li>
+<li class="dropdown globaltoc-container">
+<a data-target="#" data-toggle="dropdown" href="../../index.html" id="dLabelGlobalToc" role="button">Site map <b class="caret"></b></a>
+<ul aria-labelledby="dLabelGlobalToc" class="dropdown-menu globaltoc" role="menu"></ul>
+</li>
+</ul>
+<form action="../../search.html" class="navbar-form navbar-right" method="get">
+<div class="form-group">
+<input class="form-control" name="q" placeholder="Search" type="text"/>
+</div>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div>
+</div>
+<div class="container">
+<div class="row">
+<div class="body col-md-12 content" role="main">
+<div class="section" id="tslearn-preprocessing-timeseriesscalermeanvariance">
+<span id="class-tslearn-preprocessing-timeseriesscalermeanvariance"></span><h1><a class="reference internal" href="../tslearn.preprocessing.html#module-tslearn.preprocessing" title="tslearn.preprocessing"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tslearn.preprocessing</span></code></a>.TimeSeriesScalerMeanVariance<a class="headerlink" href="#tslearn-preprocessing-timeseriesscalermeanvariance" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="tslearn.preprocessing.TimeSeriesScalerMeanVariance"><a name="//apple_ref/cpp/Class/tslearn.preprocessing.TimeSeriesScalerMeanVariance"></a>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">tslearn.preprocessing.</span></code><code class="sig-name descname"><span class="pre">TimeSeriesScalerMeanVariance</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">std</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/preprocessing/preprocessing.py#L204-L298"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.preprocessing.TimeSeriesScalerMeanVariance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Scaler for time series. Scales time series so that their mean (resp.
+standard deviation) in each dimension is
+mu (resp. std).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>mu</strong><span class="classifier">float (default: 0.)</span></dt><dd><p>Mean of the output time series.</p>
+</dd>
+<dt><strong>std</strong><span class="classifier">float (default: 1.)</span></dt><dd><p>Standard deviation of the output time series.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This method requires a dataset of equal-sized time series.</p>
+<p>NaNs within a time series are ignored when calculating mu and std.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">TimeSeriesScalerMeanVariance</span><span class="p">(</span><span class="n">mu</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span>
+<span class="gp">... </span>                             <span class="n">std</span><span class="o">=</span><span class="mf">1.</span><span class="p">)</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
+<span class="go">array([[[-1.22474487],</span>
+<span class="go">        [ 0.        ],</span>
+<span class="go">        [ 1.22474487]]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">TimeSeriesScalerMeanVariance</span><span class="p">(</span><span class="n">mu</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span>
+<span class="gp">... </span>                             <span class="n">std</span><span class="o">=</span><span class="mf">1.</span><span class="p">)</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">([[</span><span class="n">numpy</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
+<span class="go">array([[[nan],</span>
+<span class="go">        [-1.],</span>
+<span class="go">        [ 1.]]])</span>
+</pre></div>
+</div>
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%"/>
+<col style="width: 90%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tslearn.preprocessing.TimeSeriesScalerMeanVariance.fit" title="tslearn.preprocessing.TimeSeriesScalerMeanVariance.fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></a>(X[, y])</p></td>
+<td><p>A dummy method such that it complies to the sklearn requirements.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tslearn.preprocessing.TimeSeriesScalerMeanVariance.fit_transform" title="tslearn.preprocessing.TimeSeriesScalerMeanVariance.fit_transform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit_transform</span></code></a>(X[, y])</p></td>
+<td><p>Fit to data, then transform it.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tslearn.preprocessing.TimeSeriesScalerMeanVariance.get_params" title="tslearn.preprocessing.TimeSeriesScalerMeanVariance.get_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_params</span></code></a>([deep])</p></td>
+<td><p>Get parameters for this estimator.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tslearn.preprocessing.TimeSeriesScalerMeanVariance.set_params" title="tslearn.preprocessing.TimeSeriesScalerMeanVariance.set_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_params</span></code></a>(**params)</p></td>
+<td><p>Set the parameters of this estimator.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tslearn.preprocessing.TimeSeriesScalerMeanVariance.transform" title="tslearn.preprocessing.TimeSeriesScalerMeanVariance.transform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transform</span></code></a>(X[, y])</p></td>
+<td><p>Fit to data, then transform it.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="tslearn.preprocessing.TimeSeriesScalerMeanVariance.fit"><a name="//apple_ref/cpp/Method/tslearn.preprocessing.TimeSeriesScalerMeanVariance.fit"></a>
+<code class="sig-name descname"><span class="pre">fit</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/preprocessing/preprocessing.py#L239-L255"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.preprocessing.TimeSeriesScalerMeanVariance.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>A dummy method such that it complies to the sklearn requirements.
+Since this method is completely stateless, it just returns itself.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong></dt><dd><p>Ignored</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>self</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="tslearn.preprocessing.TimeSeriesScalerMeanVariance.fit_transform"><a name="//apple_ref/cpp/Method/tslearn.preprocessing.TimeSeriesScalerMeanVariance.fit_transform"></a>
+<code class="sig-name descname"><span class="pre">fit_transform</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/preprocessing/preprocessing.py#L257-L270"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.preprocessing.TimeSeriesScalerMeanVariance.fit_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit to data, then transform it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">array-like of shape (n_ts, sz, d)</span></dt><dd><p>Time series dataset to be rescaled.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>numpy.ndarray</dt><dd><p>Resampled time series dataset.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="tslearn.preprocessing.TimeSeriesScalerMeanVariance.get_params"><a name="//apple_ref/cpp/Method/tslearn.preprocessing.TimeSeriesScalerMeanVariance.get_params"></a>
+<code class="sig-name descname"><span class="pre">get_params</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/../sklearn/base.py#L178-L200"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.preprocessing.TimeSeriesScalerMeanVariance.get_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get parameters for this estimator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>deep</strong><span class="classifier">bool, default=True</span></dt><dd><p>If True, will return the parameters for this estimator and
+contained subobjects that are estimators.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>params</strong><span class="classifier">dict</span></dt><dd><p>Parameter names mapped to their values.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="tslearn.preprocessing.TimeSeriesScalerMeanVariance.set_params"><a name="//apple_ref/cpp/Method/tslearn.preprocessing.TimeSeriesScalerMeanVariance.set_params"></a>
+<code class="sig-name descname"><span class="pre">set_params</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/../sklearn/base.py#L202-L244"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.preprocessing.TimeSeriesScalerMeanVariance.set_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the parameters of this estimator.</p>
+<p>The method works on simple estimators as well as on nested objects
+(such as <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="(in scikit-learn v0.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code></a>). The latter have
+parameters of the form <code class="docutils literal notranslate"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></code> so that it’s
+possible to update each component of a nested object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>**params</strong><span class="classifier">dict</span></dt><dd><p>Estimator parameters.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>self</strong><span class="classifier">estimator instance</span></dt><dd><p>Estimator instance.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="tslearn.preprocessing.TimeSeriesScalerMeanVariance.transform"><a name="//apple_ref/cpp/Method/tslearn.preprocessing.TimeSeriesScalerMeanVariance.transform"></a>
+<code class="sig-name descname"><span class="pre">transform</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/preprocessing/preprocessing.py#L272-L295"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.preprocessing.TimeSeriesScalerMeanVariance.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit to data, then transform it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">array-like of shape (n_ts, sz, d)</span></dt><dd><p>Time series dataset to be rescaled</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>numpy.ndarray</dt><dd><p>Rescaled time series dataset</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<div class="section" id="examples-using-tslearn-preprocessing-timeseriesscalermeanvariance">
+<h2>Examples using <code class="docutils literal notranslate"><span class="pre">tslearn.preprocessing.TimeSeriesScalerMeanVariance</span></code><a class="headerlink" href="#examples-using-tslearn-preprocessing-timeseriesscalermeanvariance" title="Permalink to this headline">¶</a></h2>
+<div class="sphx-glr-thumbcontainer" tooltip="Many tslearn models can be saved to disk and used for predictions at a later time. This can be ..."><div class="figure align-default" id="id1">
+<img alt="Model Persistence" src="../../_images/sphx_glr_plot_serialize_models_thumb.png"/>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../../auto_examples/misc/plot_serialize_models.html#sphx-glr-auto-examples-misc-plot-serialize-models-py"><span class="std std-ref">Model Persistence</span></a></span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="clearer"></div></div>
+</div>
+</div>
+</div>
+</div>
+<footer class="footer">
+<div class="container">
+<p class="pull-right">
+<a href="#">Back to top</a>
+</p>
+<p>
+        © Copyright 2017, Romain Tavenard.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
+</p>
+</div>
+</footer>
+</body>
+</html>

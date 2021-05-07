@@ -1,0 +1,17 @@
+﻿.. _class-tslearn.early_classification.NonMyopicEarlyClassifier:
+
+:mod:`tslearn.early_classification`.NonMyopicEarlyClassifier
+===================================================================
+
+.. currentmodule:: tslearn.early_classification
+
+.. autoclass:: NonMyopicEarlyClassifier
+   :members:
+   :inherited-members:
+
+
+.. include:: ../backreferences/tslearn.early_classification.NonMyopicEarlyClassifier.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

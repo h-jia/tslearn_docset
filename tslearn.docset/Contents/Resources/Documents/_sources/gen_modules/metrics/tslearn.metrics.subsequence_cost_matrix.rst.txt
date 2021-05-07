@@ -1,0 +1,14 @@
+﻿.. _fun-tslearn.metrics.subsequence_cost_matrix:
+
+tslearn.metrics.subsequence_cost_matrix
+=======================================
+
+.. currentmodule:: tslearn.metrics
+
+.. autofunction:: subsequence_cost_matrix
+
+.. include:: ../backreferences/tslearn.metrics.subsequence_cost_matrix.examples
+
+.. raw:: html
+
+     <div style='clear:both'></div>

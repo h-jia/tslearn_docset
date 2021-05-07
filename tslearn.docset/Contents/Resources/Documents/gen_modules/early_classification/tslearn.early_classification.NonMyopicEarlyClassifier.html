@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>tslearn.early_classification.NonMyopicEarlyClassifier — tslearn 0.5.0.5 documentation</title>
+<link href="../../_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/bootstrap-sphinx.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/custom.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/gallery.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/gallery-binder.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/gallery-dataframe.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/gallery-rendered-html.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+<script src="../../_static/jquery.js"></script>
+<script src="../../_static/underscore.js"></script>
+<script src="../../_static/doctools.js"></script>
+<script src="../../_static/custom.js"></script>
+<script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+<link href="../../genindex.html" rel="index" title="Index"/>
+<link href="../../search.html" rel="search" title="Search"/>
+<link href="../tslearn.generators.html" rel="next" title="tslearn.generators"/>
+<link href="../tslearn.early_classification.html" rel="prev" title="tslearn.early_classification"/>
+<meta charset="utf-8"/>
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1" name="viewport"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<script src="../../_static/js/jquery-1.11.0.min.js " type="text/javascript"></script>
+<script src="../../_static/js/jquery-fix.js " type="text/javascript"></script>
+<script src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js " type="text/javascript"></script>
+<script src="../../_static/bootstrap-sphinx.js " type="text/javascript"></script>
+</head><body>
+<div class="navbar navbar-default navbar-fixed-top" id="navbar">
+<div class="container">
+<div class="navbar-header">
+<!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+<button class="navbar-toggle" data-target=".nav-collapse" data-toggle="collapse" type="button">
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<a class="navbar-brand" href="../../index.html">
+          tslearn</a>
+<span class="navbar-text navbar-version pull-left"><b>0.5.0.5</b></span>
+</div>
+<div class="collapse navbar-collapse nav-collapse">
+<ul class="nav navbar-nav">
+<li><a href="../../quickstart.html">Quick Start</a></li>
+<li><a href="../../user_guide/userguide.html">User Guide</a></li>
+<li><a href="../../reference.html">API</a></li>
+<li><a href="../../auto_examples/index.html">Examples</a></li>
+<li><a href="../../citing.html">Citing tslearn</a></li>
+<li><a href="https://github.com/tslearn-team/tslearn/">Code on GitHub</a></li>
+<li class="dropdown globaltoc-container">
+<a data-target="#" data-toggle="dropdown" href="../../index.html" id="dLabelGlobalToc" role="button">Site map <b class="caret"></b></a>
+<ul aria-labelledby="dLabelGlobalToc" class="dropdown-menu globaltoc" role="menu"></ul>
+</li>
+</ul>
+<form action="../../search.html" class="navbar-form navbar-right" method="get">
+<div class="form-group">
+<input class="form-control" name="q" placeholder="Search" type="text"/>
+</div>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div>
+</div>
+<div class="container">
+<div class="row">
+<div class="body col-md-12 content" role="main">
+<div class="section" id="tslearn-early-classification-nonmyopicearlyclassifier">
+<span id="class-tslearn-early-classification-nonmyopicearlyclassifier"></span><h1><a class="reference internal" href="../tslearn.early_classification.html#module-tslearn.early_classification" title="tslearn.early_classification"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tslearn.early_classification</span></code></a>.NonMyopicEarlyClassifier<a class="headerlink" href="#tslearn-early-classification-nonmyopicearlyclassifier" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="tslearn.early_classification.NonMyopicEarlyClassifier"><a name="//apple_ref/cpp/Class/tslearn.early_classification.NonMyopicEarlyClassifier"></a>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">tslearn.early_classification.</span></code><code class="sig-name descname"><span class="pre">NonMyopicEarlyClassifier</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_clusters</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_classifier</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_t</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lamb</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cost_time_parameter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/early_classification/early_classification.py#L16-L580"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.early_classification.NonMyopicEarlyClassifier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Early Classification modelling for time series using the model
+presented in <a class="reference internal" href="#r8800ebd43eb3-1" id="id1">[1]</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>n_clusters</strong><span class="classifier">int</span></dt><dd><p>Number of clusters to form.</p>
+</dd>
+<dt><strong>base_classifier</strong><span class="classifier">Estimator or None</span></dt><dd><p>Estimator (instance) to be cloned and used for classifications.
+If None, the chosen classifier is a 1NN with Euclidean metric.</p>
+</dd>
+<dt><strong>min_t</strong><span class="classifier">int</span></dt><dd><p>Earliest time at which a classification can be performed on a time
+series</p>
+</dd>
+<dt><strong>lamb</strong><span class="classifier">float</span></dt><dd><p>Value of the hyper parameter lambda used during the computation of the
+cost function to evaluate the probability
+that a time series belongs to a cluster given the time series.</p>
+</dd>
+<dt><strong>cost_time_parameter</strong><span class="classifier">float</span></dt><dd><p>Parameter of the cost function of time. This function is of the form :
+f(time) = time * cost_time_parameter</p>
+</dd>
+<dt><strong>random_state: int</strong></dt><dd><p>Random state of the base estimator</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Attributes</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>classifiers_</strong><span class="classifier">list</span></dt><dd><p>A list containing all the classifiers trained for the model, that is,
+(maximum_time_stamp - min_t) elements.</p>
+</dd>
+<dt><strong>pyhatyck_</strong><span class="classifier">array like of shape (maximum_time_stamp - min_t, n_cluster, __n_classes, __n_classes)</span></dt><dd><p>Contains the probabilities of being classified as class y_hat given
+class y and cluster ck for a trained classifier. The penultimate
+dimension of the array is associated to the true
+class of the series and the last dimension to the predicted class.</p>
+</dd>
+<dt><strong>pyck_</strong><span class="classifier">array like of shape (__n_classes, n_cluster)</span></dt><dd><p>Contains the probabilities of being of true class y given a cluster ck</p>
+</dd>
+<dt><strong>X_fit_dims</strong><span class="classifier">tuple of the same shape as the training dataset</span></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<dl class="citation">
+<dt class="label" id="r8800ebd43eb3-1"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>A. Dachraoui, A. Bondu &amp; A. Cornuejols. Early classification of time
+series as a non myopic sequential decision making problem.
+ECML/PKDD 2015</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dataset</span> <span class="o">=</span> <span class="n">to_time_series_dataset</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+<span class="gp">... </span>                                  <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+<span class="gp">... </span>                                  <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+<span class="gp">... </span>                                  <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+<span class="gp">... </span>                                  <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+<span class="gp">... </span>                                  <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+<span class="gp">... </span>                                  <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+<span class="gp">... </span>                                  <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">NonMyopicEarlyClassifier</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">lamb</span><span class="o">=</span><span class="mf">1000.</span><span class="p">,</span>
+<span class="gp">... </span>                                 <span class="n">cost_time_parameter</span><span class="o">=.</span><span class="mi">1</span><span class="p">,</span>
+<span class="gp">... </span>                                 <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>  
+<span class="go">NonMyopicEarlyClassifier(...)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">classifiers_</span><span class="p">))</span>
+<span class="go">&lt;class 'dict'&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">pyck_</span><span class="p">)</span>
+<span class="go">[[0. 1. 1.]</span>
+<span class="go"> [1. 0. 0.]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">preds</span><span class="p">,</span> <span class="n">pred_times</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_class_and_earliness</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">preds</span>
+<span class="go">array([0, 0, 0, 1, 1, 1, 0, 0])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pred_times</span>
+<span class="go">array([4, 4, 4, 4, 4, 4, 1, 1])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pred_probas</span><span class="p">,</span> <span class="n">pred_times</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_proba_and_earliness</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pred_probas</span>
+<span class="go">array([[1., 0.],</span>
+<span class="go">       [1., 0.],</span>
+<span class="go">       [1., 0.],</span>
+<span class="go">       [0., 1.],</span>
+<span class="go">       [0., 1.],</span>
+<span class="go">       [0., 1.],</span>
+<span class="go">       [1., 0.],</span>
+<span class="go">       [1., 0.]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pred_times</span>
+<span class="go">array([4, 4, 4, 4, 4, 4, 1, 1])</span>
+</pre></div>
+</div>
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%"/>
+<col style="width: 90%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tslearn.early_classification.NonMyopicEarlyClassifier.early_classification_cost" title="tslearn.early_classification.NonMyopicEarlyClassifier.early_classification_cost"><code class="xref py py-obj docutils literal notranslate"><span class="pre">early_classification_cost</span></code></a>(X, y)</p></td>
+<td><p>Compute early classification score.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tslearn.early_classification.NonMyopicEarlyClassifier.fit" title="tslearn.early_classification.NonMyopicEarlyClassifier.fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></a>(X, y)</p></td>
+<td><p>Fit early classifier.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tslearn.early_classification.NonMyopicEarlyClassifier.get_cluster_probas" title="tslearn.early_classification.NonMyopicEarlyClassifier.get_cluster_probas"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_cluster_probas</span></code></a>(Xi)</p></td>
+<td><p>Compute cluster probability <span class="math notranslate nohighlight">\(P(c_k | Xi)\)</span>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tslearn.early_classification.NonMyopicEarlyClassifier.get_params" title="tslearn.early_classification.NonMyopicEarlyClassifier.get_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_params</span></code></a>([deep])</p></td>
+<td><p>Get parameters for this estimator.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tslearn.early_classification.NonMyopicEarlyClassifier.predict" title="tslearn.early_classification.NonMyopicEarlyClassifier.predict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">predict</span></code></a>(X)</p></td>
+<td><p>Provide predicted class.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tslearn.early_classification.NonMyopicEarlyClassifier.predict_class_and_earliness" title="tslearn.early_classification.NonMyopicEarlyClassifier.predict_class_and_earliness"><code class="xref py py-obj docutils literal notranslate"><span class="pre">predict_class_and_earliness</span></code></a>(X)</p></td>
+<td><p>Provide predicted class as well as prediction timestamps.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tslearn.early_classification.NonMyopicEarlyClassifier.predict_proba" title="tslearn.early_classification.NonMyopicEarlyClassifier.predict_proba"><code class="xref py py-obj docutils literal notranslate"><span class="pre">predict_proba</span></code></a>(X)</p></td>
+<td><p>Probability estimates.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tslearn.early_classification.NonMyopicEarlyClassifier.predict_proba_and_earliness" title="tslearn.early_classification.NonMyopicEarlyClassifier.predict_proba_and_earliness"><code class="xref py py-obj docutils literal notranslate"><span class="pre">predict_proba_and_earliness</span></code></a>(X)</p></td>
+<td><p>Provide probability estimates as well as prediction timestamps.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tslearn.early_classification.NonMyopicEarlyClassifier.score" title="tslearn.early_classification.NonMyopicEarlyClassifier.score"><code class="xref py py-obj docutils literal notranslate"><span class="pre">score</span></code></a>(X, y[, sample_weight])</p></td>
+<td><p>Return the mean accuracy on the given test data and labels.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tslearn.early_classification.NonMyopicEarlyClassifier.set_params" title="tslearn.early_classification.NonMyopicEarlyClassifier.set_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_params</span></code></a>(**params)</p></td>
+<td><p>Set the parameters of this estimator.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="tslearn.early_classification.NonMyopicEarlyClassifier.early_classification_cost"><a name="//apple_ref/cpp/Method/tslearn.early_classification.NonMyopicEarlyClassifier.early_classification_cost"></a>
+<code class="sig-name descname"><span class="pre">early_classification_cost</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/early_classification/early_classification.py#L519-L574"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.early_classification.NonMyopicEarlyClassifier.early_classification_cost" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute early classification score.</p>
+<p>The score is computed as:</p>
+<div class="math notranslate nohighlight">
+\[1 - acc + \alpha \frac{1}{n} \sum_i t_i\]</div>
+<p>where <span class="math notranslate nohighlight">\(\alpha\)</span> is the trade-off parameter
+(<cite>self.cost_time_parameter</cite>) and <span class="math notranslate nohighlight">\(t_i\)</span> are prediction timestamps.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">array-like of shape (n_series, n_timestamps, n_features)</span></dt><dd><p>Vector to be scored, where <cite>n_series</cite> is the number of time series,
+<cite>n_timestamps</cite> is the number of timestamps in the series
+and <cite>n_features</cite> is the number of features recorded at each
+timestamp.</p>
+</dd>
+<dt><strong>y</strong><span class="classifier">array-like, shape = (n_samples) or (n_samples, n_outputs)</span></dt><dd><p>True labels for X.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>float</dt><dd><p>Early classification cost (a positive number, the lower the better)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dataset</span> <span class="o">=</span> <span class="n">to_time_series_dataset</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+<span class="gp">... </span>                                  <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+<span class="gp">... </span>                                  <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+<span class="gp">... </span>                                  <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+<span class="gp">... </span>                                  <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+<span class="gp">... </span>                                  <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+<span class="gp">... </span>                                  <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+<span class="gp">... </span>                                  <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">NonMyopicEarlyClassifier</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">lamb</span><span class="o">=</span><span class="mf">1000.</span><span class="p">,</span>
+<span class="gp">... </span>                                 <span class="n">cost_time_parameter</span><span class="o">=.</span><span class="mi">1</span><span class="p">,</span>
+<span class="gp">... </span>                                 <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>  
+<span class="go">NonMyopicEarlyClassifier(...)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">preds</span><span class="p">,</span> <span class="n">pred_times</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_class_and_earliness</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">preds</span>
+<span class="go">array([0, 0, 0, 1, 1, 1, 0, 0])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pred_times</span>
+<span class="go">array([4, 4, 4, 4, 4, 4, 1, 1])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">early_classification_cost</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="go">0.325</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="py method">
+<dt id="tslearn.early_classification.NonMyopicEarlyClassifier.fit"><a name="//apple_ref/cpp/Method/tslearn.early_classification.NonMyopicEarlyClassifier.fit"></a>
+<code class="sig-name descname"><span class="pre">fit</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/early_classification/early_classification.py#L128-L211"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.early_classification.NonMyopicEarlyClassifier.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit early classifier.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">array-like of shape (n_series, n_timestamps, n_features)</span></dt><dd><p>Training data, where <cite>n_series</cite> is the number of time series,
+<cite>n_timestamps</cite> is the number of timestamps in the series
+and <cite>n_features</cite> is the number of features recorded at each
+timestamp.</p>
+</dd>
+<dt><strong>y</strong><span class="classifier">array-like of shape (n_samples,)</span></dt><dd><p>Target values. Will be cast to X’s dtype if necessary</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>self</strong><span class="classifier">returns an instance of self.</span></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="tslearn.early_classification.NonMyopicEarlyClassifier.get_cluster_probas"><a name="//apple_ref/cpp/Method/tslearn.early_classification.NonMyopicEarlyClassifier.get_cluster_probas"></a>
+<code class="sig-name descname"><span class="pre">get_cluster_probas</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Xi</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/early_classification/early_classification.py#L213-L283"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.early_classification.NonMyopicEarlyClassifier.get_cluster_probas" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute cluster probability <span class="math notranslate nohighlight">\(P(c_k | Xi)\)</span>.</p>
+<p>This quantity is computed using the following formula:</p>
+<div class="math notranslate nohighlight">
+\[P(c_k | Xi) = \frac{s_k(Xi)}{\sum_j s_j(Xi)}\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[s_k(Xi) = \frac{1}{1 + \exp{-\lambda \Delta_k(Xi)}}\]</div>
+<p>with</p>
+<div class="math notranslate nohighlight">
+\[\Delta_k(Xi) = \frac{\bar{D} - d(Xi, c_k)}{\bar{D}}\]</div>
+<p>and <span class="math notranslate nohighlight">\(\bar{D}\)</span> is the average of the distances between <cite>Xi</cite> and
+the cluster centers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>Xi: numpy array, shape (t, d)</strong></dt><dd><p>A time series observed up to time t</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>probas</strong><span class="classifier">numpy array, shape (n_clusters, )</span></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">tslearn.utils</span> <span class="kn">import</span> <span class="n">to_time_series</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dataset</span> <span class="o">=</span> <span class="n">to_time_series_dataset</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+<span class="gp">... </span>                                  <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+<span class="gp">... </span>                                  <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+<span class="gp">... </span>                                  <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+<span class="gp">... </span>                                  <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+<span class="gp">... </span>                                  <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+<span class="gp">... </span>                                  <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+<span class="gp">... </span>                                  <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ts0</span> <span class="o">=</span> <span class="n">to_time_series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">NonMyopicEarlyClassifier</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">lamb</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span>
+<span class="gp">... </span>                                 <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">probas</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">get_cluster_probas</span><span class="p">(</span><span class="n">ts0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">probas</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(3,)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">probas</span>  
+<span class="go">array([0.33..., 0.33..., 0.33...])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">NonMyopicEarlyClassifier</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">lamb</span><span class="o">=</span><span class="mf">10000.</span><span class="p">,</span>
+<span class="gp">... </span>                                 <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">probas</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">get_cluster_probas</span><span class="p">(</span><span class="n">ts0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">probas</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(3,)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">probas</span>
+<span class="go">array([0.5, 0.5, 0. ])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ts1</span> <span class="o">=</span> <span class="n">to_time_series</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">get_cluster_probas</span><span class="p">(</span><span class="n">ts1</span><span class="p">)</span>
+<span class="go">array([0., 0., 1.])</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="py method">
+<dt id="tslearn.early_classification.NonMyopicEarlyClassifier.get_params"><a name="//apple_ref/cpp/Method/tslearn.early_classification.NonMyopicEarlyClassifier.get_params"></a>
+<code class="sig-name descname"><span class="pre">get_params</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/../sklearn/base.py#L189-L219"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.early_classification.NonMyopicEarlyClassifier.get_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get parameters for this estimator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>deep</strong><span class="classifier">bool, default=True</span></dt><dd><p>If True, will return the parameters for this estimator and
+contained subobjects that are estimators.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>params</strong><span class="classifier">mapping of string to any</span></dt><dd><p>Parameter names mapped to their values.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="tslearn.early_classification.NonMyopicEarlyClassifier.predict"><a name="//apple_ref/cpp/Method/tslearn.early_classification.NonMyopicEarlyClassifier.predict"></a>
+<code class="sig-name descname"><span class="pre">predict</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/early_classification/early_classification.py#L436-L453"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.early_classification.NonMyopicEarlyClassifier.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Provide predicted class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">array-like of shape (n_series, n_timestamps, n_features)</span></dt><dd><p>Vector to be scored, where <cite>n_series</cite> is the number of time series,
+<cite>n_timestamps</cite> is the number of timestamps in the series
+and <cite>n_features</cite> is the number of features recorded at each
+timestamp.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>array, shape (n_samples,)</dt><dd><p>Predicted classes.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="tslearn.early_classification.NonMyopicEarlyClassifier.predict_class_and_earliness"><a name="//apple_ref/cpp/Method/tslearn.early_classification.NonMyopicEarlyClassifier.predict_class_and_earliness"></a>
+<code class="sig-name descname"><span class="pre">predict_class_and_earliness</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/early_classification/early_classification.py#L401-L434"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.early_classification.NonMyopicEarlyClassifier.predict_class_and_earliness" title="Permalink to this definition">¶</a></dt>
+<dd><p>Provide predicted class as well as prediction timestamps.</p>
+<p>Prediction timestamps are timestamps at which a prediction is made in
+early classification setting.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">array-like of shape (n_series, n_timestamps, n_features)</span></dt><dd><p>Vector to be scored, where <cite>n_series</cite> is the number of time series,
+<cite>n_timestamps</cite> is the number of timestamps in the series
+and <cite>n_features</cite> is the number of features recorded at each
+timestamp.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>array, shape (n_samples,)</dt><dd><p>Predicted classes.</p>
+</dd>
+<dt>array-like of shape (n_series, )</dt><dd><p>Prediction timestamps.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="tslearn.early_classification.NonMyopicEarlyClassifier.predict_proba"><a name="//apple_ref/cpp/Method/tslearn.early_classification.NonMyopicEarlyClassifier.predict_proba"></a>
+<code class="sig-name descname"><span class="pre">predict_proba</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/early_classification/early_classification.py#L493-L514"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.early_classification.NonMyopicEarlyClassifier.predict_proba" title="Permalink to this definition">¶</a></dt>
+<dd><p>Probability estimates.</p>
+<p>The returned estimates for all classes are ordered by the
+label of classes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">array-like of shape (n_series, n_timestamps, n_features)</span></dt><dd><p>Vector to be scored, where <cite>n_series</cite> is the number of time series,
+<cite>n_timestamps</cite> is the number of timestamps in the series
+and <cite>n_features</cite> is the number of features recorded at each
+timestamp.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>array-like of shape (n_series, n_classes)</dt><dd><p>Probability of the sample for each class in the model,
+where classes are ordered as they are in <code class="docutils literal notranslate"><span class="pre">self.classes_</span></code>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="tslearn.early_classification.NonMyopicEarlyClassifier.predict_proba_and_earliness"><a name="//apple_ref/cpp/Method/tslearn.early_classification.NonMyopicEarlyClassifier.predict_proba_and_earliness"></a>
+<code class="sig-name descname"><span class="pre">predict_proba_and_earliness</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/early_classification/early_classification.py#L455-L491"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.early_classification.NonMyopicEarlyClassifier.predict_proba_and_earliness" title="Permalink to this definition">¶</a></dt>
+<dd><p>Provide probability estimates as well as prediction timestamps.</p>
+<p>Prediction timestamps are timestamps at which a prediction is made in
+early classification setting.
+The returned estimates for all classes are ordered by the
+label of classes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">array-like of shape (n_series, n_timestamps, n_features)</span></dt><dd><p>Vector to be scored, where <cite>n_series</cite> is the number of time series,
+<cite>n_timestamps</cite> is the number of timestamps in the series
+and <cite>n_features</cite> is the number of features recorded at each
+timestamp.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>array-like of shape (n_series, n_classes)</dt><dd><p>Probability of the sample for each class in the model,
+where classes are ordered as they are in <code class="docutils literal notranslate"><span class="pre">self.classes_</span></code>.</p>
+</dd>
+<dt>array-like of shape (n_series, )</dt><dd><p>Prediction timestamps.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="tslearn.early_classification.NonMyopicEarlyClassifier.score"><a name="//apple_ref/cpp/Method/tslearn.early_classification.NonMyopicEarlyClassifier.score"></a>
+<code class="sig-name descname"><span class="pre">score</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/../sklearn/base.py#L474-L499"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.early_classification.NonMyopicEarlyClassifier.score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the mean accuracy on the given test data and labels.</p>
+<p>In multi-label classification, this is the subset accuracy
+which is a harsh metric since you require for each sample that
+each label set be correctly predicted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">array-like of shape (n_samples, n_features)</span></dt><dd><p>Test samples.</p>
+</dd>
+<dt><strong>y</strong><span class="classifier">array-like of shape (n_samples,) or (n_samples, n_outputs)</span></dt><dd><p>True labels for X.</p>
+</dd>
+<dt><strong>sample_weight</strong><span class="classifier">array-like of shape (n_samples,), default=None</span></dt><dd><p>Sample weights.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>score</strong><span class="classifier">float</span></dt><dd><p>Mean accuracy of self.predict(X) wrt. y.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="tslearn.early_classification.NonMyopicEarlyClassifier.set_params"><a name="//apple_ref/cpp/Method/tslearn.early_classification.NonMyopicEarlyClassifier.set_params"></a>
+<code class="sig-name descname"><span class="pre">set_params</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/../sklearn/base.py#L221-L263"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.early_classification.NonMyopicEarlyClassifier.set_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the parameters of this estimator.</p>
+<p>The method works on simple estimators as well as on nested objects
+(such as pipelines). The latter have parameters of the form
+<code class="docutils literal notranslate"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></code> so that it’s possible to update each
+component of a nested object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>**params</strong><span class="classifier">dict</span></dt><dd><p>Estimator parameters.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>self</strong><span class="classifier">object</span></dt><dd><p>Estimator instance.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<div class="section" id="examples-using-tslearn-early-classification-nonmyopicearlyclassifier">
+<h2>Examples using <code class="docutils literal notranslate"><span class="pre">tslearn.early_classification.NonMyopicEarlyClassifier</span></code><a class="headerlink" href="#examples-using-tslearn-early-classification-nonmyopicearlyclassifier" title="Permalink to this headline">¶</a></h2>
+<div class="sphx-glr-thumbcontainer" tooltip="This example presents the concept of early classification."><div class="figure align-default" id="id3">
+<img alt="Early Classification" src="../../_images/sphx_glr_plot_early_classification_thumb.svg"/><p class="caption"><span class="caption-text"><a class="reference internal" href="../../auto_examples/classification/plot_early_classification.html#sphx-glr-auto-examples-classification-plot-early-classification-py"><span class="std std-ref">Early Classification</span></a></span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="clearer"></div></div>
+</div>
+</div>
+</div>
+</div>
+<footer class="footer">
+<div class="container">
+<p class="pull-right">
+<a href="#">Back to top</a>
+</p>
+<p>
+        © Copyright 2017, Romain Tavenard.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
+</p>
+</div>
+</footer>
+</body>
+</html>

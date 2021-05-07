@@ -1,0 +1,17 @@
+﻿.. _class-tslearn.preprocessing.TimeSeriesResampler:
+
+:mod:`tslearn.preprocessing`.TimeSeriesResampler
+=======================================================
+
+.. currentmodule:: tslearn.preprocessing
+
+.. autoclass:: TimeSeriesResampler
+   :members:
+   :inherited-members:
+
+
+.. include:: ../backreferences/tslearn.preprocessing.TimeSeriesResampler.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

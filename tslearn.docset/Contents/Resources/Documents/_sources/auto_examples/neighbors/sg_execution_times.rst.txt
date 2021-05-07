@@ -1,0 +1,18 @@
+
+:orphan:
+
+.. _sphx_glr_auto_examples_neighbors_sg_execution_times:
+
+Computation times
+=================
+**00:52.828** total execution time for **auto_examples_neighbors** files:
+
++-----------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_auto_examples_neighbors_plot_sax_mindist_knn.py` (``plot_sax_mindist_knn.py``) | 00:50.884 | 0.0 MB |
++-----------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_auto_examples_neighbors_plot_knnts_sklearn.py` (``plot_knnts_sklearn.py``)     | 00:01.230 | 0.0 MB |
++-----------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_auto_examples_neighbors_plot_knn_search.py` (``plot_knn_search.py``)           | 00:00.544 | 0.0 MB |
++-----------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_auto_examples_neighbors_plot_neighbors.py` (``plot_neighbors.py``)             | 00:00.170 | 0.0 MB |
++-----------------------------------------------------------------------------------------------+-----------+--------+

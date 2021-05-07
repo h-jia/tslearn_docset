@@ -1,0 +1,17 @@
+﻿.. _class-tslearn.preprocessing.TimeSeriesScalerMeanVariance:
+
+:mod:`tslearn.preprocessing`.TimeSeriesScalerMeanVariance
+================================================================
+
+.. currentmodule:: tslearn.preprocessing
+
+.. autoclass:: TimeSeriesScalerMeanVariance
+   :members:
+   :inherited-members:
+
+
+.. include:: ../backreferences/tslearn.preprocessing.TimeSeriesScalerMeanVariance.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

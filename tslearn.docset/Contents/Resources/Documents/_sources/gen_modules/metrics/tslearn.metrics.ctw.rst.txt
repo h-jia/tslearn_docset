@@ -1,0 +1,14 @@
+﻿.. _fun-tslearn.metrics.ctw:
+
+tslearn.metrics.ctw
+===================
+
+.. currentmodule:: tslearn.metrics
+
+.. autofunction:: ctw
+
+.. include:: ../backreferences/tslearn.metrics.ctw.examples
+
+.. raw:: html
+
+     <div style='clear:both'></div>

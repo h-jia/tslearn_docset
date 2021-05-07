@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Getting started &#8212; tslearn 0.5.0.5 documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/gallery.css" />
+    <link rel="stylesheet" type="text/css" href="_static/gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="_static/gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/gallery-rendered-html.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/custom.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Methods for variable-length time series" href="variablelength.html" />
+    <link rel="prev" title="Installation" href="installation.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+          tslearn</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.5.0.5</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="quickstart.html">Quick Start</a></li>
+                <li><a href="user_guide/userguide.html">User Guide</a></li>
+                <li><a href="reference.html">API</a></li>
+                <li><a href="auto_examples/index.html">Examples</a></li>
+                <li><a href="citing.html">Citing tslearn</a></li>
+                <li><a href="https://github.com/tslearn-team/tslearn/">Code on GitHub</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site map <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"></ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <div class="section" id="getting-started">
+<h1>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+<p>This tutorial will guide you to format your first time series data, import standard datasets, and manipulate them
+using dedicated machine learning algorithms.</p>
+<div class="section" id="time-series-format">
+<h2>Time series format<a class="headerlink" href="#time-series-format" title="Permalink to this headline">¶</a></h2>
+<p>First, let us have a look at what <code class="docutils literal notranslate"><span class="pre">tslearn</span></code> time series format is. To do so, we will use the <code class="docutils literal notranslate"><span class="pre">to_time_series</span></code> utility
+from <a class="reference internal" href="gen_modules/tslearn.utils.html#module-tslearn.utils" title="tslearn.utils"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tslearn.utils</span></code></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">tslearn.utils</span> <span class="kn">import</span> <span class="n">to_time_series</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_first_time_series</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">formatted_time_series</span> <span class="o">=</span> <span class="n">to_time_series</span><span class="p">(</span><span class="n">my_first_time_series</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">formatted_time_series</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="go">(4, 1)</span>
+</pre></div>
+</div>
+<p>In <code class="docutils literal notranslate"><span class="pre">tslearn</span></code>, a time series is nothing more than a two-dimensional <code class="docutils literal notranslate"><span class="pre">numpy</span></code> array with its first dimension corresponding
+to the time axis and the second one being the feature dimensionality (1 by default).</p>
+<p>Then, if we want to manipulate sets of time series, we can cast them to three-dimensional arrays, using
+<code class="docutils literal notranslate"><span class="pre">to_time_series_dataset</span></code>. If time series from the set are not equal-sized, NaN values are appended to the shorter
+ones and the shape of the resulting array is <code class="docutils literal notranslate"><span class="pre">(n_ts,</span> <span class="pre">max_sz,</span> <span class="pre">d)</span></code> where <code class="docutils literal notranslate"><span class="pre">max_sz</span></code> is the maximum of sizes for time
+series in the set.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">tslearn.utils</span> <span class="kn">import</span> <span class="n">to_time_series_dataset</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_first_time_series</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_second_time_series</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">formatted_dataset</span> <span class="o">=</span> <span class="n">to_time_series_dataset</span><span class="p">([</span><span class="n">my_first_time_series</span><span class="p">,</span> <span class="n">my_second_time_series</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">formatted_dataset</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="go">(2, 4, 1)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_third_time_series</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">formatted_dataset</span> <span class="o">=</span> <span class="n">to_time_series_dataset</span><span class="p">([</span><span class="n">my_first_time_series</span><span class="p">,</span>
+<span class="go">                                                my_second_time_series,</span>
+<span class="go">                                                my_third_time_series])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">formatted_dataset</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="go">(3, 5, 1)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="importing-standard-time-series-datasets">
+<h2>Importing standard time series datasets<a class="headerlink" href="#importing-standard-time-series-datasets" title="Permalink to this headline">¶</a></h2>
+<p>If you aim at experimenting with standard time series datasets, you should have a look at the
+<a class="reference internal" href="gen_modules/tslearn.datasets.html#module-tslearn.datasets" title="tslearn.datasets"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tslearn.datasets</span></code></a>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">tslearn.datasets</span> <span class="kn">import</span> <span class="n">UCR_UEA_datasets</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">UCR_UEA_datasets</span><span class="p">()</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;TwoPatterns&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="go">(1000, 128, 1)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">y_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="go">(1000,)</span>
+</pre></div>
+</div>
+<p>Note that when working with time series datasets, it can be useful to rescale time series using tools from the
+<a class="reference internal" href="gen_modules/tslearn.preprocessing.html#module-tslearn.preprocessing" title="tslearn.preprocessing"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tslearn.preprocessing</span></code></a>.</p>
+<p>If you want to import other time series from text files, the expected format is:</p>
+<ul class="simple">
+<li><p>each line represents a single time series (and time series from a dataset are not forced to be the same length);</p></li>
+<li><p>in each line, modalities are separated by a <cite>|</cite> character (useless if you only have one modality in your data);</p></li>
+<li><p>in each modality, observations are separated by a space character.</p></li>
+</ul>
+<p>Here is an example of such a file storing two time series of dimension 2 (the first time series is of length 3 and
+the second one is of length 2).</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>1.0 0.0 2.5|3.0 2.0 1.0
+1.0 2.0|4.333 2.12
+</pre></div>
+</div>
+<p>To read from / write to this format, have a look at the <a class="reference internal" href="gen_modules/tslearn.utils.html#module-tslearn.utils" title="tslearn.utils"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tslearn.utils</span></code></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">tslearn.utils</span> <span class="kn">import</span> <span class="n">save_time_series_txt</span><span class="p">,</span> <span class="n">load_time_series_txt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">time_series_dataset</span> <span class="o">=</span> <span class="n">load_time_series_txt</span><span class="p">(</span><span class="s2">&quot;path/to/your/file.txt&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">save_time_series_txt</span><span class="p">(</span><span class="s2">&quot;path/to/another/file.txt&quot;</span><span class="p">,</span> <span class="n">dataset_to_be_saved</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="playing-with-your-data">
+<h2>Playing with your data<a class="headerlink" href="#playing-with-your-data" title="Permalink to this headline">¶</a></h2>
+<p>Once your data is loaded and formatted according to <code class="docutils literal notranslate"><span class="pre">tslearn</span></code> standards, the next step is to feed machine learning
+models with it. Most <code class="docutils literal notranslate"><span class="pre">tslearn</span></code> models inherit from <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> base classes, hence interacting with them is very
+similar to interacting with a <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> model, except that datasets are not two-dimensional arrays, but rather
+<code class="docutils literal notranslate"><span class="pre">tslearn</span></code> time series datasets (<cite>i.e.</cite> three-dimensional arrays or lists of two-dimensional arrays).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">tslearn.clustering</span> <span class="kn">import</span> <span class="n">TimeSeriesKMeans</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">km</span> <span class="o">=</span> <span class="n">TimeSeriesKMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;dtw&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">km</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>As seen above, one key parameter when applying machine learning methods to time series datasets is the metric to be
+used. You can learn more about it in the <a class="reference internal" href="gen_modules/tslearn.metrics.html#mod-metrics"><span class="std std-ref">dedicated section</span></a> of this documentation.</p>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2017, Romain Tavenard.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

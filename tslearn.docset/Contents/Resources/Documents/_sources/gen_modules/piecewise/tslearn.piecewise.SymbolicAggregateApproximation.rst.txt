@@ -1,0 +1,17 @@
+﻿.. _class-tslearn.piecewise.SymbolicAggregateApproximation:
+
+:mod:`tslearn.piecewise`.SymbolicAggregateApproximation
+==============================================================
+
+.. currentmodule:: tslearn.piecewise
+
+.. autoclass:: SymbolicAggregateApproximation
+   :members:
+   :inherited-members:
+
+
+.. include:: ../backreferences/tslearn.piecewise.SymbolicAggregateApproximation.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

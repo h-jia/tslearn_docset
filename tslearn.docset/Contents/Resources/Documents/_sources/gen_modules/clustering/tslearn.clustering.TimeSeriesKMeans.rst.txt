@@ -1,0 +1,17 @@
+﻿.. _class-tslearn.clustering.TimeSeriesKMeans:
+
+:mod:`tslearn.clustering`.TimeSeriesKMeans
+=================================================
+
+.. currentmodule:: tslearn.clustering
+
+.. autoclass:: TimeSeriesKMeans
+   :members:
+   :inherited-members:
+
+
+.. include:: ../backreferences/tslearn.clustering.TimeSeriesKMeans.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

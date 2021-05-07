@@ -1,0 +1,652 @@
+:orphan:
+
+
+
+.. _sphx_glr_auto_examples:
+
+.. _examples-index:
+
+Gallery of examples
+===================
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-clear"></div>
+
+
+
+.. _sphx_glr_auto_examples_metrics:
+
+Metrics
+-------
+
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example illustrates LCSS computation between time series and plots the alignment path [1]....">
+
+.. only:: html
+
+ .. figure:: /auto_examples/metrics/images/thumb/sphx_glr_plot_lcss_thumb.svg
+     :alt: Longest Common Subsequence
+
+     :ref:`sphx_glr_auto_examples_metrics_plot_lcss.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /auto_examples/metrics/plot_lcss
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example illustrates the principle of time series envelope and its relationship to the &quot;LB_...">
+
+.. only:: html
+
+ .. figure:: /auto_examples/metrics/images/thumb/sphx_glr_plot_lb_keogh_thumb.svg
+     :alt: LB_Keogh
+
+     :ref:`sphx_glr_auto_examples_metrics_plot_lb_keogh.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /auto_examples/metrics/plot_lb_keogh
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example illustrates the use of Canonical Time Warping (CTW) between time  series and plots...">
+
+.. only:: html
+
+ .. figure:: /auto_examples/metrics/images/thumb/sphx_glr_plot_ctw_thumb.svg
+     :alt: Canonical Time Warping
+
+     :ref:`sphx_glr_auto_examples_metrics_plot_ctw.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /auto_examples/metrics/plot_ctw
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example illustrates how subsequent DTW can be used to find multiple matches of a sequence ...">
+
+.. only:: html
+
+ .. figure:: /auto_examples/metrics/images/thumb/sphx_glr_plot_sdtw_thumb.svg
+     :alt: sDTW multi path matching
+
+     :ref:`sphx_glr_auto_examples_metrics_plot_sdtw.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /auto_examples/metrics/plot_sdtw
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example illustrates how to use the LCSS computation of the alignment path [1]_ on an user-...">
+
+.. only:: html
+
+ .. figure:: /auto_examples/metrics/images/thumb/sphx_glr_plot_lcss_custom_metric_thumb.png
+     :alt: Longest Commom Subsequence with a custom distance metric
+
+     :ref:`sphx_glr_auto_examples_metrics_plot_lcss_custom_metric.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /auto_examples/metrics/plot_lcss_custom_metric
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example illustrates Dynamic Time Warping (DTW) computation between time  series and plots ...">
+
+.. only:: html
+
+ .. figure:: /auto_examples/metrics/images/thumb/sphx_glr_plot_dtw_thumb.svg
+     :alt: Dynamic Time Warping
+
+     :ref:`sphx_glr_auto_examples_metrics_plot_dtw.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /auto_examples/metrics/plot_dtw
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example illustrates Soft Dynamic Time Warping (DTW) computation between  time series and p...">
+
+.. only:: html
+
+ .. figure:: /auto_examples/metrics/images/thumb/sphx_glr_plot_softdtw_path_thumb.svg
+     :alt: Soft Dynamic Time Warping
+
+     :ref:`sphx_glr_auto_examples_metrics_plot_softdtw_path.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /auto_examples/metrics/plot_softdtw_path
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example illustrates how to use the DTW computation of the optimal alignment path [1]_ on a...">
+
+.. only:: html
+
+ .. figure:: /auto_examples/metrics/images/thumb/sphx_glr_plot_dtw_custom_metric_thumb.svg
+     :alt: DTW computation with a custom distance metric
+
+     :ref:`sphx_glr_auto_examples_metrics_plot_dtw_custom_metric.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /auto_examples/metrics/plot_dtw_custom_metric
+.. raw:: html
+
+    <div class="sphx-glr-clear"></div>
+
+
+
+.. _sphx_glr_auto_examples_neighbors:
+
+Nearest Neighbors
+-----------------
+
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example performs a k-Nearest-Neighbor search in a database of time series using DTW as a b...">
+
+.. only:: html
+
+ .. figure:: /auto_examples/neighbors/images/thumb/sphx_glr_plot_knn_search_thumb.svg
+     :alt: k-NN search
+
+     :ref:`sphx_glr_auto_examples_neighbors_plot_knn_search.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /auto_examples/neighbors/plot_knn_search
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example illustrates the use of nearest neighbor methods for database search and classifica...">
+
+.. only:: html
+
+ .. figure:: /auto_examples/neighbors/images/thumb/sphx_glr_plot_neighbors_thumb.png
+     :alt: Nearest neighbors
+
+     :ref:`sphx_glr_auto_examples_neighbors_plot_neighbors.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /auto_examples/neighbors/plot_neighbors
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In this example, we demonstrate how it is possible to use the different algorithms of tslearn i...">
+
+.. only:: html
+
+ .. figure:: /auto_examples/neighbors/images/thumb/sphx_glr_plot_knnts_sklearn_thumb.svg
+     :alt: Hyper-parameter tuning of a Pipeline with KNeighborsTimeSeriesClassifier
+
+     :ref:`sphx_glr_auto_examples_neighbors_plot_knnts_sklearn.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /auto_examples/neighbors/plot_knnts_sklearn
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example presents a comparison between k-Nearest Neighbor runs with k=1. It compares the us...">
+
+.. only:: html
+
+ .. figure:: /auto_examples/neighbors/images/thumb/sphx_glr_plot_sax_mindist_knn_thumb.png
+     :alt: 1-NN with SAX + MINDIST
+
+     :ref:`sphx_glr_auto_examples_neighbors_plot_sax_mindist_knn.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /auto_examples/neighbors/plot_sax_mindist_knn
+.. raw:: html
+
+    <div class="sphx-glr-clear"></div>
+
+
+
+.. _sphx_glr_auto_examples_clustering:
+
+Clustering and Barycenters
+--------------------------
+
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example uses the KShape clustering method [1] that is based on cross-correlation to cluste...">
+
+.. only:: html
+
+ .. figure:: /auto_examples/clustering/images/thumb/sphx_glr_plot_kshape_thumb.svg
+     :alt: KShape
+
+     :ref:`sphx_glr_auto_examples_clustering_plot_kshape.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /auto_examples/clustering/plot_kshape
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example uses Global Alignment kernel (GAK, [1]) at the core of a kernel k-means algorithm ...">
+
+.. only:: html
+
+ .. figure:: /auto_examples/clustering/images/thumb/sphx_glr_plot_kernel_kmeans_thumb.svg
+     :alt: Kernel k-means
+
+     :ref:`sphx_glr_auto_examples_clustering_plot_kernel_kmeans.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /auto_examples/clustering/plot_kernel_kmeans
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example shows three methods to compute barycenters of time series. For an overview over th...">
+
+.. only:: html
+
+ .. figure:: /auto_examples/clustering/images/thumb/sphx_glr_plot_barycenters_thumb.svg
+     :alt: Barycenters
+
+     :ref:`sphx_glr_auto_examples_clustering_plot_barycenters.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /auto_examples/clustering/plot_barycenters
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example presents the weighted Soft-DTW time series barycenter method.">
+
+.. only:: html
+
+ .. figure:: /auto_examples/clustering/images/thumb/sphx_glr_plot_barycenter_interpolate_thumb.svg
+     :alt: Soft-DTW weighted barycenters
+
+     :ref:`sphx_glr_auto_examples_clustering_plot_barycenter_interpolate.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /auto_examples/clustering/plot_barycenter_interpolate
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example uses k-means clustering for time series. Three variants of the algorithm are avail...">
+
+.. only:: html
+
+ .. figure:: /auto_examples/clustering/images/thumb/sphx_glr_plot_kmeans_thumb.svg
+     :alt: k-means
+
+     :ref:`sphx_glr_auto_examples_clustering_plot_kmeans.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /auto_examples/clustering/plot_kmeans
+.. raw:: html
+
+    <div class="sphx-glr-clear"></div>
+
+
+
+.. _sphx_glr_auto_examples_classification:
+
+Classification
+--------------
+
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example illustrates the use of the global alignment kernel (GAK) for support vector classi...">
+
+.. only:: html
+
+ .. figure:: /auto_examples/classification/images/thumb/sphx_glr_plot_svm_thumb.svg
+     :alt: SVM and GAK
+
+     :ref:`sphx_glr_auto_examples_classification_plot_svm.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /auto_examples/classification/plot_svm
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example illustrates how the &quot;Learning Shapelets&quot; method can quickly find a set of shapelet...">
+
+.. only:: html
+
+ .. figure:: /auto_examples/classification/images/thumb/sphx_glr_plot_shapelets_thumb.png
+     :alt: Learning Shapelets
+
+     :ref:`sphx_glr_auto_examples_classification_plot_shapelets.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /auto_examples/classification/plot_shapelets
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example presents the concept of early classification.">
+
+.. only:: html
+
+ .. figure:: /auto_examples/classification/images/thumb/sphx_glr_plot_early_classification_thumb.svg
+     :alt: Early Classification
+
+     :ref:`sphx_glr_auto_examples_classification_plot_early_classification.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /auto_examples/classification/plot_early_classification
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example illustrates the use of the &quot;Learning Shapelets&quot; method in order to learn a collect...">
+
+.. only:: html
+
+ .. figure:: /auto_examples/classification/images/thumb/sphx_glr_plot_shapelet_locations_thumb.png
+     :alt: Aligning discovered shapelets with timeseries
+
+     :ref:`sphx_glr_auto_examples_classification_plot_shapelet_locations.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /auto_examples/classification/plot_shapelet_locations
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example illustrates the use of the &quot;Learning Shapelets&quot; method in order to learn a collect...">
+
+.. only:: html
+
+ .. figure:: /auto_examples/classification/images/thumb/sphx_glr_plot_shapelet_distances_thumb.png
+     :alt: Learning Shapelets: decision boundaries in 2D distance space
+
+     :ref:`sphx_glr_auto_examples_classification_plot_shapelet_distances.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /auto_examples/classification/plot_shapelet_distances
+.. raw:: html
+
+    <div class="sphx-glr-clear"></div>
+
+
+
+.. _sphx_glr_auto_examples_misc:
+
+Miscellaneous
+-------------
+
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Many tslearn models can be saved to disk and used for predictions at a later time. This can be ...">
+
+.. only:: html
+
+ .. figure:: /auto_examples/misc/images/thumb/sphx_glr_plot_serialize_models_thumb.png
+     :alt: Model Persistence
+
+     :ref:`sphx_glr_auto_examples_misc_plot_serialize_models.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /auto_examples/misc/plot_serialize_models
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example presents a comparison between PAA [1], SAX [2] and 1d-SAX [3] features.">
+
+.. only:: html
+
+ .. figure:: /auto_examples/misc/images/thumb/sphx_glr_plot_sax_thumb.svg
+     :alt: PAA and SAX features
+
+     :ref:`sphx_glr_auto_examples_misc_plot_sax.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /auto_examples/misc/plot_sax
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example presents a toy example of using Matrix Profile [1] for anomaly  detection.">
+
+.. only:: html
+
+ .. figure:: /auto_examples/misc/images/thumb/sphx_glr_plot_matrix_profile_thumb.svg
+     :alt: Matrix Profile
+
+     :ref:`sphx_glr_auto_examples_misc_plot_matrix_profile.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /auto_examples/misc/plot_matrix_profile
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Distance and Matrix Profiles">
+
+.. only:: html
+
+ .. figure:: /auto_examples/misc/images/thumb/sphx_glr_plot_distance_and_matrix_profile_thumb.svg
+     :alt: Distance and Matrix Profiles
+
+     :ref:`sphx_glr_auto_examples_misc_plot_distance_and_matrix_profile.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /auto_examples/misc/plot_distance_and_matrix_profile
+.. raw:: html
+
+    <div class="sphx-glr-clear"></div>
+
+
+
+.. only :: html
+
+ .. container:: sphx-glr-footer
+    :class: sphx-glr-footer-gallery
+
+
+  .. container:: sphx-glr-download sphx-glr-download-python
+
+    :download:`Download all examples in Python source code: auto_examples_python.zip </auto_examples/auto_examples_python.zip>`
+
+
+
+  .. container:: sphx-glr-download sphx-glr-download-jupyter
+
+    :download:`Download all examples in Jupyter notebooks: auto_examples_jupyter.zip </auto_examples/auto_examples_jupyter.zip>`
+
+
+.. only:: html
+
+ .. rst-class:: sphx-glr-signature
+
+    `Gallery generated by Sphinx-Gallery <https://sphinx-gallery.github.io>`_

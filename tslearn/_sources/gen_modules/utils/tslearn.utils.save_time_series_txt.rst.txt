@@ -1,0 +1,14 @@
+﻿.. _fun-tslearn.utils.save_time_series_txt:
+
+tslearn.utils.save_time_series_txt
+==================================
+
+.. currentmodule:: tslearn.utils
+
+.. autofunction:: save_time_series_txt
+
+.. include:: ../backreferences/tslearn.utils.save_time_series_txt.examples
+
+.. raw:: html
+
+     <div style='clear:both'></div>

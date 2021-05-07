@@ -1,0 +1,14 @@
+﻿.. _fun-tslearn.utils.to_seglearn_dataset:
+
+tslearn.utils.to_seglearn_dataset
+=================================
+
+.. currentmodule:: tslearn.utils
+
+.. autofunction:: to_seglearn_dataset
+
+.. include:: ../backreferences/tslearn.utils.to_seglearn_dataset.examples
+
+.. raw:: html
+
+     <div style='clear:both'></div>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>tslearn.metrics.cdist_soft_dtw_normalized — tslearn 0.5.0.5 documentation</title>
+<link href="../../_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/bootstrap-sphinx.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/custom.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/gallery.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/gallery-binder.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/gallery-dataframe.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/gallery-rendered-html.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+<script src="../../_static/jquery.js"></script>
+<script src="../../_static/underscore.js"></script>
+<script src="../../_static/doctools.js"></script>
+<script src="../../_static/custom.js"></script>
+<script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+<link href="../../genindex.html" rel="index" title="Index"/>
+<link href="../../search.html" rel="search" title="Search"/>
+<link href="tslearn.metrics.lb_envelope.html" rel="next" title="tslearn.metrics.lb_envelope"/>
+<link href="tslearn.metrics.cdist_soft_dtw.html" rel="prev" title="tslearn.metrics.cdist_soft_dtw"/>
+<meta charset="utf-8"/>
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1" name="viewport"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<script src="../../_static/js/jquery-1.11.0.min.js " type="text/javascript"></script>
+<script src="../../_static/js/jquery-fix.js " type="text/javascript"></script>
+<script src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js " type="text/javascript"></script>
+<script src="../../_static/bootstrap-sphinx.js " type="text/javascript"></script>
+</head><body>
+<div class="navbar navbar-default navbar-fixed-top" id="navbar">
+<div class="container">
+<div class="navbar-header">
+<!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+<button class="navbar-toggle" data-target=".nav-collapse" data-toggle="collapse" type="button">
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<a class="navbar-brand" href="../../index.html">
+          tslearn</a>
+<span class="navbar-text navbar-version pull-left"><b>0.5.0.5</b></span>
+</div>
+<div class="collapse navbar-collapse nav-collapse">
+<ul class="nav navbar-nav">
+<li><a href="../../quickstart.html">Quick Start</a></li>
+<li><a href="../../user_guide/userguide.html">User Guide</a></li>
+<li><a href="../../reference.html">API</a></li>
+<li><a href="../../auto_examples/index.html">Examples</a></li>
+<li><a href="../../citing.html">Citing tslearn</a></li>
+<li><a href="https://github.com/tslearn-team/tslearn/">Code on GitHub</a></li>
+<li class="dropdown globaltoc-container">
+<a data-target="#" data-toggle="dropdown" href="../../index.html" id="dLabelGlobalToc" role="button">Site map <b class="caret"></b></a>
+<ul aria-labelledby="dLabelGlobalToc" class="dropdown-menu globaltoc" role="menu"></ul>
+</li>
+</ul>
+<form action="../../search.html" class="navbar-form navbar-right" method="get">
+<div class="form-group">
+<input class="form-control" name="q" placeholder="Search" type="text"/>
+</div>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div>
+</div>
+<div class="container">
+<div class="row">
+<div class="body col-md-12 content" role="main">
+<div class="section" id="tslearn-metrics-cdist-soft-dtw-normalized">
+<span id="fun-tslearn-metrics-cdist-soft-dtw-normalized"></span><h1>tslearn.metrics.cdist_soft_dtw_normalized<a class="headerlink" href="#tslearn-metrics-cdist-soft-dtw-normalized" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt id="tslearn.metrics.cdist_soft_dtw_normalized"><a name="//apple_ref/cpp/Function/tslearn.metrics.cdist_soft_dtw_normalized"></a>
+<code class="sig-prename descclassname"><span class="pre">tslearn.metrics.</span></code><code class="sig-name descname"><span class="pre">cdist_soft_dtw_normalized</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/metrics/softdtw_variants.py#L535-L605"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.metrics.cdist_soft_dtw_normalized" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute cross-similarity matrix using a normalized version of the
+Soft-DTW metric.</p>
+<p>Soft-DTW was originally presented in <a class="reference internal" href="#r51820cd6ffe6-1" id="id1">[1]</a> and is
+discussed in more details in our
+<a class="reference internal" href="../../user_guide/dtw.html#dtw"><span class="std std-ref">user-guide page on DTW and its variants</span></a>.</p>
+<p>Soft-DTW is computed as:</p>
+<div class="math notranslate nohighlight">
+\[\text{soft-DTW}_{\gamma}(X, Y) =
+    \min_{\pi}{}^\gamma \sum_{(i, j) \in \pi} \|X_i, Y_j\|^2\]</div>
+<p>where <span class="math notranslate nohighlight">\(\min^\gamma\)</span> is the soft-min operator of parameter
+<span class="math notranslate nohighlight">\(\gamma\)</span>.</p>
+<p>In the limit case <span class="math notranslate nohighlight">\(\gamma = 0\)</span>, <span class="math notranslate nohighlight">\(\min^\gamma\)</span> reduces to a
+hard-min operator and soft-DTW is defined as the square of the DTW
+similarity measure.</p>
+<p>This normalized version is defined as:</p>
+<div class="math notranslate nohighlight">
+\[\text{norm-soft-DTW}_{\gamma}(X, Y) =
+    \text{soft-DTW}_{\gamma}(X, Y) -
+    \frac{1}{2} \left(\text{soft-DTW}_{\gamma}(X, X) +
+        \text{soft-DTW}_{\gamma}(Y, Y)\right)\]</div>
+<p>and ensures that all returned values are positive and that
+<span class="math notranslate nohighlight">\(\text{norm-soft-DTW}_{\gamma}(X, X) = 0\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>dataset1</strong></dt><dd><p>A dataset of time series</p>
+</dd>
+<dt><strong>dataset2</strong></dt><dd><p>Another dataset of time series</p>
+</dd>
+<dt><strong>gamma</strong><span class="classifier">float (default 1.)</span></dt><dd><p>Gamma paraneter for Soft-DTW</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>numpy.ndarray</dt><dd><p>Cross-similarity matrix</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="tslearn.metrics.soft_dtw.html#tslearn.metrics.soft_dtw" title="tslearn.metrics.soft_dtw"><code class="xref py py-obj docutils literal notranslate"><span class="pre">soft_dtw</span></code></a></dt><dd><p>Compute Soft-DTW</p>
+</dd>
+<dt><a class="reference internal" href="tslearn.metrics.cdist_soft_dtw.html#tslearn.metrics.cdist_soft_dtw" title="tslearn.metrics.cdist_soft_dtw"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cdist_soft_dtw</span></code></a></dt><dd><p>Cross similarity matrix between time series datasets using the unnormalized version of Soft-DTW</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">References</p>
+<dl class="citation">
+<dt class="label" id="r51820cd6ffe6-1"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>M. Cuturi, M. Blondel “Soft-DTW: a Differentiable Loss Function for
+Time-Series,” ICML 2017.</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">time_series</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">numpy</span><span class="o">.</span><span class="n">alltrue</span><span class="p">(</span><span class="n">cdist_soft_dtw_normalized</span><span class="p">(</span><span class="n">time_series</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mf">0.</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+<div style="clear:both"></div></div>
+</div>
+</div>
+</div>
+<footer class="footer">
+<div class="container">
+<p class="pull-right">
+<a href="#">Back to top</a>
+</p>
+<p>
+        © Copyright 2017, Romain Tavenard.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
+</p>
+</div>
+</footer>
+</body>
+</html>

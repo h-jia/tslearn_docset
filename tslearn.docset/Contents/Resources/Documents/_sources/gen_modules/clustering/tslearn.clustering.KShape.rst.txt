@@ -1,0 +1,17 @@
+﻿.. _class-tslearn.clustering.KShape:
+
+:mod:`tslearn.clustering`.KShape
+=======================================
+
+.. currentmodule:: tslearn.clustering
+
+.. autoclass:: KShape
+   :members:
+   :inherited-members:
+
+
+.. include:: ../backreferences/tslearn.clustering.KShape.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

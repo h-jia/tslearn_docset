@@ -1,0 +1,14 @@
+﻿.. _fun-tslearn.utils.from_cesium_dataset:
+
+tslearn.utils.from_cesium_dataset
+=================================
+
+.. currentmodule:: tslearn.utils
+
+.. autofunction:: from_cesium_dataset
+
+.. include:: ../backreferences/tslearn.utils.from_cesium_dataset.examples
+
+.. raw:: html
+
+     <div style='clear:both'></div>

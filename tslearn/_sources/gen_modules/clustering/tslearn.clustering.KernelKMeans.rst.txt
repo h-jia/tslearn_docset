@@ -1,0 +1,17 @@
+﻿.. _class-tslearn.clustering.KernelKMeans:
+
+:mod:`tslearn.clustering`.KernelKMeans
+=============================================
+
+.. currentmodule:: tslearn.clustering
+
+.. autoclass:: KernelKMeans
+   :members:
+   :inherited-members:
+
+
+.. include:: ../backreferences/tslearn.clustering.KernelKMeans.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

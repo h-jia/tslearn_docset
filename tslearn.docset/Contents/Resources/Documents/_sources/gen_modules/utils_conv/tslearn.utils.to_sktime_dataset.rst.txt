@@ -1,0 +1,14 @@
+﻿.. _fun-tslearn.utils.to_sktime_dataset:
+
+tslearn.utils.to_sktime_dataset
+===============================
+
+.. currentmodule:: tslearn.utils
+
+.. autofunction:: to_sktime_dataset
+
+.. include:: ../backreferences/tslearn.utils.to_sktime_dataset.examples
+
+.. raw:: html
+
+     <div style='clear:both'></div>

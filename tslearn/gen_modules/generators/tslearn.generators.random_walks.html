@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>tslearn.generators.random_walks &#8212; tslearn 0.5.0.5 documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery-rendered-html.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/custom.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="tslearn.matrix_profile" href="../tslearn.matrix_profile.html" />
+    <link rel="prev" title="tslearn.generators.random_walk_blobs" href="tslearn.generators.random_walk_blobs.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js "></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../index.html">
+          tslearn</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.5.0.5</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../../quickstart.html">Quick Start</a></li>
+                <li><a href="../../user_guide/userguide.html">User Guide</a></li>
+                <li><a href="../../reference.html">API</a></li>
+                <li><a href="../../auto_examples/index.html">Examples</a></li>
+                <li><a href="../../citing.html">Citing tslearn</a></li>
+                <li><a href="https://github.com/tslearn-team/tslearn/">Code on GitHub</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../index.html">Site map <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"></ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <div class="section" id="tslearn-generators-random-walks">
+<span id="fun-tslearn-generators-random-walks"></span><h1>tslearn.generators.random_walks<a class="headerlink" href="#tslearn-generators-random-walks" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt id="tslearn.generators.random_walks">
+<code class="sig-prename descclassname"><span class="pre">tslearn.generators.</span></code><code class="sig-name descname"><span class="pre">random_walks</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_ts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sz</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">256</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">std</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/generators/generators.py#L7-L54"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.generators.random_walks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Random walk time series generator.</p>
+<p>Generate n_ts time series of size sz and dimensionality d.
+Generated time series follow the model:</p>
+<div class="math notranslate nohighlight">
+\[ts[t] = ts[t - 1] + a\]</div>
+<p>where <span class="math notranslate nohighlight">\(a\)</span> is drawn from a normal distribution of mean mu and standard
+deviation std.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>n_ts</strong><span class="classifier">int (default: 100)</span></dt><dd><p>Number of time series.</p>
+</dd>
+<dt><strong>sz</strong><span class="classifier">int (default: 256)</span></dt><dd><p>Length of time series (number of time instants).</p>
+</dd>
+<dt><strong>d</strong><span class="classifier">int (default: 1)</span></dt><dd><p>Dimensionality of time series.</p>
+</dd>
+<dt><strong>mu</strong><span class="classifier">float (default: 0.)</span></dt><dd><p>Mean of the normal distribution from which random walk steps are drawn.</p>
+</dd>
+<dt><strong>std</strong><span class="classifier">float (default: 1.)</span></dt><dd><p>Standard deviation of the normal distribution from which random walk
+steps are drawn.</p>
+</dd>
+<dt><strong>random_state</strong><span class="classifier">integer or numpy.RandomState or None (default: None)</span></dt><dd><p>Generator used to draw the time series. If an integer is given, it
+fixes the seed. Defaults to the global
+numpy random number generator.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>numpy.ndarray</dt><dd><p>A dataset of random walk time series</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">random_walks</span><span class="p">(</span><span class="n">n_ts</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">sz</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span> <span class="n">std</span><span class="o">=</span><span class="mf">1.</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(100, 256, 5)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<div class="section" id="examples-using-tslearn-generators-random-walks">
+<h2>Examples using <code class="docutils literal notranslate"><span class="pre">tslearn.generators.random_walks</span></code><a class="headerlink" href="#examples-using-tslearn-generators-random-walks" title="Permalink to this headline">¶</a></h2>
+<div class="sphx-glr-thumbcontainer" tooltip="This example illustrates LCSS computation between time series and plots the alignment path [1]...."><div class="figure align-default" id="id1">
+<img alt="Longest Common Subsequence" src="../../_images/sphx_glr_plot_lcss_thumb.svg" /><p class="caption"><span class="caption-text"><a class="reference internal" href="../../auto_examples/metrics/plot_lcss.html#sphx-glr-auto-examples-metrics-plot-lcss-py"><span class="std std-ref">Longest Common Subsequence</span></a></span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example illustrates the principle of time series envelope and its relationship to the &quot;LB_..."><div class="figure align-default" id="id2">
+<img alt="LB_Keogh" src="../../_images/sphx_glr_plot_lb_keogh_thumb.svg" /><p class="caption"><span class="caption-text"><a class="reference internal" href="../../auto_examples/metrics/plot_lb_keogh.html#sphx-glr-auto-examples-metrics-plot-lb-keogh-py"><span class="std std-ref">LB_Keogh</span></a></span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example illustrates how subsequent DTW can be used to find multiple matches of a sequence ..."><div class="figure align-default" id="id3">
+<img alt="sDTW multi path matching" src="../../_images/sphx_glr_plot_sdtw_thumb.svg" /><p class="caption"><span class="caption-text"><a class="reference internal" href="../../auto_examples/metrics/plot_sdtw.html#sphx-glr-auto-examples-metrics-plot-sdtw-py"><span class="std std-ref">sDTW multi path matching</span></a></span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example illustrates how to use the LCSS computation of the alignment path [1]_ on an user-..."><div class="figure align-default" id="id4">
+<img alt="Longest Commom Subsequence with a custom distance metric" src="../../_images/sphx_glr_plot_lcss_custom_metric_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../../auto_examples/metrics/plot_lcss_custom_metric.html#sphx-glr-auto-examples-metrics-plot-lcss-custom-metric-py"><span class="std std-ref">Longest Commom Subsequence with a custom distance metric</span></a></span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example illustrates how to use the DTW computation of the optimal alignment path [1]_ on a..."><div class="figure align-default" id="id5">
+<img alt="DTW computation with a custom distance metric" src="../../_images/sphx_glr_plot_dtw_custom_metric_thumb.svg" /><p class="caption"><span class="caption-text"><a class="reference internal" href="../../auto_examples/metrics/plot_dtw_custom_metric.html#sphx-glr-auto-examples-metrics-plot-dtw-custom-metric-py"><span class="std std-ref">DTW computation with a custom distance metric</span></a></span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example presents a comparison between PAA [1], SAX [2] and 1d-SAX [3] features."><div class="figure align-default" id="id6">
+<img alt="PAA and SAX features" src="../../_images/sphx_glr_plot_sax_thumb.svg" /><p class="caption"><span class="caption-text"><a class="reference internal" href="../../auto_examples/misc/plot_sax.html#sphx-glr-auto-examples-misc-plot-sax-py"><span class="std std-ref">PAA and SAX features</span></a></span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+</div>
+</div><div style='clear:both'></div></div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2017, Romain Tavenard.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

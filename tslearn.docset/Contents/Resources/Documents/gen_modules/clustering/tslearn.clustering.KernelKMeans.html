@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>tslearn.clustering.KernelKMeans — tslearn 0.5.0.5 documentation</title>
+<link href="../../_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/bootstrap-sphinx.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/custom.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/gallery.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/gallery-binder.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/gallery-dataframe.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/gallery-rendered-html.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+<script src="../../_static/jquery.js"></script>
+<script src="../../_static/underscore.js"></script>
+<script src="../../_static/doctools.js"></script>
+<script src="../../_static/custom.js"></script>
+<script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+<link href="../../genindex.html" rel="index" title="Index"/>
+<link href="../../search.html" rel="search" title="Search"/>
+<link href="tslearn.clustering.KShape.html" rel="next" title="tslearn.clustering.KShape"/>
+<link href="../tslearn.clustering.html" rel="prev" title="tslearn.clustering"/>
+<meta charset="utf-8"/>
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1" name="viewport"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<script src="../../_static/js/jquery-1.11.0.min.js " type="text/javascript"></script>
+<script src="../../_static/js/jquery-fix.js " type="text/javascript"></script>
+<script src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js " type="text/javascript"></script>
+<script src="../../_static/bootstrap-sphinx.js " type="text/javascript"></script>
+</head><body>
+<div class="navbar navbar-default navbar-fixed-top" id="navbar">
+<div class="container">
+<div class="navbar-header">
+<!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+<button class="navbar-toggle" data-target=".nav-collapse" data-toggle="collapse" type="button">
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<a class="navbar-brand" href="../../index.html">
+          tslearn</a>
+<span class="navbar-text navbar-version pull-left"><b>0.5.0.5</b></span>
+</div>
+<div class="collapse navbar-collapse nav-collapse">
+<ul class="nav navbar-nav">
+<li><a href="../../quickstart.html">Quick Start</a></li>
+<li><a href="../../user_guide/userguide.html">User Guide</a></li>
+<li><a href="../../reference.html">API</a></li>
+<li><a href="../../auto_examples/index.html">Examples</a></li>
+<li><a href="../../citing.html">Citing tslearn</a></li>
+<li><a href="https://github.com/tslearn-team/tslearn/">Code on GitHub</a></li>
+<li class="dropdown globaltoc-container">
+<a data-target="#" data-toggle="dropdown" href="../../index.html" id="dLabelGlobalToc" role="button">Site map <b class="caret"></b></a>
+<ul aria-labelledby="dLabelGlobalToc" class="dropdown-menu globaltoc" role="menu"></ul>
+</li>
+</ul>
+<form action="../../search.html" class="navbar-form navbar-right" method="get">
+<div class="form-group">
+<input class="form-control" name="q" placeholder="Search" type="text"/>
+</div>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div>
+</div>
+<div class="container">
+<div class="row">
+<div class="body col-md-12 content" role="main">
+<div class="section" id="tslearn-clustering-kernelkmeans">
+<span id="class-tslearn-clustering-kernelkmeans"></span><h1><a class="reference internal" href="../tslearn.clustering.html#module-tslearn.clustering" title="tslearn.clustering"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tslearn.clustering</span></code></a>.KernelKMeans<a class="headerlink" href="#tslearn-clustering-kernelkmeans" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="tslearn.clustering.KernelKMeans"><a name="//apple_ref/cpp/Class/tslearn.clustering.KernelKMeans"></a>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">tslearn.clustering.</span></code><code class="sig-name descname"><span class="pre">KernelKMeans</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_clusters</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'gak'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_iter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_init</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel_params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/clustering/kmeans.py#L136-L457"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.clustering.KernelKMeans" title="Permalink to this definition">¶</a></dt>
+<dd><p>Kernel K-means.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>n_clusters</strong><span class="classifier">int (default: 3)</span></dt><dd><p>Number of clusters to form.</p>
+</dd>
+<dt><strong>kernel</strong><span class="classifier">string, or callable (default: “gak”)</span></dt><dd><p>The kernel should either be “gak”, in which case the Global Alignment
+Kernel from <a class="reference internal" href="#r8d9a71e5e4d2-2" id="id1">[2]</a> is used or a value that is accepted as a metric
+by <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.pairwise_kernels.html">scikit-learn’s pairwise_kernels</a></p>
+</dd>
+<dt><strong>max_iter</strong><span class="classifier">int (default: 50)</span></dt><dd><p>Maximum number of iterations of the k-means algorithm for a single run.</p>
+</dd>
+<dt><strong>tol</strong><span class="classifier">float (default: 1e-6)</span></dt><dd><p>Inertia variation threshold. If at some point, inertia varies less than
+this threshold between two consecutive
+iterations, the model is considered to have converged and the algorithm
+stops.</p>
+</dd>
+<dt><strong>n_init</strong><span class="classifier">int (default: 1)</span></dt><dd><p>Number of time the k-means algorithm will be run with different
+centroid seeds. The final results will be the
+best output of n_init consecutive runs in terms of inertia.</p>
+</dd>
+<dt><strong>kernel_params</strong><span class="classifier">dict or None (default: None)</span></dt><dd><p>Kernel parameters to be passed to the kernel function.
+None means no kernel parameter is set.
+For Global Alignment Kernel, the only parameter of interest is <cite>sigma</cite>. 
+If set to ‘auto’, it is computed based on a sampling of the training 
+set
+(cf <a class="reference internal" href="../metrics/tslearn.metrics.sigma_gak.html#fun-tslearn-metrics-sigma-gak"><span class="std std-ref">tslearn.metrics.sigma_gak</span></a>).
+If no specific value is set for <cite>sigma</cite>, its defaults to 1.</p>
+</dd>
+<dt><strong>sigma</strong><span class="classifier">float or “auto” (default: “auto”)</span></dt><dd><p>Bandwidth parameter for the Global Alignment kernel. If set to ‘auto’,
+it is computed based on a sampling of the training set
+(cf <a class="reference internal" href="../metrics/tslearn.metrics.sigma_gak.html#fun-tslearn-metrics-sigma-gak"><span class="std std-ref">tslearn.metrics.sigma_gak</span></a>)</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 0.4: </span>Setting <cite>sigma</cite> directly as a parameter for KernelKMeans and 
+GlobalAlignmentKernelKMeans is deprecated in version 0.4 and will 
+be removed in 0.6. Use <cite>kernel_params</cite> instead.</p>
+</div>
+</dd>
+<dt><strong>n_jobs</strong><span class="classifier">int or None, optional (default=None)</span></dt><dd><p>The number of jobs to run in parallel for GAK cross-similarity matrix
+computations.
+<code class="docutils literal notranslate"><span class="pre">None</span></code> means 1 unless in a <code class="xref py py-obj docutils literal notranslate"><span class="pre">joblib.parallel_backend</span></code> context.
+<code class="docutils literal notranslate"><span class="pre">-1</span></code> means using all processors. See scikit-learns’
+<a class="reference external" href="https://scikit-learn.org/stable/glossary.html#term-n-jobs">Glossary</a>
+for more details.</p>
+</dd>
+<dt><strong>verbose</strong><span class="classifier">int (default: 0)</span></dt><dd><p>If nonzero, joblib progress messages are printed.</p>
+</dd>
+<dt><strong>random_state</strong><span class="classifier">integer or numpy.RandomState, optional</span></dt><dd><p>Generator used to initialize the centers. If an integer is given, it
+fixes the seed. Defaults to the global
+numpy random number generator.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Attributes</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>labels_</strong><span class="classifier">numpy.ndarray</span></dt><dd><p>Labels of each point</p>
+</dd>
+<dt><strong>inertia_</strong><span class="classifier">float</span></dt><dd><p>Sum of distances of samples to their closest cluster center (computed
+using the kernel trick).</p>
+</dd>
+<dt><strong>sample_weight_</strong><span class="classifier">numpy.ndarray</span></dt><dd><p>The weight given to each sample from the data provided to fit.</p>
+</dd>
+<dt><strong>n_iter_</strong><span class="classifier">int</span></dt><dd><p>The number of iterations performed during fit.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The training data are saved to disk if this model is
+serialized and may result in a large model file if the training
+dataset is large.</p>
+<p class="rubric">References</p>
+<dl class="citation">
+<dt class="label" id="r8d9a71e5e4d2-1"><span class="brackets">1</span></dt>
+<dd><p>Kernel k-means, Spectral Clustering and Normalized Cuts.
+Inderjit S. Dhillon, Yuqiang Guan, Brian Kulis. KDD 2004.</p>
+</dd>
+<dt class="label" id="r8d9a71e5e4d2-2"><span class="brackets"><a class="fn-backref" href="#id1">2</a></span></dt>
+<dd><p>Fast Global Alignment Kernels. Marco Cuturi. ICML 2011.</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">tslearn.generators</span> <span class="kn">import</span> <span class="n">random_walks</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">random_walks</span><span class="p">(</span><span class="n">n_ts</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">sz</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gak_km</span> <span class="o">=</span> <span class="n">KernelKMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">kernel</span><span class="o">=</span><span class="s2">"gak"</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gak_km</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>  
+<span class="go">KernelKMeans(...)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">gak_km</span><span class="o">.</span><span class="n">labels_</span><span class="p">))</span>
+<span class="go">[0 1 2]</span>
+</pre></div>
+</div>
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%"/>
+<col style="width: 90%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tslearn.clustering.KernelKMeans.fit" title="tslearn.clustering.KernelKMeans.fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></a>(X[, y, sample_weight])</p></td>
+<td><p>Compute kernel k-means clustering.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tslearn.clustering.KernelKMeans.fit_predict" title="tslearn.clustering.KernelKMeans.fit_predict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit_predict</span></code></a>(X[, y])</p></td>
+<td><p>Fit kernel k-means clustering using X and then predict the closest cluster each time series in X belongs to.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tslearn.clustering.KernelKMeans.from_hdf5" title="tslearn.clustering.KernelKMeans.from_hdf5"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_hdf5</span></code></a>(path)</p></td>
+<td><p>Load model from a HDF5 file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tslearn.clustering.KernelKMeans.from_json" title="tslearn.clustering.KernelKMeans.from_json"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_json</span></code></a>(path)</p></td>
+<td><p>Load model from a JSON file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tslearn.clustering.KernelKMeans.from_pickle" title="tslearn.clustering.KernelKMeans.from_pickle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_pickle</span></code></a>(path)</p></td>
+<td><p>Load model from a pickle file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tslearn.clustering.KernelKMeans.get_params" title="tslearn.clustering.KernelKMeans.get_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_params</span></code></a>([deep])</p></td>
+<td><p>Get parameters for this estimator.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tslearn.clustering.KernelKMeans.predict" title="tslearn.clustering.KernelKMeans.predict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">predict</span></code></a>(X)</p></td>
+<td><p>Predict the closest cluster each time series in X belongs to.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tslearn.clustering.KernelKMeans.set_params" title="tslearn.clustering.KernelKMeans.set_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_params</span></code></a>(**params)</p></td>
+<td><p>Set the parameters of this estimator.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tslearn.clustering.KernelKMeans.to_hdf5" title="tslearn.clustering.KernelKMeans.to_hdf5"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_hdf5</span></code></a>(path)</p></td>
+<td><p>Save model to a HDF5 file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tslearn.clustering.KernelKMeans.to_json" title="tslearn.clustering.KernelKMeans.to_json"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_json</span></code></a>(path)</p></td>
+<td><p>Save model to a JSON file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tslearn.clustering.KernelKMeans.to_pickle" title="tslearn.clustering.KernelKMeans.to_pickle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_pickle</span></code></a>(path)</p></td>
+<td><p>Save model to a pickle file.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="tslearn.clustering.KernelKMeans.fit"><a name="//apple_ref/cpp/Method/tslearn.clustering.KernelKMeans.fit"></a>
+<code class="sig-name descname"><span class="pre">fit</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/clustering/kmeans.py#L315-L388"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.clustering.KernelKMeans.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute kernel k-means clustering.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">array-like of shape=(n_ts, sz, d)</span></dt><dd><p>Time series dataset.</p>
+</dd>
+<dt><strong>y</strong></dt><dd><p>Ignored</p>
+</dd>
+<dt><strong>sample_weight</strong><span class="classifier">array-like of shape=(n_ts, ) or None (default: None)</span></dt><dd><p>Weights to be given to time series in the learning process. By
+default, all time series weights are equal.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="tslearn.clustering.KernelKMeans.fit_predict"><a name="//apple_ref/cpp/Method/tslearn.clustering.KernelKMeans.fit_predict"></a>
+<code class="sig-name descname"><span class="pre">fit_predict</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/clustering/kmeans.py#L411-L431"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.clustering.KernelKMeans.fit_predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit kernel k-means clustering using X and then predict the closest
+cluster each time series in X belongs to.</p>
+<p>It is more efficient to use this method than to sequentially call fit
+and predict.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">array-like of shape=(n_ts, sz, d)</span></dt><dd><p>Time series dataset to predict.</p>
+</dd>
+<dt><strong>y</strong></dt><dd><p>Ignored</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>labels</strong><span class="classifier">array of shape=(n_ts, )</span></dt><dd><p>Index of the cluster each sample belongs to.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="tslearn.clustering.KernelKMeans.from_hdf5"><a name="//apple_ref/cpp/Method/tslearn.clustering.KernelKMeans.from_hdf5"></a>
+<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">from_hdf5</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/bases/bases.py#L185-L210"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.clustering.KernelKMeans.from_hdf5" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load model from a HDF5 file.
+Requires <code class="docutils literal notranslate"><span class="pre">h5py</span></code> <a class="reference external" href="http://docs.h5py.org/">http://docs.h5py.org/</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>path</strong><span class="classifier">str</span></dt><dd><p>Full path to file.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>Model instance</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="tslearn.clustering.KernelKMeans.from_json"><a name="//apple_ref/cpp/Method/tslearn.clustering.KernelKMeans.from_json"></a>
+<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">from_json</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/bases/bases.py#L225-L255"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.clustering.KernelKMeans.from_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load model from a JSON file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>path</strong><span class="classifier">str</span></dt><dd><p>Full path to file.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>Model instance</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="tslearn.clustering.KernelKMeans.from_pickle"><a name="//apple_ref/cpp/Method/tslearn.clustering.KernelKMeans.from_pickle"></a>
+<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">from_pickle</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/bases/bases.py#L270-L286"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.clustering.KernelKMeans.from_pickle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load model from a pickle file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>path</strong><span class="classifier">str</span></dt><dd><p>Full path to file.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>Model instance</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="tslearn.clustering.KernelKMeans.get_params"><a name="//apple_ref/cpp/Method/tslearn.clustering.KernelKMeans.get_params"></a>
+<code class="sig-name descname"><span class="pre">get_params</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/../sklearn/base.py#L189-L219"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.clustering.KernelKMeans.get_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get parameters for this estimator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>deep</strong><span class="classifier">bool, default=True</span></dt><dd><p>If True, will return the parameters for this estimator and
+contained subobjects that are estimators.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>params</strong><span class="classifier">mapping of string to any</span></dt><dd><p>Parameter names mapped to their values.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="tslearn.clustering.KernelKMeans.predict"><a name="//apple_ref/cpp/Method/tslearn.clustering.KernelKMeans.predict"></a>
+<code class="sig-name descname"><span class="pre">predict</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/clustering/kmeans.py#L433-L454"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.clustering.KernelKMeans.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predict the closest cluster each time series in X belongs to.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">array-like of shape=(n_ts, sz, d)</span></dt><dd><p>Time series dataset to predict.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>labels</strong><span class="classifier">array of shape=(n_ts, )</span></dt><dd><p>Index of the cluster each sample belongs to.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="tslearn.clustering.KernelKMeans.set_params"><a name="//apple_ref/cpp/Method/tslearn.clustering.KernelKMeans.set_params"></a>
+<code class="sig-name descname"><span class="pre">set_params</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/../sklearn/base.py#L221-L263"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.clustering.KernelKMeans.set_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the parameters of this estimator.</p>
+<p>The method works on simple estimators as well as on nested objects
+(such as pipelines). The latter have parameters of the form
+<code class="docutils literal notranslate"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></code> so that it’s possible to update each
+component of a nested object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>**params</strong><span class="classifier">dict</span></dt><dd><p>Estimator parameters.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>self</strong><span class="classifier">object</span></dt><dd><p>Estimator instance.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="tslearn.clustering.KernelKMeans.to_hdf5"><a name="//apple_ref/cpp/Method/tslearn.clustering.KernelKMeans.to_hdf5"></a>
+<code class="sig-name descname"><span class="pre">to_hdf5</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/bases/bases.py#L164-L183"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.clustering.KernelKMeans.to_hdf5" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save model to a HDF5 file.
+Requires <code class="docutils literal notranslate"><span class="pre">h5py</span></code> <a class="reference external" href="http://docs.h5py.org/">http://docs.h5py.org/</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>path</strong><span class="classifier">str</span></dt><dd><p>Full file path. File must not already exist.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><dl class="simple">
+<dt>FileExistsError</dt><dd><p>If a file with the same path already exists.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="tslearn.clustering.KernelKMeans.to_json"><a name="//apple_ref/cpp/Method/tslearn.clustering.KernelKMeans.to_json"></a>
+<code class="sig-name descname"><span class="pre">to_json</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/bases/bases.py#L212-L223"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.clustering.KernelKMeans.to_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save model to a JSON file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>path</strong><span class="classifier">str</span></dt><dd><p>Full file path.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="tslearn.clustering.KernelKMeans.to_pickle"><a name="//apple_ref/cpp/Method/tslearn.clustering.KernelKMeans.to_pickle"></a>
+<code class="sig-name descname"><span class="pre">to_pickle</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/bases/bases.py#L257-L268"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.clustering.KernelKMeans.to_pickle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save model to a pickle file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>path</strong><span class="classifier">str</span></dt><dd><p>Full file path.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<div class="section" id="examples-using-tslearn-clustering-kernelkmeans">
+<h2>Examples using <code class="docutils literal notranslate"><span class="pre">tslearn.clustering.KernelKMeans</span></code><a class="headerlink" href="#examples-using-tslearn-clustering-kernelkmeans" title="Permalink to this headline">¶</a></h2>
+<div class="sphx-glr-thumbcontainer" tooltip="This example uses Global Alignment kernel (GAK, [1]) at the core of a kernel k-means algorithm ..."><div class="figure align-default" id="id4">
+<img alt="Kernel k-means" src="../../_images/sphx_glr_plot_kernel_kmeans_thumb.svg"/><p class="caption"><span class="caption-text"><a class="reference internal" href="../../auto_examples/clustering/plot_kernel_kmeans.html#sphx-glr-auto-examples-clustering-plot-kernel-kmeans-py"><span class="std std-ref">Kernel k-means</span></a></span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="clearer"></div></div>
+</div>
+</div>
+</div>
+</div>
+<footer class="footer">
+<div class="container">
+<p class="pull-right">
+<a href="#">Back to top</a>
+</p>
+<p>
+        © Copyright 2017, Romain Tavenard.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
+</p>
+</div>
+</footer>
+</body>
+</html>

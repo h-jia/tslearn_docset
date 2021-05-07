@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>tslearn.metrics.dtw — tslearn 0.5.0.5 documentation</title>
+<link href="../../_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/bootstrap-sphinx.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/custom.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/gallery.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/gallery-binder.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/gallery-dataframe.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/gallery-rendered-html.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+<script src="../../_static/jquery.js"></script>
+<script src="../../_static/underscore.js"></script>
+<script src="../../_static/doctools.js"></script>
+<script src="../../_static/custom.js"></script>
+<script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+<link href="../../genindex.html" rel="index" title="Index"/>
+<link href="../../search.html" rel="search" title="Search"/>
+<link href="tslearn.metrics.dtw_path.html" rel="next" title="tslearn.metrics.dtw_path"/>
+<link href="tslearn.metrics.ctw_path.html" rel="prev" title="tslearn.metrics.ctw_path"/>
+<meta charset="utf-8"/>
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1" name="viewport"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<script src="../../_static/js/jquery-1.11.0.min.js " type="text/javascript"></script>
+<script src="../../_static/js/jquery-fix.js " type="text/javascript"></script>
+<script src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js " type="text/javascript"></script>
+<script src="../../_static/bootstrap-sphinx.js " type="text/javascript"></script>
+</head><body>
+<div class="navbar navbar-default navbar-fixed-top" id="navbar">
+<div class="container">
+<div class="navbar-header">
+<!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+<button class="navbar-toggle" data-target=".nav-collapse" data-toggle="collapse" type="button">
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<a class="navbar-brand" href="../../index.html">
+          tslearn</a>
+<span class="navbar-text navbar-version pull-left"><b>0.5.0.5</b></span>
+</div>
+<div class="collapse navbar-collapse nav-collapse">
+<ul class="nav navbar-nav">
+<li><a href="../../quickstart.html">Quick Start</a></li>
+<li><a href="../../user_guide/userguide.html">User Guide</a></li>
+<li><a href="../../reference.html">API</a></li>
+<li><a href="../../auto_examples/index.html">Examples</a></li>
+<li><a href="../../citing.html">Citing tslearn</a></li>
+<li><a href="https://github.com/tslearn-team/tslearn/">Code on GitHub</a></li>
+<li class="dropdown globaltoc-container">
+<a data-target="#" data-toggle="dropdown" href="../../index.html" id="dLabelGlobalToc" role="button">Site map <b class="caret"></b></a>
+<ul aria-labelledby="dLabelGlobalToc" class="dropdown-menu globaltoc" role="menu"></ul>
+</li>
+</ul>
+<form action="../../search.html" class="navbar-form navbar-right" method="get">
+<div class="form-group">
+<input class="form-control" name="q" placeholder="Search" type="text"/>
+</div>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div>
+</div>
+<div class="container">
+<div class="row">
+<div class="body col-md-12 content" role="main">
+<div class="section" id="tslearn-metrics-dtw">
+<span id="fun-tslearn-metrics-dtw"></span><h1>tslearn.metrics.dtw<a class="headerlink" href="#tslearn-metrics-dtw" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt id="tslearn.metrics.dtw"><a name="//apple_ref/cpp/Function/tslearn.metrics.dtw"></a>
+<code class="sig-prename descclassname"><span class="pre">tslearn.metrics.</span></code><code class="sig-name descname"><span class="pre">dtw</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">global_constraint</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sakoe_chiba_radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">itakura_max_slope</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/metrics/dtw_variants.py#L384-L465"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.metrics.dtw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute Dynamic Time Warping (DTW) similarity measure between
+(possibly multidimensional) time series and return it.</p>
+<p>DTW is computed as the Euclidean distance between aligned time series,
+i.e., if <span class="math notranslate nohighlight">\(\pi\)</span> is the optimal alignment path:</p>
+<div class="math notranslate nohighlight">
+\[DTW(X, Y) = \sqrt{\sum_{(i, j) \in \pi} \|X_{i} - Y_{j}\|^2}\]</div>
+<p>Note that this formula is still valid for the multivariate case.</p>
+<p>It is not required that both time series share the same size, but they must
+be the same dimension. DTW was originally presented in <a class="reference internal" href="#r34771c3a90b5-1" id="id1">[1]</a> and is
+discussed in more details in our <a class="reference internal" href="../../user_guide/dtw.html#dtw"><span class="std std-ref">dedicated user-guide page</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>s1</strong></dt><dd><p>A time series.</p>
+</dd>
+<dt><strong>s2</strong></dt><dd><p>Another time series.</p>
+</dd>
+<dt><strong>global_constraint</strong><span class="classifier">{“itakura”, “sakoe_chiba”} or None (default: None)</span></dt><dd><p>Global constraint to restrict admissible paths for DTW.</p>
+</dd>
+<dt><strong>sakoe_chiba_radius</strong><span class="classifier">int or None (default: None)</span></dt><dd><p>Radius to be used for Sakoe-Chiba band global constraint.
+If None and <cite>global_constraint</cite> is set to “sakoe_chiba”, a radius of
+1 is used.
+If both <cite>sakoe_chiba_radius</cite> and <cite>itakura_max_slope</cite> are set,
+<cite>global_constraint</cite> is used to infer which constraint to use among the
+two. In this case, if <cite>global_constraint</cite> corresponds to no global
+constraint, a <cite>RuntimeWarning</cite> is raised and no global constraint is
+used.</p>
+</dd>
+<dt><strong>itakura_max_slope</strong><span class="classifier">float or None (default: None)</span></dt><dd><p>Maximum slope for the Itakura parallelogram constraint.
+If None and <cite>global_constraint</cite> is set to “itakura”, a maximum slope
+of 2. is used.
+If both <cite>sakoe_chiba_radius</cite> and <cite>itakura_max_slope</cite> are set,
+<cite>global_constraint</cite> is used to infer which constraint to use among the
+two. In this case, if <cite>global_constraint</cite> corresponds to no global
+constraint, a <cite>RuntimeWarning</cite> is raised and no global constraint is
+used.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>float</dt><dd><p>Similarity score</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="tslearn.metrics.dtw_path.html#tslearn.metrics.dtw_path" title="tslearn.metrics.dtw_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtw_path</span></code></a></dt><dd><p>Get both the matching path and the similarity score for DTW</p>
+</dd>
+<dt><a class="reference internal" href="tslearn.metrics.cdist_dtw.html#tslearn.metrics.cdist_dtw" title="tslearn.metrics.cdist_dtw"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cdist_dtw</span></code></a></dt><dd><p>Cross similarity matrix between time series datasets</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">References</p>
+<dl class="citation">
+<dt class="label" id="r34771c3a90b5-1"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>H. Sakoe, S. Chiba, “Dynamic programming algorithm optimization for
+spoken word recognition,” IEEE Transactions on Acoustics, Speech and
+Signal Processing, vol. 26(1), pp. 43–49, 1978.</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dtw</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">,</span> <span class="mf">3.</span><span class="p">])</span>
+<span class="go">0.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dtw</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">,</span> <span class="mf">3.</span><span class="p">,</span> <span class="mf">4.</span><span class="p">])</span>
+<span class="go">1.0</span>
+</pre></div>
+</div>
+</dd></dl>
+<div style="clear:both"></div></div>
+</div>
+</div>
+</div>
+<footer class="footer">
+<div class="container">
+<p class="pull-right">
+<a href="#">Back to top</a>
+</p>
+<p>
+        © Copyright 2017, Romain Tavenard.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
+</p>
+</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>tslearn.utils — tslearn 0.5.0.5 documentation</title>
+<link href="../_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/bootstrap-sphinx.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/custom.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/gallery.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/gallery-binder.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/gallery-dataframe.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/gallery-rendered-html.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+<script src="../_static/jquery.js"></script>
+<script src="../_static/underscore.js"></script>
+<script src="../_static/doctools.js"></script>
+<script src="../_static/custom.js"></script>
+<script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+<link href="../genindex.html" rel="index" title="Index"/>
+<link href="../search.html" rel="search" title="Search"/>
+<link href="utils/tslearn.utils.to_time_series.html" rel="next" title="tslearn.utils.to_time_series"/>
+<link href="svm/tslearn.svm.TimeSeriesSVR.html" rel="prev" title="tslearn.svm.TimeSeriesSVR"/>
+<meta charset="utf-8"/>
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1" name="viewport"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<script src="../_static/js/jquery-1.11.0.min.js " type="text/javascript"></script>
+<script src="../_static/js/jquery-fix.js " type="text/javascript"></script>
+<script src="../_static/bootstrap-3.3.7/js/bootstrap.min.js " type="text/javascript"></script>
+<script src="../_static/bootstrap-sphinx.js " type="text/javascript"></script>
+</head><body>
+<div class="navbar navbar-default navbar-fixed-top" id="navbar">
+<div class="container">
+<div class="navbar-header">
+<!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+<button class="navbar-toggle" data-target=".nav-collapse" data-toggle="collapse" type="button">
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<a class="navbar-brand" href="../index.html">
+          tslearn</a>
+<span class="navbar-text navbar-version pull-left"><b>0.5.0.5</b></span>
+</div>
+<div class="collapse navbar-collapse nav-collapse">
+<ul class="nav navbar-nav">
+<li><a href="../quickstart.html">Quick Start</a></li>
+<li><a href="../user_guide/userguide.html">User Guide</a></li>
+<li><a href="../reference.html">API</a></li>
+<li><a href="../auto_examples/index.html">Examples</a></li>
+<li><a href="../citing.html">Citing tslearn</a></li>
+<li><a href="https://github.com/tslearn-team/tslearn/">Code on GitHub</a></li>
+<li class="dropdown globaltoc-container">
+<a data-target="#" data-toggle="dropdown" href="../index.html" id="dLabelGlobalToc" role="button">Site map <b class="caret"></b></a>
+<ul aria-labelledby="dLabelGlobalToc" class="dropdown-menu globaltoc" role="menu"></ul>
+</li>
+</ul>
+<form action="../search.html" class="navbar-form navbar-right" method="get">
+<div class="form-group">
+<input class="form-control" name="q" placeholder="Search" type="text"/>
+</div>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div>
+</div>
+<div class="container">
+<div class="row">
+<div class="body col-md-12 content" role="main">
+<div class="section" id="module-tslearn.utils">
+<span id="tslearn-utils"></span><span id="mod-utils"></span><h1><a name="//apple_ref/cpp/Module/tslearn.utils"></a>tslearn.utils<a class="headerlink" href="#module-tslearn.utils" title="Permalink to this headline">¶</a></h1>
+<p>The <a class="reference internal" href="#module-tslearn.utils" title="tslearn.utils"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tslearn.utils</span></code></a> module includes various utilities.</p>
+<p class="rubric">Generic functions</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%"/>
+<col style="width: 90%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="utils/tslearn.utils.to_time_series.html#tslearn.utils.to_time_series" title="tslearn.utils.to_time_series"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_time_series</span></code></a>(ts[, remove_nans])</p></td>
+<td><p>Transforms a time series so that it fits the format used in <code class="docutils literal notranslate"><span class="pre">tslearn</span></code> models.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="utils/tslearn.utils.to_time_series_dataset.html#tslearn.utils.to_time_series_dataset" title="tslearn.utils.to_time_series_dataset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_time_series_dataset</span></code></a>(dataset[, dtype])</p></td>
+<td><p>Transforms a time series dataset so that it fits the format used in <code class="docutils literal notranslate"><span class="pre">tslearn</span></code> models.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="utils/tslearn.utils.to_sklearn_dataset.html#tslearn.utils.to_sklearn_dataset" title="tslearn.utils.to_sklearn_dataset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_sklearn_dataset</span></code></a>(dataset[, dtype, return_dim])</p></td>
+<td><p>Transforms a time series dataset so that it fits the format used in <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> estimators.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="utils/tslearn.utils.ts_size.html#tslearn.utils.ts_size" title="tslearn.utils.ts_size"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ts_size</span></code></a>(ts)</p></td>
+<td><p>Returns actual time series size.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="utils/tslearn.utils.ts_zeros.html#tslearn.utils.ts_zeros" title="tslearn.utils.ts_zeros"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ts_zeros</span></code></a>(sz[, d])</p></td>
+<td><p>Returns a time series made of zero values.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="utils/tslearn.utils.load_time_series_txt.html#tslearn.utils.load_time_series_txt" title="tslearn.utils.load_time_series_txt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_time_series_txt</span></code></a>(fname)</p></td>
+<td><p>Loads a time series dataset from disk.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="utils/tslearn.utils.save_time_series_txt.html#tslearn.utils.save_time_series_txt" title="tslearn.utils.save_time_series_txt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save_time_series_txt</span></code></a>(fname, dataset[, fmt])</p></td>
+<td><p>Writes a time series dataset to disk.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="utils/tslearn.utils.check_equal_size.html#tslearn.utils.check_equal_size" title="tslearn.utils.check_equal_size"><code class="xref py py-obj docutils literal notranslate"><span class="pre">check_equal_size</span></code></a>(dataset)</p></td>
+<td><p>Check if all time series in the dataset have the same size.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="utils/tslearn.utils.check_dims.html#tslearn.utils.check_dims" title="tslearn.utils.check_dims"><code class="xref py py-obj docutils literal notranslate"><span class="pre">check_dims</span></code></a>(X[, X_fit_dims, extend, …])</p></td>
+<td><p>Reshapes X to a 3-dimensional array of X.shape[0] univariate timeseries of length X.shape[1] if X is 2-dimensional and extend is True.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Conversion functions</p>
+<p>The following functions are provided for the sake of
+interoperability between standard Python packages for time series.
+They allow conversion between <cite>tslearn</cite> format and other libraries’ formats.</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%"/>
+<col style="width: 90%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="utils_conv/tslearn.utils.to_pyts_dataset.html#tslearn.utils.to_pyts_dataset" title="tslearn.utils.to_pyts_dataset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_pyts_dataset</span></code></a>(X)</p></td>
+<td><p>Transform a tslearn-compatible dataset into a pyts dataset.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="utils_conv/tslearn.utils.from_pyts_dataset.html#tslearn.utils.from_pyts_dataset" title="tslearn.utils.from_pyts_dataset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_pyts_dataset</span></code></a>(X)</p></td>
+<td><p>Transform a pyts-compatible dataset into a tslearn dataset.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="utils_conv/tslearn.utils.to_sktime_dataset.html#tslearn.utils.to_sktime_dataset" title="tslearn.utils.to_sktime_dataset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_sktime_dataset</span></code></a>(X)</p></td>
+<td><p>Transform a tslearn-compatible dataset into a sktime dataset.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="utils_conv/tslearn.utils.from_sktime_dataset.html#tslearn.utils.from_sktime_dataset" title="tslearn.utils.from_sktime_dataset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_sktime_dataset</span></code></a>(X)</p></td>
+<td><p>Transform a sktime-compatible dataset into a tslearn dataset.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="utils_conv/tslearn.utils.to_cesium_dataset.html#tslearn.utils.to_cesium_dataset" title="tslearn.utils.to_cesium_dataset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_cesium_dataset</span></code></a>(X)</p></td>
+<td><p>Transform a tslearn-compatible dataset into a cesium dataset.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="utils_conv/tslearn.utils.from_cesium_dataset.html#tslearn.utils.from_cesium_dataset" title="tslearn.utils.from_cesium_dataset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_cesium_dataset</span></code></a>(X)</p></td>
+<td><p>Transform a cesium-compatible dataset into a tslearn dataset.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="utils_conv/tslearn.utils.to_seglearn_dataset.html#tslearn.utils.to_seglearn_dataset" title="tslearn.utils.to_seglearn_dataset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_seglearn_dataset</span></code></a>(X)</p></td>
+<td><p>Transform a tslearn-compatible dataset into a seglearn dataset.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="utils_conv/tslearn.utils.from_seglearn_dataset.html#tslearn.utils.from_seglearn_dataset" title="tslearn.utils.from_seglearn_dataset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_seglearn_dataset</span></code></a>(X)</p></td>
+<td><p>Transform a seglearn-compatible dataset into a tslearn dataset.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="utils_conv/tslearn.utils.to_tsfresh_dataset.html#tslearn.utils.to_tsfresh_dataset" title="tslearn.utils.to_tsfresh_dataset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_tsfresh_dataset</span></code></a>(X)</p></td>
+<td><p>Transform a tslearn-compatible dataset into a tsfresh dataset.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="utils_conv/tslearn.utils.from_tsfresh_dataset.html#tslearn.utils.from_tsfresh_dataset" title="tslearn.utils.from_tsfresh_dataset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_tsfresh_dataset</span></code></a>(X)</p></td>
+<td><p>Transform a tsfresh-compatible dataset into a tslearn dataset.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="utils_conv/tslearn.utils.to_stumpy_dataset.html#tslearn.utils.to_stumpy_dataset" title="tslearn.utils.to_stumpy_dataset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_stumpy_dataset</span></code></a>(X)</p></td>
+<td><p>Transform a tslearn-compatible dataset into a stumpy dataset.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="utils_conv/tslearn.utils.from_stumpy_dataset.html#tslearn.utils.from_stumpy_dataset" title="tslearn.utils.from_stumpy_dataset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_stumpy_dataset</span></code></a>(X)</p></td>
+<td><p>Transform a stumpy-compatible dataset into a tslearn dataset.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="utils_conv/tslearn.utils.to_pyflux_dataset.html#tslearn.utils.to_pyflux_dataset" title="tslearn.utils.to_pyflux_dataset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_pyflux_dataset</span></code></a>(X)</p></td>
+<td><p>Transform a tslearn-compatible dataset into a pyflux dataset.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="utils_conv/tslearn.utils.from_pyflux_dataset.html#tslearn.utils.from_pyflux_dataset" title="tslearn.utils.from_pyflux_dataset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_pyflux_dataset</span></code></a>(X)</p></td>
+<td><p>Transform a pyflux-compatible dataset into a tslearn dataset.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<footer class="footer">
+<div class="container">
+<p class="pull-right">
+<a href="#">Back to top</a>
+</p>
+<p>
+        © Copyright 2017, Romain Tavenard.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
+</p>
+</div>
+</footer>
+</body>
+</html>

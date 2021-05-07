@@ -1,0 +1,17 @@
+﻿.. _class-tslearn.shapelets.LearningShapelets:
+
+:mod:`tslearn.shapelets`.LearningShapelets
+=================================================
+
+.. currentmodule:: tslearn.shapelets
+
+.. autoclass:: LearningShapelets
+   :members:
+   :inherited-members:
+
+
+.. include:: ../backreferences/tslearn.shapelets.LearningShapelets.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

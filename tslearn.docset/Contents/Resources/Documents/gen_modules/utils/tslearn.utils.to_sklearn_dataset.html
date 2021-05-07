@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>tslearn.utils.to_sklearn_dataset — tslearn 0.5.0.5 documentation</title>
+<link href="../../_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/bootstrap-sphinx.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/custom.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/gallery.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/gallery-binder.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/gallery-dataframe.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/gallery-rendered-html.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+<script src="../../_static/jquery.js"></script>
+<script src="../../_static/underscore.js"></script>
+<script src="../../_static/doctools.js"></script>
+<script src="../../_static/custom.js"></script>
+<script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+<link href="../../genindex.html" rel="index" title="Index"/>
+<link href="../../search.html" rel="search" title="Search"/>
+<link href="tslearn.utils.ts_size.html" rel="next" title="tslearn.utils.ts_size"/>
+<link href="tslearn.utils.to_time_series_dataset.html" rel="prev" title="tslearn.utils.to_time_series_dataset"/>
+<meta charset="utf-8"/>
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1" name="viewport"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<script src="../../_static/js/jquery-1.11.0.min.js " type="text/javascript"></script>
+<script src="../../_static/js/jquery-fix.js " type="text/javascript"></script>
+<script src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js " type="text/javascript"></script>
+<script src="../../_static/bootstrap-sphinx.js " type="text/javascript"></script>
+</head><body>
+<div class="navbar navbar-default navbar-fixed-top" id="navbar">
+<div class="container">
+<div class="navbar-header">
+<!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+<button class="navbar-toggle" data-target=".nav-collapse" data-toggle="collapse" type="button">
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<a class="navbar-brand" href="../../index.html">
+          tslearn</a>
+<span class="navbar-text navbar-version pull-left"><b>0.5.0.5</b></span>
+</div>
+<div class="collapse navbar-collapse nav-collapse">
+<ul class="nav navbar-nav">
+<li><a href="../../quickstart.html">Quick Start</a></li>
+<li><a href="../../user_guide/userguide.html">User Guide</a></li>
+<li><a href="../../reference.html">API</a></li>
+<li><a href="../../auto_examples/index.html">Examples</a></li>
+<li><a href="../../citing.html">Citing tslearn</a></li>
+<li><a href="https://github.com/tslearn-team/tslearn/">Code on GitHub</a></li>
+<li class="dropdown globaltoc-container">
+<a data-target="#" data-toggle="dropdown" href="../../index.html" id="dLabelGlobalToc" role="button">Site map <b class="caret"></b></a>
+<ul aria-labelledby="dLabelGlobalToc" class="dropdown-menu globaltoc" role="menu"></ul>
+</li>
+</ul>
+<form action="../../search.html" class="navbar-form navbar-right" method="get">
+<div class="form-group">
+<input class="form-control" name="q" placeholder="Search" type="text"/>
+</div>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div>
+</div>
+<div class="container">
+<div class="row">
+<div class="body col-md-12 content" role="main">
+<div class="section" id="tslearn-utils-to-sklearn-dataset">
+<span id="fun-tslearn-utils-to-sklearn-dataset"></span><h1>tslearn.utils.to_sklearn_dataset<a class="headerlink" href="#tslearn-utils-to-sklearn-dataset" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt id="tslearn.utils.to_sklearn_dataset"><a name="//apple_ref/cpp/Function/tslearn.utils.to_sklearn_dataset"></a>
+<code class="sig-prename descclassname"><span class="pre">tslearn.utils.</span></code><code class="sig-name descname"><span class="pre">to_sklearn_dataset</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">dataset</span></em>, <em class="sig-param"><span class="pre">dtype=&lt;class</span> <span class="pre">'float'&gt;</span></em>, <em class="sig-param"><span class="pre">return_dim=False</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/utils/cast.py#L15-L55"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.utils.to_sklearn_dataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transforms a time series dataset so that it fits the format used in
+<code class="docutils literal notranslate"><span class="pre">sklearn</span></code> estimators.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>dataset</strong><span class="classifier">array-like</span></dt><dd><p>The dataset of time series to be transformed.</p>
+</dd>
+<dt><strong>dtype</strong><span class="classifier">data type (default: numpy.float)</span></dt><dd><p>Data type for the returned dataset.</p>
+</dd>
+<dt><strong>return_dim</strong><span class="classifier">boolean  (optional, default: False)</span></dt><dd><p>Whether the dimensionality (third dimension should be returned together
+with the transformed dataset).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>numpy.ndarray of shape (n_ts, sz * d)</dt><dd><p>The transformed dataset of time series.</p>
+</dd>
+<dt>int (optional, if return_dim=True)</dt><dd><p>The dimensionality of the original tslearn dataset (third dimension)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="tslearn.utils.to_time_series_dataset.html#tslearn.utils.to_time_series_dataset" title="tslearn.utils.to_time_series_dataset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_time_series_dataset</span></code></a></dt><dd><p>Transforms a time series dataset to <code class="docutils literal notranslate"><span class="pre">tslearn</span></code></p>
+</dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">format.</span></code></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">to_sklearn_dataset</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]],</span> <span class="n">return_dim</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">(array([[1., 2.]]), 1)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">to_sklearn_dataset</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
+<span class="go">array([[ 1.,  2., nan],</span>
+<span class="go">       [ 1.,  4.,  3.]])</span>
+</pre></div>
+</div>
+</dd></dl>
+<div style="clear:both"></div></div>
+</div>
+</div>
+</div>
+<footer class="footer">
+<div class="container">
+<p class="pull-right">
+<a href="#">Back to top</a>
+</p>
+<p>
+        © Copyright 2017, Romain Tavenard.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
+</p>
+</div>
+</footer>
+</body>
+</html>

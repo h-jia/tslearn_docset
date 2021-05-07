@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Integration with other Python packages &#8212; tslearn 0.5.0.5 documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/gallery.css" />
+    <link rel="stylesheet" type="text/css" href="_static/gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="_static/gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/gallery-rendered-html.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/custom.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Contributing" href="contributing.html" />
+    <link rel="prev" title="Methods for variable-length time series" href="variablelength.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+          tslearn</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.5.0.5</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="quickstart.html">Quick Start</a></li>
+                <li><a href="user_guide/userguide.html">User Guide</a></li>
+                <li><a href="reference.html">API</a></li>
+                <li><a href="auto_examples/index.html">Examples</a></li>
+                <li><a href="citing.html">Citing tslearn</a></li>
+                <li><a href="https://github.com/tslearn-team/tslearn/">Code on GitHub</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site map <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"></ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <div class="section" id="integration-with-other-python-packages">
+<h1>Integration with other Python packages<a class="headerlink" href="#integration-with-other-python-packages" title="Permalink to this headline">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">tslearn</span></code> is a general-purpose Python machine learning library for time
+series that offers tools for pre-processing and feature extraction as well as
+dedicated models for clustering, classification and regression.
+To ensure compatibility with more specific Python packages, we provide utilities
+to convert data sets from and to other formats.</p>
+<p><a class="reference internal" href="gen_modules/utils/tslearn.utils.to_time_series_dataset.html#tslearn.utils.to_time_series_dataset" title="tslearn.utils.to_time_series_dataset"><code class="xref py py-func docutils literal notranslate"><span class="pre">tslearn.utils.to_time_series_dataset()</span></code></a> is a general function that
+transforms an array-like object into a three-dimensional array of shape
+<code class="docutils literal notranslate"><span class="pre">(n_ts,</span> <span class="pre">sz,</span> <span class="pre">d)</span></code> with the following conventions:</p>
+<ul class="simple">
+<li><p>the fist axis is the sample axis, <code class="docutils literal notranslate"><span class="pre">n_ts</span></code> being the number of time series;</p></li>
+<li><p>the second axis is the time axis, <code class="docutils literal notranslate"><span class="pre">sz</span></code> being the maximum number of time points;</p></li>
+<li><p>the third axis is the dimension axis, <code class="docutils literal notranslate"><span class="pre">d</span></code> being the number of dimensions.</p></li>
+</ul>
+<p>This is how a data set of time series is represented in <code class="docutils literal notranslate"><span class="pre">tslearn</span></code>.</p>
+<p>The following sections briefly explain how to transform a data set from
+<code class="docutils literal notranslate"><span class="pre">tslearn</span></code> to another supported Python package and vice versa.</p>
+<div class="section" id="scikit-learn">
+<h2>scikit-learn<a class="headerlink" href="#scikit-learn" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://scikit-learn.org">scikit-learn</a> is a popular Python package for
+machine learning.
+<a class="reference internal" href="gen_modules/utils/tslearn.utils.to_sklearn_dataset.html#tslearn.utils.to_sklearn_dataset" title="tslearn.utils.to_sklearn_dataset"><code class="xref py py-func docutils literal notranslate"><span class="pre">tslearn.utils.to_sklearn_dataset()</span></code></a> converts a data set from <code class="docutils literal notranslate"><span class="pre">tslearn</span></code>
+format to <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> format. To convert a data set from
+<code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>, you can use <a class="reference internal" href="gen_modules/utils/tslearn.utils.to_time_series_dataset.html#tslearn.utils.to_time_series_dataset" title="tslearn.utils.to_time_series_dataset"><code class="xref py py-func docutils literal notranslate"><span class="pre">tslearn.utils.to_time_series_dataset()</span></code></a>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">tslearn.utils</span> <span class="kn">import</span> <span class="n">to_sklearn_dataset</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">to_sklearn_dataset</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
+<span class="go">array([[ 1.,  2., nan],</span>
+<span class="go">       [ 1.,  4.,  3.]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">to_time_series_dataset</span><span class="p">([[</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">2.</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span> <span class="p">[</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">4.</span><span class="p">,</span>  <span class="mf">3.</span><span class="p">]])</span>
+<span class="go">array([[[ 1.],</span>
+<span class="go">    [ 2.],</span>
+<span class="go">    [nan]],</span>
+
+<span class="go">   [[ 1.],</span>
+<span class="go">    [ 4.],</span>
+<span class="go">    [ 3.]]])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="pyts">
+<h2>pyts<a class="headerlink" href="#pyts" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://pyts.readthedocs.io">pyts</a> is a Python package dedicated to time
+series classification.
+<a class="reference internal" href="gen_modules/utils_conv/tslearn.utils.to_pyts_dataset.html#tslearn.utils.to_pyts_dataset" title="tslearn.utils.to_pyts_dataset"><code class="xref py py-func docutils literal notranslate"><span class="pre">tslearn.utils.to_pyts_dataset()</span></code></a> and <a class="reference internal" href="gen_modules/utils_conv/tslearn.utils.from_pyts_dataset.html#tslearn.utils.from_pyts_dataset" title="tslearn.utils.from_pyts_dataset"><code class="xref py py-func docutils literal notranslate"><span class="pre">tslearn.utils.from_pyts_dataset()</span></code></a>
+allow users to convert a data set from <code class="docutils literal notranslate"><span class="pre">tslearn</span></code> format to <code class="docutils literal notranslate"><span class="pre">pyts</span></code> format
+and vice versa.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">tslearn.utils</span> <span class="kn">import</span> <span class="n">from_pyts_dataset</span><span class="p">,</span> <span class="n">to_pyts_dataset</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">from_pyts_dataset</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+<span class="go">array([[[1],</span>
+<span class="go">        [2]],</span>
+
+<span class="go">       [[1],</span>
+<span class="go">        [4]]])</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">to_pyts_dataset</span><span class="p">([[[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">]],</span> <span class="p">[[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">]]])</span>
+<span class="go">array([[1., 2.],</span>
+<span class="go">       [1., 4.]])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="seglearn">
+<h2>seglearn<a class="headerlink" href="#seglearn" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://dmbee.github.io/seglearn/">seglearn</a> is a python package for machine
+learning time series or sequences.
+<a class="reference internal" href="gen_modules/utils_conv/tslearn.utils.to_seglearn_dataset.html#tslearn.utils.to_seglearn_dataset" title="tslearn.utils.to_seglearn_dataset"><code class="xref py py-func docutils literal notranslate"><span class="pre">tslearn.utils.to_seglearn_dataset()</span></code></a> and <a class="reference internal" href="gen_modules/utils_conv/tslearn.utils.from_seglearn_dataset.html#tslearn.utils.from_seglearn_dataset" title="tslearn.utils.from_seglearn_dataset"><code class="xref py py-func docutils literal notranslate"><span class="pre">tslearn.utils.from_seglearn_dataset()</span></code></a>
+allow users to convert a data set from <code class="docutils literal notranslate"><span class="pre">tslearn</span></code> format to <code class="docutils literal notranslate"><span class="pre">seglearn</span></code> format
+and vice versa.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">tslearn.utils</span> <span class="kn">import</span> <span class="n">from_seglearn_dataset</span><span class="p">,</span> <span class="n">to_seglearn_dataset</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">from_seglearn_dataset</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
+<span class="go">array([[[ 1.],</span>
+<span class="go">        [ 2.],</span>
+<span class="go">        [nan]],</span>
+
+<span class="go">       [[ 1.],</span>
+<span class="go">        [ 4.],</span>
+<span class="go">        [ 3.]]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">to_seglearn_dataset</span><span class="p">([[[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="kc">None</span><span class="p">]],</span> <span class="p">[[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">]]])</span>
+<span class="go">array([array([[1.],</span>
+<span class="go">       [2.]]),</span>
+<span class="go">       array([[1.],</span>
+<span class="go">       [4.],</span>
+<span class="go">       [3.]])], dtype=object)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="stumpy">
+<h2>stumpy<a class="headerlink" href="#stumpy" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://stumpy.readthedocs.io/">stumpy</a> is a powerful and scalable Python
+library for computing a Matrix Profile, which can be used for a variety of time
+series data mining tasks.
+<a class="reference internal" href="gen_modules/utils_conv/tslearn.utils.to_stumpy_dataset.html#tslearn.utils.to_stumpy_dataset" title="tslearn.utils.to_stumpy_dataset"><code class="xref py py-func docutils literal notranslate"><span class="pre">tslearn.utils.to_stumpy_dataset()</span></code></a> and <a class="reference internal" href="gen_modules/utils_conv/tslearn.utils.from_stumpy_dataset.html#tslearn.utils.from_stumpy_dataset" title="tslearn.utils.from_stumpy_dataset"><code class="xref py py-func docutils literal notranslate"><span class="pre">tslearn.utils.from_stumpy_dataset()</span></code></a>
+allow users to convert a data set from <code class="docutils literal notranslate"><span class="pre">tslearn</span></code> format to <code class="docutils literal notranslate"><span class="pre">stumpy</span></code> format
+and vice versa.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">tslearn.utils</span> <span class="kn">import</span> <span class="n">from_stumpy_dataset</span><span class="p">,</span> <span class="n">to_stumpy_dataset</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">from_stumpy_dataset</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">])])</span>
+<span class="go">array([[[ 1.],</span>
+<span class="go">        [ 2.],</span>
+<span class="go">        [nan]],</span>
+
+<span class="go">       [[ 1.],</span>
+<span class="go">        [ 4.],</span>
+<span class="go">        [ 3.]]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">to_stumpy_dataset</span><span class="p">([[[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="kc">None</span><span class="p">]],</span> <span class="p">[[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">]]])</span>
+<span class="go">[array([1., 2.]), array([1., 4., 3.])]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="sktime">
+<h2>sktime<a class="headerlink" href="#sktime" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://alan-turing-institute.github.io/sktime/">sktime</a> is a <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>
+compatible Python toolbox for learning with time series.
+<a class="reference internal" href="gen_modules/utils_conv/tslearn.utils.to_sktime_dataset.html#tslearn.utils.to_sktime_dataset" title="tslearn.utils.to_sktime_dataset"><code class="xref py py-func docutils literal notranslate"><span class="pre">tslearn.utils.to_sktime_dataset()</span></code></a> and <a class="reference internal" href="gen_modules/utils_conv/tslearn.utils.from_sktime_dataset.html#tslearn.utils.from_sktime_dataset" title="tslearn.utils.from_sktime_dataset"><code class="xref py py-func docutils literal notranslate"><span class="pre">tslearn.utils.from_sktime_dataset()</span></code></a>
+allow users to convert a data set from <code class="docutils literal notranslate"><span class="pre">tslearn</span></code> format to <code class="docutils literal notranslate"><span class="pre">sktime</span></code> format
+and vice versa.
+<code class="docutils literal notranslate"><span class="pre">pandas</span></code> is a required dependency to use these functions.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">tslearn.utils</span> <span class="kn">import</span> <span class="n">from_sktime_dataset</span><span class="p">,</span> <span class="n">to_sktime_dataset</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;dim_0&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]),</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">])]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">from_sktime_dataset</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="go">array([[[ 1.],</span>
+<span class="go">        [ 2.],</span>
+<span class="go">        [nan]],</span>
+
+<span class="go">       [[ 1.],</span>
+<span class="go">        [ 4.],</span>
+<span class="go">        [ 3.]]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">to_sktime_dataset</span><span class="p">([[[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="kc">None</span><span class="p">]],</span> <span class="p">[[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">]]])</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(2, 1)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="pyflux">
+<h2>pyflux<a class="headerlink" href="#pyflux" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://pyflux.readthedocs.io">pyflux</a> is a library for time series analysis
+and prediction.
+<a class="reference internal" href="gen_modules/utils_conv/tslearn.utils.to_pyflux_dataset.html#tslearn.utils.to_pyflux_dataset" title="tslearn.utils.to_pyflux_dataset"><code class="xref py py-func docutils literal notranslate"><span class="pre">tslearn.utils.to_pyflux_dataset()</span></code></a> and <a class="reference internal" href="gen_modules/utils_conv/tslearn.utils.from_pyflux_dataset.html#tslearn.utils.from_pyflux_dataset" title="tslearn.utils.from_pyflux_dataset"><code class="xref py py-func docutils literal notranslate"><span class="pre">tslearn.utils.from_pyflux_dataset()</span></code></a>
+allow users to convert a data set from <code class="docutils literal notranslate"><span class="pre">tslearn</span></code> format to <code class="docutils literal notranslate"><span class="pre">pyflux</span></code> format
+and vice versa.
+<code class="docutils literal notranslate"><span class="pre">pandas</span></code> is a required dependency to use these functions.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">tslearn.utils</span> <span class="kn">import</span> <span class="n">from_pyflux_dataset</span><span class="p">,</span> <span class="n">to_pyflux_dataset</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;dim_0&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">from_pyflux_dataset</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="go">array([[[1.],</span>
+<span class="go">        [2.]]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">to_pyflux_dataset</span><span class="p">([[[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">]]])</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(2, 1)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tsfresh">
+<h2>tsfresh<a class="headerlink" href="#tsfresh" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://tsfresh.readthedocs.io">tsfresh</a> iis a python package automatically
+calculating a large number of time series characteristics.
+<a class="reference internal" href="gen_modules/utils_conv/tslearn.utils.to_tsfresh_dataset.html#tslearn.utils.to_tsfresh_dataset" title="tslearn.utils.to_tsfresh_dataset"><code class="xref py py-func docutils literal notranslate"><span class="pre">tslearn.utils.to_tsfresh_dataset()</span></code></a> and <a class="reference internal" href="gen_modules/utils_conv/tslearn.utils.from_tsfresh_dataset.html#tslearn.utils.from_tsfresh_dataset" title="tslearn.utils.from_tsfresh_dataset"><code class="xref py py-func docutils literal notranslate"><span class="pre">tslearn.utils.from_tsfresh_dataset()</span></code></a>
+allow users to convert a data set from <code class="docutils literal notranslate"><span class="pre">tslearn</span></code> format to <code class="docutils literal notranslate"><span class="pre">tsfresh</span></code> format
+and vice versa.
+<code class="docutils literal notranslate"><span class="pre">pandas</span></code> is a required dependency to use these functions.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">tslearn.utils</span> <span class="kn">import</span> <span class="n">from_tsfresh_dataset</span><span class="p">,</span> <span class="n">to_tsfresh_dataset</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span>
+<span class="gp">... </span>                   <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">],</span>
+<span class="gp">... </span>                   <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span>
+<span class="gp">... </span>                   <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">],</span>
+<span class="gp">... </span>                   <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">]],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="s1">&#39;dim_0&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">from_tsfresh_dataset</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="go">array([[[ 1.],</span>
+<span class="go">    [ 2.],</span>
+<span class="go">    [nan]],</span>
+
+<span class="go">   [[ 1.],</span>
+<span class="go">    [ 4.],</span>
+<span class="go">    [ 3.]]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">to_tsfresh_dataset</span><span class="p">([[[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="kc">None</span><span class="p">]],</span> <span class="p">[[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">]]])</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(5, 3)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="cesium">
+<h2>cesium<a class="headerlink" href="#cesium" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://cesium-ml.org">cesium</a> is an open-source platform for time series inference.
+<a class="reference internal" href="gen_modules/utils_conv/tslearn.utils.to_cesium_dataset.html#tslearn.utils.to_cesium_dataset" title="tslearn.utils.to_cesium_dataset"><code class="xref py py-func docutils literal notranslate"><span class="pre">tslearn.utils.to_cesium_dataset()</span></code></a> and <a class="reference internal" href="gen_modules/utils_conv/tslearn.utils.from_cesium_dataset.html#tslearn.utils.from_cesium_dataset" title="tslearn.utils.from_cesium_dataset"><code class="xref py py-func docutils literal notranslate"><span class="pre">tslearn.utils.from_cesium_dataset()</span></code></a>
+allow users to convert a data set from <code class="docutils literal notranslate"><span class="pre">tslearn</span></code> format to <code class="docutils literal notranslate"><span class="pre">cesium</span></code> format
+and vice versa.
+<code class="docutils literal notranslate"><span class="pre">cesium</span></code> is a required dependency to use these functions.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">tslearn.utils</span> <span class="kn">import</span> <span class="n">from_cesium_dataset</span><span class="p">,</span> <span class="n">to_cesium_dataset</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">cesium.data_management</span> <span class="kn">import</span> <span class="n">TimeSeries</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">from_cesium_dataset</span><span class="p">([</span><span class="n">TimeSeries</span><span class="p">(</span><span class="n">m</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]),</span> <span class="n">TimeSeries</span><span class="p">(</span><span class="n">m</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">])])</span>
+<span class="go">array([[[ 1.],</span>
+<span class="go">        [ 2.],</span>
+<span class="go">        [nan]],</span>
+
+<span class="go">       [[ 1.],</span>
+<span class="go">        [ 4.],</span>
+<span class="go">        [ 3.]]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">to_cesium_dataset</span><span class="p">([[[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="kc">None</span><span class="p">]],</span> <span class="p">[[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">]]]))</span>
+<span class="go">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2017, Romain Tavenard.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

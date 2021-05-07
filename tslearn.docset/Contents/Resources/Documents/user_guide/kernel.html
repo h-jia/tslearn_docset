@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kernel Methods &#8212; tslearn 0.5.0.5 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery-rendered-html.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/custom.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Time Series Clustering" href="clustering.html" />
+    <link rel="prev" title="Longest Common Subsequence" href="lcss.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="../_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="../_static/bootstrap-sphinx.js "></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          tslearn</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.5.0.5</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../quickstart.html">Quick Start</a></li>
+                <li><a href="userguide.html">User Guide</a></li>
+                <li><a href="../reference.html">API</a></li>
+                <li><a href="../auto_examples/index.html">Examples</a></li>
+                <li><a href="../citing.html">Citing tslearn</a></li>
+                <li><a href="https://github.com/tslearn-team/tslearn/">Code on GitHub</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Site map <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"></ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <div class="section" id="kernel-methods">
+<span id="kernel"></span><h1>Kernel Methods<a class="headerlink" href="#kernel-methods" title="Permalink to this headline">¶</a></h1>
+<p>In the following, we will discuss the use of kernels to compare time series.
+A kernel <span class="math notranslate nohighlight">\(k(\cdot, \cdot)\)</span> is such that there exists an unknown map
+<span class="math notranslate nohighlight">\(\Phi\)</span> such that:</p>
+<div class="math notranslate nohighlight">
+\[k(\mathbf{x}, \mathbf{y}) =
+    \left\langle
+        \Phi(\mathbf{x}), \Phi(\mathbf{y})
+    \right\rangle_{\mathcal{H}}\]</div>
+<p><cite>i.e.</cite> <span class="math notranslate nohighlight">\(k(\cdot, \cdot)\)</span> is the inner product between <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>
+and <span class="math notranslate nohighlight">\(\mathbf{y}\)</span> in some (unknown) embedding space <span class="math notranslate nohighlight">\(\mathcal{H}\)</span>.
+In practice, <span class="math notranslate nohighlight">\(k(\mathbf{x}, \mathbf{y})\)</span> will be large when
+<span class="math notranslate nohighlight">\(\mathbf{x}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{y}\)</span> are similar and close to 0 when they
+are very dissimilar.</p>
+<p>A large number of kernel methods from the machine learning literature rely on
+the so-called <cite>kernel trick</cite>, that consists in performing computations in the
+embedding space <span class="math notranslate nohighlight">\(\mathcal{H}\)</span> without ever actually performing any
+embedding.
+As an example, one can compute distance between <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>
+and <span class="math notranslate nohighlight">\(\mathbf{y}\)</span> in <span class="math notranslate nohighlight">\(\mathcal{H}\)</span> <cite>via</cite>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\| \Phi(\mathbf{x}) - \Phi(\mathbf{y})\|_\mathcal{H}^2
+    &amp;= \left\langle \Phi(\mathbf{x}) - \Phi(\mathbf{y}),
+                    \Phi(\mathbf{x}) - \Phi(\mathbf{y})
+       \right\rangle_{\mathcal{H}} \\
+    &amp;= \left\langle \Phi(\mathbf{x}), \Phi(\mathbf{x})
+       \right\rangle_{\mathcal{H}}  +
+       \left\langle \Phi(\mathbf{y}), \Phi(\mathbf{y})
+       \right\rangle_{\mathcal{H}}  - 2
+       \left\langle \Phi(\mathbf{x}), \Phi(\mathbf{y})
+       \right\rangle_{\mathcal{H}} \\
+    &amp;= k(\mathbf{x}, \mathbf{x}) + k(\mathbf{y}, \mathbf{y})
+       - 2 k(\mathbf{x}, \mathbf{y})\end{split}\]</div>
+<p>Such computations are used, for example, in the kernel-<span class="math notranslate nohighlight">\(k\)</span>-means
+algorithm (see below).</p>
+<div class="section" id="global-alignment-kernel">
+<h2>Global Alignment Kernel<a class="headerlink" href="#global-alignment-kernel" title="Permalink to this headline">¶</a></h2>
+<p>The Global Alignment Kernel (GAK) is a kernel that operates on time
+series.</p>
+<p>It is defined, for a given bandwidth <span class="math notranslate nohighlight">\(\sigma\)</span>, as:</p>
+<div class="math notranslate nohighlight">
+\[k(\mathbf{x}, \mathbf{y}) =
+    \sum_{\pi \in \mathcal{A}(\mathbf{x}, \mathbf{y})}
+        \prod_{i=1}^{ | \pi | }
+            \exp \left( - \frac{ \left\| x_{\pi_1(i)} - y_{\pi_2{j}} \right\|^2}{2 \sigma^2} \right)\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathcal{A}(\mathbf{x}, \mathbf{y})\)</span> is the set of all possible
+alignments between series <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{y}\)</span>.</p>
+<p>It is advised in <a class="footnote-reference brackets" href="#id4" id="id1">1</a> to set the bandwidth <span class="math notranslate nohighlight">\(\sigma\)</span> as a multiple of a
+simple estimate of the median distance of different points observed in
+different time-series of your training set, scaled by the square root of the
+median length of time-series in the set.
+This estimate is made available in <code class="docutils literal notranslate"><span class="pre">tslearn</span></code> through
+<a class="reference internal" href="../gen_modules/metrics/tslearn.metrics.sigma_gak.html#fun-tslearn-metrics-sigma-gak"><span class="std std-ref">tslearn.metrics.sigma_gak</span></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tslearn.metrics</span> <span class="kn">import</span> <span class="n">gak</span><span class="p">,</span> <span class="n">sigma_gak</span>
+
+<span class="n">sigma</span> <span class="o">=</span> <span class="n">sigma_gak</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">k_01</span> <span class="o">=</span> <span class="n">gak</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">sigma</span><span class="o">=</span><span class="n">sigma</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Note however that, on long time series, this estimate can lead to numerical
+overflows, which smaller values can avoid.</p>
+<p>Finally, GAK is related to <a class="reference internal" href="dtw.html#dtw-softdtw"><span class="std std-ref">softDTW</span></a> <a class="footnote-reference brackets" href="#id6" id="id2">3</a> through the
+following formula:</p>
+<div class="math notranslate nohighlight">
+\[k(\mathbf{x}, \mathbf{y}) =
+    \exp \left(- \frac{\text{softDTW}_\gamma(\mathbf{x}, \mathbf{y})}{\gamma} \right)\]</div>
+<p>where <span class="math notranslate nohighlight">\(\gamma\)</span> is the hyper-parameter controlling softDTw smoothness,
+which is related to the bandwidth parameter of GAK through
+<span class="math notranslate nohighlight">\(\gamma = 2 \sigma^2\)</span>.</p>
+</div>
+<div class="section" id="clustering-and-classification">
+<span id="kernels-ml"></span><h2>Clustering and Classification<a class="headerlink" href="#clustering-and-classification" title="Permalink to this headline">¶</a></h2>
+<p>Kernel <span class="math notranslate nohighlight">\(k\)</span>-means <a class="footnote-reference brackets" href="#id5" id="id3">2</a> is a method that uses the kernel trick to
+implicitly perform <span class="math notranslate nohighlight">\(k\)</span>-means clustering in the embedding space associated
+to a kernel.
+This method is discussed in
+<a class="reference internal" href="clustering.html#kernel-kmeans"><span class="std std-ref">our User Guide section dedicated to clustering</span></a>.</p>
+<p>Kernels can also be used in classification settings.
+<a class="reference internal" href="../gen_modules/tslearn.svm.html#module-tslearn.svm" title="tslearn.svm"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tslearn.svm</span></code></a> offers implementations of Support Vector Machines (SVM)
+that accept GAK as a kernel.
+This implementation heavily relies on <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> and <code class="docutils literal notranslate"><span class="pre">libsvm</span></code>.
+One implication is that <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code> and <code class="docutils literal notranslate"><span class="pre">predict_log_proba</span></code> methods
+are computed based on cross-validation probability estimates, which has two
+main implications, as discussed in more details in <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>’s
+<a class="reference external" href="https://scikit-learn.org/stable/modules/svm.html#scores-probabilities">user guide</a>:</p>
+<p>1. setting the constructor option <code class="docutils literal notranslate"><span class="pre">probability</span></code> to <code class="docutils literal notranslate"><span class="pre">True</span></code> makes the <code class="docutils literal notranslate"><span class="pre">fit</span></code>
+step longer since it then relies on an expensive five-fold cross-validation;</p>
+<p>2. the probability estimates obtained through <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code> may be
+inconsistent with the scores provided by <code class="docutils literal notranslate"><span class="pre">decision_function</span></code> and the
+predicted class output by <code class="docutils literal notranslate"><span class="pre">predict</span></code>.</p>
+</div>
+<div class="section" id="examples-using-kernel-methods">
+<h2>Examples Using Kernel Methods<a class="headerlink" href="#examples-using-kernel-methods" title="Permalink to this headline">¶</a></h2>
+<div class="sphx-glr-thumbcontainer" tooltip="This example illustrates the use of the global alignment kernel (GAK) for support vector classi..."><div class="figure align-default" id="id7">
+<img alt="SVM and GAK" src="../_images/sphx_glr_plot_svm_thumb.svg" /><p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/classification/plot_svm.html#sphx-glr-auto-examples-classification-plot-svm-py"><span class="std std-ref">SVM and GAK</span></a></span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example uses Global Alignment kernel (GAK, [1]) at the core of a kernel k-means algorithm ..."><div class="figure align-default" id="id8">
+<img alt="Kernel k-means" src="../_images/sphx_glr_plot_kernel_kmeans_thumb.svg" /><p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/clustering/plot_kernel_kmeans.html#sphx-glr-auto-examples-clustering-plot-kernel-kmeans-py"><span class="std std-ref">Kernel k-means</span></a></span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="sphx-glr-clear"></div><div style="clear: both;" /></div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<dl class="footnote brackets">
+<dt class="label" id="id4"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><ol class="upperalpha simple" start="13">
+<li><p>Cuturi. “Fast Global Alignment Kernels,” ICML 2011.</p></li>
+</ol>
+</dd>
+<dt class="label" id="id5"><span class="brackets"><a class="fn-backref" href="#id3">2</a></span></dt>
+<dd><p>I. S. Dhillon, Y. Guan &amp; B. Kulis.
+“Kernel k-means, Spectral Clustering and Normalized Cuts,” KDD 2004.</p>
+</dd>
+<dt class="label" id="id6"><span class="brackets"><a class="fn-backref" href="#id2">3</a></span></dt>
+<dd><p>M. Cuturi, M. Blondel “Soft-DTW: a Differentiable Loss Function for
+Time-Series,” ICML 2017.</p>
+</dd>
+</dl>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2017, Romain Tavenard.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

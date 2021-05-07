@@ -1,0 +1,14 @@
+﻿.. _fun-tslearn.barycenters.dtw_barycenter_averaging_subgradient:
+
+tslearn.barycenters.dtw_barycenter_averaging_subgradient
+========================================================
+
+.. currentmodule:: tslearn.barycenters
+
+.. autofunction:: dtw_barycenter_averaging_subgradient
+
+.. include:: ../backreferences/tslearn.barycenters.dtw_barycenter_averaging_subgradient.examples
+
+.. raw:: html
+
+     <div style='clear:both'></div>

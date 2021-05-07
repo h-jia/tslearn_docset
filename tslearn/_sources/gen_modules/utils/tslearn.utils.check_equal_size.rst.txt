@@ -1,0 +1,14 @@
+﻿.. _fun-tslearn.utils.check_equal_size:
+
+tslearn.utils.check_equal_size
+==============================
+
+.. currentmodule:: tslearn.utils
+
+.. autofunction:: check_equal_size
+
+.. include:: ../backreferences/tslearn.utils.check_equal_size.examples
+
+.. raw:: html
+
+     <div style='clear:both'></div>

@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>tslearn.datasets.UCR_UEA_datasets — tslearn 0.5.0.5 documentation</title>
+<link href="../../_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/bootstrap-sphinx.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/custom.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/gallery.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/gallery-binder.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/gallery-dataframe.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/gallery-rendered-html.css" rel="stylesheet" type="text/css"/>
+<script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+<script src="../../_static/jquery.js"></script>
+<script src="../../_static/underscore.js"></script>
+<script src="../../_static/doctools.js"></script>
+<script src="../../_static/custom.js"></script>
+<script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+<link href="../../genindex.html" rel="index" title="Index"/>
+<link href="../../search.html" rel="search" title="Search"/>
+<link href="tslearn.datasets.CachedDatasets.html" rel="next" title="tslearn.datasets.CachedDatasets"/>
+<link href="../tslearn.datasets.html" rel="prev" title="tslearn.datasets"/>
+<meta charset="utf-8"/>
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1" name="viewport"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<script src="../../_static/js/jquery-1.11.0.min.js " type="text/javascript"></script>
+<script src="../../_static/js/jquery-fix.js " type="text/javascript"></script>
+<script src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js " type="text/javascript"></script>
+<script src="../../_static/bootstrap-sphinx.js " type="text/javascript"></script>
+</head><body>
+<div class="navbar navbar-default navbar-fixed-top" id="navbar">
+<div class="container">
+<div class="navbar-header">
+<!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+<button class="navbar-toggle" data-target=".nav-collapse" data-toggle="collapse" type="button">
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<a class="navbar-brand" href="../../index.html">
+          tslearn</a>
+<span class="navbar-text navbar-version pull-left"><b>0.5.0.5</b></span>
+</div>
+<div class="collapse navbar-collapse nav-collapse">
+<ul class="nav navbar-nav">
+<li><a href="../../quickstart.html">Quick Start</a></li>
+<li><a href="../../user_guide/userguide.html">User Guide</a></li>
+<li><a href="../../reference.html">API</a></li>
+<li><a href="../../auto_examples/index.html">Examples</a></li>
+<li><a href="../../citing.html">Citing tslearn</a></li>
+<li><a href="https://github.com/tslearn-team/tslearn/">Code on GitHub</a></li>
+<li class="dropdown globaltoc-container">
+<a data-target="#" data-toggle="dropdown" href="../../index.html" id="dLabelGlobalToc" role="button">Site map <b class="caret"></b></a>
+<ul aria-labelledby="dLabelGlobalToc" class="dropdown-menu globaltoc" role="menu"></ul>
+</li>
+</ul>
+<form action="../../search.html" class="navbar-form navbar-right" method="get">
+<div class="form-group">
+<input class="form-control" name="q" placeholder="Search" type="text"/>
+</div>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div>
+</div>
+<div class="container">
+<div class="row">
+<div class="body col-md-12 content" role="main">
+<div class="section" id="tslearn-datasets-ucr-uea-datasets">
+<span id="class-tslearn-datasets-ucr-uea-datasets"></span><h1><a class="reference internal" href="../tslearn.datasets.html#module-tslearn.datasets" title="tslearn.datasets"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tslearn.datasets</span></code></a>.UCR_UEA_datasets<a class="headerlink" href="#tslearn-datasets-ucr-uea-datasets" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="tslearn.datasets.UCR_UEA_datasets"><a name="//apple_ref/cpp/Class/tslearn.datasets.UCR_UEA_datasets"></a>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">tslearn.datasets.</span></code><code class="sig-name descname"><span class="pre">UCR_UEA_datasets</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">use_cache</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/datasets/ucr_uea.py#L11-L349"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.datasets.UCR_UEA_datasets" title="Permalink to this definition">¶</a></dt>
+<dd><p>A convenience class to access UCR/UEA time series datasets.</p>
+<p>When using one (or several) of these datasets in research projects, please
+cite <a class="reference internal" href="#r25f7dec5cd6c-1" id="id1">[1]</a>.</p>
+<p>This class will attempt to recover from some known misnamed files, like the
+<cite>StarLightCurves</cite> dataset being provided in <cite>StarlightCurves.zip</cite> and
+alike.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>use_cache</strong><span class="classifier">bool (default: True)</span></dt><dd><p>Whether a cached version of the dataset should be used in
+<a class="reference internal" href="#tslearn.datasets.UCR_UEA_datasets.load_dataset" title="tslearn.datasets.UCR_UEA_datasets.load_dataset"><code class="xref py py-meth docutils literal notranslate"><span class="pre">load_dataset()</span></code></a>, if one is found.
+Datasets are always cached upon loading, and this parameter only
+determines whether the cached version shall be refreshed upon loading.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="tslearn.datasets.CachedDatasets.html#tslearn.datasets.CachedDatasets" title="tslearn.datasets.CachedDatasets"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CachedDatasets</span></code></a></dt><dd><p>Provides pre-selected datasets for offline use.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>Downloading dataset files can be time-consuming, it is recommended
+using <cite>use_cache=True</cite> (default) in order to only experience
+downloading time once per dataset and work on a cached version of the
+datasets afterward.</p>
+<p class="rubric">References</p>
+<dl class="citation">
+<dt class="label" id="r25f7dec5cd6c-1"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>A. Bagnall, J. Lines, W. Vickers and E. Keogh, The UEA &amp; UCR Time
+Series Classification Repository, www.timeseriesclassification.com</p>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%"/>
+<col style="width: 90%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tslearn.datasets.UCR_UEA_datasets.baseline_accuracy" title="tslearn.datasets.UCR_UEA_datasets.baseline_accuracy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">baseline_accuracy</span></code></a>([list_datasets, list_methods])</p></td>
+<td><p>Report baseline performances as provided by UEA/UCR website (for univariate datasets only).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tslearn.datasets.UCR_UEA_datasets.cache_all" title="tslearn.datasets.UCR_UEA_datasets.cache_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cache_all</span></code></a>()</p></td>
+<td><p>Cache all datasets from the UCR/UEA archive for later use.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tslearn.datasets.UCR_UEA_datasets.list_cached_datasets" title="tslearn.datasets.UCR_UEA_datasets.list_cached_datasets"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list_cached_datasets</span></code></a>()</p></td>
+<td><p>List datasets from the UCR/UEA archive that are available in cache.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tslearn.datasets.UCR_UEA_datasets.list_datasets" title="tslearn.datasets.UCR_UEA_datasets.list_datasets"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list_datasets</span></code></a>()</p></td>
+<td><p>List datasets (both univariate and multivariate) available in the  UCR/UEA archive.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tslearn.datasets.UCR_UEA_datasets.list_multivariate_datasets" title="tslearn.datasets.UCR_UEA_datasets.list_multivariate_datasets"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list_multivariate_datasets</span></code></a>()</p></td>
+<td><p>List multivariate datasets in the UCR/UEA archive.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tslearn.datasets.UCR_UEA_datasets.list_univariate_datasets" title="tslearn.datasets.UCR_UEA_datasets.list_univariate_datasets"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list_univariate_datasets</span></code></a>()</p></td>
+<td><p>List univariate datasets in the UCR/UEA archive.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tslearn.datasets.UCR_UEA_datasets.load_dataset" title="tslearn.datasets.UCR_UEA_datasets.load_dataset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_dataset</span></code></a>(dataset_name)</p></td>
+<td><p>Load a dataset from the UCR/UEA archive from its name.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="tslearn.datasets.UCR_UEA_datasets.baseline_accuracy"><a name="//apple_ref/cpp/Method/tslearn.datasets.UCR_UEA_datasets.baseline_accuracy"></a>
+<code class="sig-name descname"><span class="pre">baseline_accuracy</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_datasets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_methods</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/datasets/ucr_uea.py#L85-L133"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.datasets.UCR_UEA_datasets.baseline_accuracy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Report baseline performances as provided by UEA/UCR website (for
+univariate datasets only).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>list_datasets: list or None (default: None)</strong></dt><dd><p>A list of strings indicating for which datasets performance should
+be reported.
+If None, performance is reported for all datasets.</p>
+</dd>
+<dt><strong>list_methods: list or None (default: None)</strong></dt><dd><p>A list of baselines methods for which performance should be
+reported.
+If None, performance for all baseline methods is reported.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>dict</dt><dd><p>A dictionary in which keys are dataset names and associated values
+are themselves dictionaries that provide accuracy scores for the
+requested methods.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">uea_ucr</span> <span class="o">=</span> <span class="n">UCR_UEA_datasets</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dict_acc</span> <span class="o">=</span> <span class="n">uea_ucr</span><span class="o">.</span><span class="n">baseline_accuracy</span><span class="p">(</span>
+<span class="gp">... </span>        <span class="n">list_datasets</span><span class="o">=</span><span class="p">[</span><span class="s2">"Adiac"</span><span class="p">,</span> <span class="s2">"ChlorineConcentration"</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="n">list_methods</span><span class="o">=</span><span class="p">[</span><span class="s2">"C45"</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">dict_acc</span><span class="p">)</span>
+<span class="go">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dict_acc</span><span class="p">[</span><span class="s2">"Adiac"</span><span class="p">]</span>  
+<span class="go">{'C45': 0.542199...}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">all_dict_acc</span> <span class="o">=</span> <span class="n">uea_ucr</span><span class="o">.</span><span class="n">baseline_accuracy</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">all_dict_acc</span><span class="p">)</span>
+<span class="go">85</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="py method">
+<dt id="tslearn.datasets.UCR_UEA_datasets.cache_all"><a name="//apple_ref/cpp/Method/tslearn.datasets.UCR_UEA_datasets.cache_all"></a>
+<code class="sig-name descname"><span class="pre">cache_all</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/datasets/ucr_uea.py#L341-L349"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.datasets.UCR_UEA_datasets.cache_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cache all datasets from the UCR/UEA archive for later use.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="tslearn.datasets.UCR_UEA_datasets.list_cached_datasets"><a name="//apple_ref/cpp/Method/tslearn.datasets.UCR_UEA_datasets.list_cached_datasets"></a>
+<code class="sig-name descname"><span class="pre">list_cached_datasets</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/datasets/ucr_uea.py#L197-L209"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.datasets.UCR_UEA_datasets.list_cached_datasets" title="Permalink to this definition">¶</a></dt>
+<dd><p>List datasets from the UCR/UEA archive that are available in cache.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">beetlefly</span> <span class="o">=</span> <span class="n">UCR_UEA_datasets</span><span class="p">()</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">"BeetleFly"</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="n">UCR_UEA_datasets</span><span class="p">()</span><span class="o">.</span><span class="n">list_cached_datasets</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s2">"BeetleFly"</span> <span class="ow">in</span> <span class="n">l</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="py method">
+<dt id="tslearn.datasets.UCR_UEA_datasets.list_datasets"><a name="//apple_ref/cpp/Method/tslearn.datasets.UCR_UEA_datasets.list_datasets"></a>
+<code class="sig-name descname"><span class="pre">list_datasets</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/datasets/ucr_uea.py#L175-L195"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.datasets.UCR_UEA_datasets.list_datasets" title="Permalink to this definition">¶</a></dt>
+<dd><p>List datasets (both univariate and multivariate) available in the 
+UCR/UEA archive.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>list of str:</dt><dd><p>A list of names of all (univariate and multivariate) dataset namas.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="n">UCR_UEA_datasets</span><span class="p">()</span><span class="o">.</span><span class="n">list_datasets</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s2">"PenDigits"</span> <span class="ow">in</span> <span class="n">l</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s2">"BeetleFly"</span> <span class="ow">in</span> <span class="n">l</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s2">"DatasetThatDoesNotExist"</span> <span class="ow">in</span> <span class="n">l</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="py method">
+<dt id="tslearn.datasets.UCR_UEA_datasets.list_multivariate_datasets"><a name="//apple_ref/cpp/Method/tslearn.datasets.UCR_UEA_datasets.list_multivariate_datasets"></a>
+<code class="sig-name descname"><span class="pre">list_multivariate_datasets</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/datasets/ucr_uea.py#L155-L173"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.datasets.UCR_UEA_datasets.list_multivariate_datasets" title="Permalink to this definition">¶</a></dt>
+<dd><p>List multivariate datasets in the UCR/UEA archive.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>list of str:</dt><dd><p>A list of the names of all multivariate dataset namas.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="n">UCR_UEA_datasets</span><span class="p">()</span><span class="o">.</span><span class="n">list_multivariate_datasets</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s2">"PenDigits"</span> <span class="ow">in</span> <span class="n">l</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="py method">
+<dt id="tslearn.datasets.UCR_UEA_datasets.list_univariate_datasets"><a name="//apple_ref/cpp/Method/tslearn.datasets.UCR_UEA_datasets.list_univariate_datasets"></a>
+<code class="sig-name descname"><span class="pre">list_univariate_datasets</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/datasets/ucr_uea.py#L135-L153"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.datasets.UCR_UEA_datasets.list_univariate_datasets" title="Permalink to this definition">¶</a></dt>
+<dd><p>List univariate datasets in the UCR/UEA archive.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>list of str:</dt><dd><p>A list of the names of all univariate datasets.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="n">UCR_UEA_datasets</span><span class="p">()</span><span class="o">.</span><span class="n">list_univariate_datasets</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+<span class="go">85</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="py method">
+<dt id="tslearn.datasets.UCR_UEA_datasets.load_dataset"><a name="//apple_ref/cpp/Method/tslearn.datasets.UCR_UEA_datasets.load_dataset"></a>
+<code class="sig-name descname"><span class="pre">load_dataset</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset_name</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/datasets/ucr_uea.py#L211-L310"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.datasets.UCR_UEA_datasets.load_dataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load a dataset from the UCR/UEA archive from its name.</p>
+<p>On failure, <cite>None</cite> is returned for each of the four values and a
+<cite>RuntimeWarning</cite> is printed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>dataset_name</strong><span class="classifier">str</span></dt><dd><p>Name of the dataset. Should be in the list returned by
+<cite>list_datasets</cite></p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>numpy.ndarray of shape (n_ts_train, sz, d) or None</dt><dd><p>Training time series. None if unsuccessful.</p>
+</dd>
+<dt>numpy.ndarray of integers or strings with shape (n_ts_train, ) or None</dt><dd><p>Training labels. None if unsuccessful.</p>
+</dd>
+<dt>numpy.ndarray of shape (n_ts_test, sz, d) or None</dt><dd><p>Test time series. None if unsuccessful.</p>
+</dd>
+<dt>numpy.ndarray of integers or strings with shape (n_ts_test, ) or None</dt><dd><p>Test labels. None if unsuccessful.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data_loader</span> <span class="o">=</span> <span class="n">UCR_UEA_datasets</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">data_loader</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span>
+<span class="gp">... </span>        <span class="s2">"TwoPatterns"</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(1000, 128, 1)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y_train</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(1000,)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">data_loader</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span>
+<span class="gp">... </span>        <span class="s2">"CinCECGTorso"</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(40, 1639, 1)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">data_loader</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span>
+<span class="gp">... </span>        <span class="s2">"PenDigits"</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(7494, 8, 2)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="o">==</span> <span class="n">data_loader</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span>
+<span class="gp">... </span>        <span class="s2">"DatasetThatDoesNotExist"</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+</dd></dl>
+<div class="section" id="examples-using-tslearn-datasets-ucr-uea-datasets">
+<h2>Examples using <code class="docutils literal notranslate"><span class="pre">tslearn.datasets.UCR_UEA_datasets</span></code><a class="headerlink" href="#examples-using-tslearn-datasets-ucr-uea-datasets" title="Permalink to this headline">¶</a></h2>
+<div class="sphx-glr-thumbcontainer" tooltip="This example presents a comparison between k-Nearest Neighbor runs with k=1. It compares the us..."><div class="figure align-default" id="id3">
+<img alt="1-NN with SAX + MINDIST" src="../../_images/sphx_glr_plot_sax_mindist_knn_thumb.png"/>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../../auto_examples/neighbors/plot_sax_mindist_knn.html#sphx-glr-auto-examples-neighbors-plot-sax-mindist-knn-py"><span class="std std-ref">1-NN with SAX + MINDIST</span></a></span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example presents the concept of early classification."><div class="figure align-default" id="id4">
+<img alt="Early Classification" src="../../_images/sphx_glr_plot_early_classification_thumb.svg"/><p class="caption"><span class="caption-text"><a class="reference internal" href="../../auto_examples/classification/plot_early_classification.html#sphx-glr-auto-examples-classification-plot-early-classification-py"><span class="std std-ref">Early Classification</span></a></span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="clearer"></div></div>
+</div>
+</div>
+</div>
+</div>
+<footer class="footer">
+<div class="container">
+<p class="pull-right">
+<a href="#">Back to top</a>
+</p>
+<p>
+        © Copyright 2017, Romain Tavenard.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
+</p>
+</div>
+</footer>
+</body>
+</html>

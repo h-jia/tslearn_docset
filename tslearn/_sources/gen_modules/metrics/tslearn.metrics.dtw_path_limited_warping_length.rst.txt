@@ -1,0 +1,14 @@
+﻿.. _fun-tslearn.metrics.dtw_path_limited_warping_length:
+
+tslearn.metrics.dtw_path_limited_warping_length
+===============================================
+
+.. currentmodule:: tslearn.metrics
+
+.. autofunction:: dtw_path_limited_warping_length
+
+.. include:: ../backreferences/tslearn.metrics.dtw_path_limited_warping_length.examples
+
+.. raw:: html
+
+     <div style='clear:both'></div>

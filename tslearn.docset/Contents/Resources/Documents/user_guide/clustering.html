@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Time Series Clustering &#8212; tslearn 0.5.0.5 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery-rendered-html.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/custom.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Shapelets" href="shapelets.html" />
+    <link rel="prev" title="Kernel Methods" href="kernel.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="../_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="../_static/bootstrap-sphinx.js "></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          tslearn</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.5.0.5</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../quickstart.html">Quick Start</a></li>
+                <li><a href="userguide.html">User Guide</a></li>
+                <li><a href="../reference.html">API</a></li>
+                <li><a href="../auto_examples/index.html">Examples</a></li>
+                <li><a href="../citing.html">Citing tslearn</a></li>
+                <li><a href="https://github.com/tslearn-team/tslearn/">Code on GitHub</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Site map <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"></ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <div class="section" id="time-series-clustering">
+<span id="clustering"></span><h1>Time Series Clustering<a class="headerlink" href="#time-series-clustering" title="Permalink to this headline">¶</a></h1>
+<p>Clustering is the task of grouping together similar objects.
+This task hence heavily relies on the notion of similarity one relies on.</p>
+<p>The following Figure illustrates why choosing an adequate similarity function
+is key (code to reproduce is available
+<a class="reference internal" href="../auto_examples/clustering/plot_kmeans.html#sphx-glr-auto-examples-clustering-plot-kmeans-py"><span class="std std-ref">in the Gallery of Examples</span></a>).</p>
+<div class="figure align-center" id="id9">
+<a class="reference internal image-reference" href="../_images/kmeans.svg"><img alt="../_images/kmeans.svg" src="../_images/kmeans.svg" width="100%" /></a>
+<p class="caption"><span class="caption-text"><span class="math notranslate nohighlight">\(k\)</span>-means clustering with Euclidean distance. Each subfigure represents series from a given cluster and their centroid (in red).</span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
+</div>
+<p>This Figure is the result of a <span class="math notranslate nohighlight">\(k\)</span>-means clustering that uses Euclidean
+distance as a base metric.
+One issue with this metric is that it is not invariant to time shifts, while
+the dataset at stake clearly holds such invariants.</p>
+<div class="section" id="k-means-and-dynamic-time-warping">
+<h2><span class="math notranslate nohighlight">\(k\)</span>-means and Dynamic Time Warping<a class="headerlink" href="#k-means-and-dynamic-time-warping" title="Permalink to this headline">¶</a></h2>
+<p>To overcome the previously illustrated issue,
+distance metrics dedicated to time series, such as
+<a class="reference internal" href="dtw.html#dtw"><span class="std std-ref">Dynamic Time Warping (DTW)</span></a>, are required.
+As can be seen in the Figure below, the use of such metrics produce more
+meaningful results.</p>
+<p>The <a class="reference internal" href="../gen_modules/tslearn.clustering.html#module-tslearn.clustering" title="tslearn.clustering"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tslearn.clustering</span></code></a> module in <code class="docutils literal notranslate"><span class="pre">tslearn</span></code> offers an
+option to use DTW as the core metric in a <span class="math notranslate nohighlight">\(k\)</span>-means algorithm,
+which leads to better clusters and centroids:</p>
+<div class="figure align-center" id="id10">
+<a class="reference internal image-reference" href="../_images/kmeans_dtw.svg"><img alt="../_images/kmeans_dtw.svg" src="../_images/kmeans_dtw.svg" width="100%" /></a>
+<p class="caption"><span class="caption-text"><span class="math notranslate nohighlight">\(k\)</span>-means clustering with Dynamic Time Warping. Each subfigure represents series from a given cluster and their centroid (in red).</span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
+</div>
+<p>First, clusters gather time series of similar shapes, which is due to the
+ability of Dynamic Time Warping (DTW) to deal with time shifts, as explained
+above.
+Second, cluster centers (aka centroids) are computed as the barycenters
+with respect to DTW, hence
+they allow to retrieve a sensible average shape whatever the temporal shifts
+in the cluster (see <a class="reference internal" href="dtw.html#dtw-barycenters"><span class="std std-ref">our dedicated User Guide section</span></a>
+for more details on how these barycenters are computed).</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">tslearn</span></code>, clustering a time series dataset with <span class="math notranslate nohighlight">\(k\)</span>-means and a
+dedicated time series metric is as easy as</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tslearn.clustering</span> <span class="kn">import</span> <span class="n">TimeSeriesKMeans</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">TimeSeriesKMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;dtw&quot;</span><span class="p">,</span>
+                         <span class="n">max_iter</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">X_train</span></code> is the considered unlabelled dataset of time series.
+The <code class="docutils literal notranslate"><span class="pre">metric</span></code> parameter can also be set to <code class="docutils literal notranslate"><span class="pre">&quot;softdtw&quot;</span></code> as an alternative
+time series metric (<cite>cf.</cite>
+<a class="reference internal" href="dtw.html#dtw-softdtw"><span class="std std-ref">our User Guide section on soft-DTW</span></a>).</p>
+</div>
+<div class="section" id="kernel-k-means-and-time-series-kernels">
+<span id="kernel-kmeans"></span><h2>Kernel <span class="math notranslate nohighlight">\(k\)</span>-means and Time Series Kernels<a class="headerlink" href="#kernel-k-means-and-time-series-kernels" title="Permalink to this headline">¶</a></h2>
+<p>Another option to deal with such time shifts is to rely on the kernel trick.
+Indeed, <a class="footnote-reference brackets" href="#id5" id="id1">1</a> introduces a positive semidefinite kernel for time series,
+inspired from DTW.
+Then, the kernel <span class="math notranslate nohighlight">\(k\)</span>-means algorithm <a class="footnote-reference brackets" href="#id6" id="id2">2</a>, that is equivalent to a
+<span class="math notranslate nohighlight">\(k\)</span>-means
+that would operate in the Reproducing Kernel Hilbert Space associated to the
+chosen kernel, can be used:</p>
+<div class="figure align-center" id="id11">
+<a class="reference internal image-reference" href="../_images/kernel_kmeans.svg"><img alt="../_images/kernel_kmeans.svg" src="../_images/kernel_kmeans.svg" width="100%" /></a>
+<p class="caption"><span class="caption-text">Kernel <span class="math notranslate nohighlight">\(k\)</span>-means clustering with Global Alignment Kernel. Each subfigure represents series from a given cluster.</span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
+</div>
+<p>A first significant difference (when compared to <span class="math notranslate nohighlight">\(k\)</span>-means) is that
+cluster centers are never computed
+explicitly, hence time series assignments to cluster are the only kind of
+information available once the clustering is performed.</p>
+<p>Second, one should note that the clusters generated by kernel-<span class="math notranslate nohighlight">\(k\)</span>-means
+are phase dependent (see clusters 2 and 3 that differ in phase rather than in
+shape).
+This is because Global Alignment Kernel is not invariant to time shifts, as
+demonstrated in <a class="footnote-reference brackets" href="#id7" id="id3">3</a> for the closely related soft-DTW <a class="footnote-reference brackets" href="#id8" id="id4">4</a>.</p>
+</div>
+<div class="section" id="examples-using-clustering-estimators">
+<h2>Examples Using Clustering Estimators<a class="headerlink" href="#examples-using-clustering-estimators" title="Permalink to this headline">¶</a></h2>
+<div class="sphx-glr-thumbcontainer" tooltip="This example uses k-means clustering for time series. Three variants of the algorithm are avail..."><div class="figure align-default" id="id12">
+<img alt="k-means" src="../_images/sphx_glr_plot_kmeans_thumb.svg" /><p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/clustering/plot_kmeans.html#sphx-glr-auto-examples-clustering-plot-kmeans-py"><span class="std std-ref">k-means</span></a></span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example uses Global Alignment kernel (GAK, [1]) at the core of a kernel k-means algorithm ..."><div class="figure align-default" id="id13">
+<img alt="Kernel k-means" src="../_images/sphx_glr_plot_kernel_kmeans_thumb.svg" /><p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/clustering/plot_kernel_kmeans.html#sphx-glr-auto-examples-clustering-plot-kernel-kmeans-py"><span class="std std-ref">Kernel k-means</span></a></span><a class="headerlink" href="#id13" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="sphx-glr-clear"></div><div style="clear: both;" /></div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<dl class="footnote brackets">
+<dt class="label" id="id5"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><ol class="upperalpha simple" start="13">
+<li><p>Cuturi. “Fast Global Alignment Kernels,” ICML 2011.</p></li>
+</ol>
+</dd>
+<dt class="label" id="id6"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
+<dd><p>I. S. Dhillon, Y. Guan &amp; B. Kulis.
+“Kernel k-means, Spectral Clustering and Normalized Cuts,” KDD 2004.</p>
+</dd>
+<dt class="label" id="id7"><span class="brackets"><a class="fn-backref" href="#id3">3</a></span></dt>
+<dd><p>H. Janati, M. Cuturi, A. Gramfort. “Spatio-Temporal Alignments: Optimal
+transport through space and time,” AISTATS 2020</p>
+</dd>
+<dt class="label" id="id8"><span class="brackets"><a class="fn-backref" href="#id4">4</a></span></dt>
+<dd><p>M. Cuturi, M. Blondel “Soft-DTW: a Differentiable Loss Function for
+Time-Series,” ICML 2017.</p>
+</dd>
+</dl>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2017, Romain Tavenard.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

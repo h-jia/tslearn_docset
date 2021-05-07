@@ -1,0 +1,14 @@
+﻿.. _fun-tslearn.metrics.lcss_path_from_metric:
+
+tslearn.metrics.lcss_path_from_metric
+=====================================
+
+.. currentmodule:: tslearn.metrics
+
+.. autofunction:: lcss_path_from_metric
+
+.. include:: ../backreferences/tslearn.metrics.lcss_path_from_metric.examples
+
+.. raw:: html
+
+     <div style='clear:both'></div>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Early Classification of Time Series &#8212; tslearn 0.5.0.5 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery-rendered-html.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/custom.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="API Reference" href="../reference.html" />
+    <link rel="prev" title="Matrix Profile" href="matrix-profile.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="../_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="../_static/bootstrap-sphinx.js "></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          tslearn</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.5.0.5</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../quickstart.html">Quick Start</a></li>
+                <li><a href="userguide.html">User Guide</a></li>
+                <li><a href="../reference.html">API</a></li>
+                <li><a href="../auto_examples/index.html">Examples</a></li>
+                <li><a href="../citing.html">Citing tslearn</a></li>
+                <li><a href="https://github.com/tslearn-team/tslearn/">Code on GitHub</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Site map <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"></ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <div class="section" id="early-classification-of-time-series">
+<span id="early"></span><h1>Early Classification of Time Series<a class="headerlink" href="#early-classification-of-time-series" title="Permalink to this headline">¶</a></h1>
+<p>Early classification of time series is the task of performing a classification
+as early as possible for an incoming time series, and decision about when
+to trigger the decision is part of the prediction process.</p>
+<div class="section" id="early-classification-cost-function">
+<h2>Early Classification Cost Function<a class="headerlink" href="#early-classification-cost-function" title="Permalink to this headline">¶</a></h2>
+<p>Dachraoui et al. <a class="footnote-reference brackets" href="#id2" id="id1">1</a> introduces a composite loss function for early
+classification of time series that balances earliness and accuracy.</p>
+<p>The cost function is of the following form:</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{L}(\mathbf{x}_{\rightarrow t}, y, t, \boldsymbol{\theta}) =
+    \mathcal{L}_c(\mathbf{x}_{\rightarrow t}, y, \boldsymbol{\theta})
+    + \alpha t\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathcal{L}_c(\cdot,\cdot,\cdot)\)</span> is a
+classification loss and <span class="math notranslate nohighlight">\(t\)</span> is the time at which a
+decision is triggered by the system (<span class="math notranslate nohighlight">\(\mathbf{x}_{\rightarrow t}\)</span> is
+time series <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> observed up to time <span class="math notranslate nohighlight">\(t\)</span>).
+In this setting, <span class="math notranslate nohighlight">\(\alpha\)</span> drives the tradeoff between accuracy and
+earliness and is supposed to be a hyper-parameter of the method.</p>
+<p>The authors rely on (i) a clustering of the
+training time series and (ii) individual classifiers <span class="math notranslate nohighlight">\(m_t(\cdot)\)</span>
+trained at all possible timestamps, so as to be able to predict,
+at time <span class="math notranslate nohighlight">\(t\)</span>, an expected cost for all future times <span class="math notranslate nohighlight">\(t + \tau\)</span>
+with <span class="math notranslate nohighlight">\(\tau \geq 0\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[f_\tau(\mathbf{x}_{\rightarrow t}, y) =
+    \sum_k \left[ P(C_k | \mathbf{x}_{\rightarrow t})
+    \sum_i \left( P(y=i | C_k)
+    \left( \sum_{j \neq i} P_{t+\tau}(\hat{y} = j | y=i, C_k)
+    \right) \right)
+    \right]
+    + \alpha t\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P(C_k | \mathbf{x}_{\rightarrow t})\)</span> is a soft-assignment weight of
+<span class="math notranslate nohighlight">\(\mathbf{x}_{\rightarrow t}\)</span> to cluster <span class="math notranslate nohighlight">\(C_k\)</span>;</p></li>
+<li><p><span class="math notranslate nohighlight">\(P(y=i | C_k)\)</span> is obtained from a contingency table that stores the
+number of training time series of each class in each cluster;</p></li>
+<li><p><span class="math notranslate nohighlight">\(P_{t+\tau}(\hat{y} = j | y=i, C_k)\)</span> is obtained through training time
+confusion matrices built on time series from cluster <span class="math notranslate nohighlight">\(C_k\)</span> using
+classifier <span class="math notranslate nohighlight">\(m_{t+\tau}(\cdot)\)</span>.</p></li>
+</ul>
+<p>At test time, if a series is observed up to time <span class="math notranslate nohighlight">\(t\)</span> and if, for all
+positive <span class="math notranslate nohighlight">\(\tau\)</span> we have
+<span class="math notranslate nohighlight">\(f_\tau(\mathbf{x}_{\rightarrow t}, y) \geq f_0(\mathbf{x}_{\rightarrow t}, y)\)</span>,
+then a decision is made using classifier <span class="math notranslate nohighlight">\(m_t(\cdot)\)</span>.</p>
+<div class="figure align-center" id="id3">
+<a class="reference internal image-reference" href="../_images/sphx_glr_plot_early_classification_002.svg"><img alt="../_images/sphx_glr_plot_early_classification_002.svg" src="../_images/sphx_glr_plot_early_classification_002.svg" width="80%" /></a>
+<p class="caption"><span class="caption-text">Early classification. At test time, prediction is made at a timestamp such that the expected earliness-accuracy is optimized, which can hence vary between time series.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+<p>To use this early classifier in <code class="docutils literal notranslate"><span class="pre">tslearn</span></code>, one can rely on the
+<a class="reference internal" href="../gen_modules/early_classification/tslearn.early_classification.NonMyopicEarlyClassifier.html#tslearn.early_classification.NonMyopicEarlyClassifier" title="tslearn.early_classification.NonMyopicEarlyClassifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">tslearn.early_classification.NonMyopicEarlyClassifier</span></code></a> class:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tslearn.early_classification</span> <span class="kn">import</span> <span class="n">NonMyopicEarlyClassifier</span>
+
+<span class="n">early_clf</span> <span class="o">=</span> <span class="n">NonMyopicEarlyClassifier</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+                                     <span class="n">cost_time_parameter</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span>
+                                     <span class="n">lamb</span><span class="o">=</span><span class="mf">1e2</span><span class="p">,</span>
+                                     <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">early_clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">preds</span><span class="p">,</span> <span class="n">times</span> <span class="o">=</span> <span class="n">early_clf</span><span class="o">.</span><span class="n">predict_class_and_earliness</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">cost_time_parameter</span></code> is the <span class="math notranslate nohighlight">\(\alpha\)</span> parameter presented above
+and <code class="docutils literal notranslate"><span class="pre">lamb</span></code> is a trade-off parameter for the soft-assignment of partial series
+to clusters <span class="math notranslate nohighlight">\(P(C_k | \mathbf{x}_{\rightarrow t})\)</span> (when <code class="docutils literal notranslate"><span class="pre">lamb</span></code> tends to
+infinity, the assignment tends to hard-assignment, and when <code class="docutils literal notranslate"><span class="pre">lamb</span></code> is set to
+0, equal probabilities are obtained for all clusters).</p>
+</div>
+<div class="section" id="examples-involving-early-classification-estimators">
+<h2>Examples Involving Early Classification Estimators<a class="headerlink" href="#examples-involving-early-classification-estimators" title="Permalink to this headline">¶</a></h2>
+<div class="sphx-glr-thumbcontainer" tooltip="This example presents the concept of early classification."><div class="figure align-default" id="id4">
+<img alt="Early Classification" src="../_images/sphx_glr_plot_early_classification_thumb.svg" /><p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/classification/plot_early_classification.html#sphx-glr-auto-examples-classification-plot-early-classification-py"><span class="std std-ref">Early Classification</span></a></span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="sphx-glr-clear"></div><div style="clear: both;" /></div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<dl class="footnote brackets">
+<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>A. Dachraoui, A. Bondu and A. Cornuejols.
+“Early classification of time series as a non myopic sequential decision
+making problem,” ECML/PKDD 2015</p>
+</dd>
+</dl>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2017, Romain Tavenard.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

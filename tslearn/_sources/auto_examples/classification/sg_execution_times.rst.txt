@@ -1,0 +1,20 @@
+
+:orphan:
+
+.. _sphx_glr_auto_examples_classification_sg_execution_times:
+
+Computation times
+=================
+**00:24.701** total execution time for **auto_examples_classification** files:
+
++--------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_auto_examples_classification_plot_shapelet_distances.py` (``plot_shapelet_distances.py``)     | 00:10.397 | 0.0 MB |
++--------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_auto_examples_classification_plot_shapelets.py` (``plot_shapelets.py``)                       | 00:09.009 | 0.0 MB |
++--------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_auto_examples_classification_plot_shapelet_locations.py` (``plot_shapelet_locations.py``)     | 00:05.295 | 0.0 MB |
++--------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_auto_examples_classification_plot_early_classification.py` (``plot_early_classification.py``) | 00:00.000 | 0.0 MB |
++--------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_auto_examples_classification_plot_svm.py` (``plot_svm.py``)                                   | 00:00.000 | 0.0 MB |
++--------------------------------------------------------------------------------------------------------------+-----------+--------+

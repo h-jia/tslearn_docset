@@ -1,0 +1,17 @@
+﻿.. _class-tslearn.svm.TimeSeriesSVR:
+
+:mod:`tslearn.svm`.TimeSeriesSVR
+=======================================
+
+.. currentmodule:: tslearn.svm
+
+.. autoclass:: TimeSeriesSVR
+   :members:
+   :inherited-members:
+
+
+.. include:: ../backreferences/tslearn.svm.TimeSeriesSVR.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

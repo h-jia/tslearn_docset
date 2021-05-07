@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>tslearn.datasets.CachedDatasets &#8212; tslearn 0.5.0.5 documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery-rendered-html.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/custom.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="tslearn.early_classification" href="../tslearn.early_classification.html" />
+    <link rel="prev" title="tslearn.datasets.UCR_UEA_datasets" href="tslearn.datasets.UCR_UEA_datasets.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js "></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../index.html">
+          tslearn</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.5.0.5</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../../quickstart.html">Quick Start</a></li>
+                <li><a href="../../user_guide/userguide.html">User Guide</a></li>
+                <li><a href="../../reference.html">API</a></li>
+                <li><a href="../../auto_examples/index.html">Examples</a></li>
+                <li><a href="../../citing.html">Citing tslearn</a></li>
+                <li><a href="https://github.com/tslearn-team/tslearn/">Code on GitHub</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../index.html">Site map <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"></ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <div class="section" id="tslearn-datasets-cacheddatasets">
+<span id="class-tslearn-datasets-cacheddatasets"></span><h1><a class="reference internal" href="../tslearn.datasets.html#module-tslearn.datasets" title="tslearn.datasets"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tslearn.datasets</span></code></a>.CachedDatasets<a class="headerlink" href="#tslearn-datasets-cacheddatasets" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="tslearn.datasets.CachedDatasets">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">tslearn.datasets.</span></code><code class="sig-name descname"><span class="pre">CachedDatasets</span></code><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/datasets/cached.py#L4-L87"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.datasets.CachedDatasets" title="Permalink to this definition">¶</a></dt>
+<dd><p>A convenience class to access cached time series datasets.</p>
+<p>Note, that these <em>cached datasets</em> are statically included into <em>tslearn</em>
+and are distinct from the ones in <a class="reference internal" href="tslearn.datasets.UCR_UEA_datasets.html#tslearn.datasets.UCR_UEA_datasets" title="tslearn.datasets.UCR_UEA_datasets"><code class="xref py py-class docutils literal notranslate"><span class="pre">UCR_UEA_datasets</span></code></a>.</p>
+<p>When using the Trace dataset, please cite <a class="reference internal" href="#r06dcc6755300-1" id="id1">[1]</a>.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="tslearn.datasets.UCR_UEA_datasets.html#tslearn.datasets.UCR_UEA_datasets" title="tslearn.datasets.UCR_UEA_datasets"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UCR_UEA_datasets</span></code></a></dt><dd><p>Provides more datasets and supports caching.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">References</p>
+<dl class="citation">
+<dt class="label" id="r06dcc6755300-1"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>A. Bagnall, J. Lines, W. Vickers and E. Keogh, The UEA &amp; UCR Time
+Series Classification Repository, www.timeseriesclassification.com</p>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tslearn.datasets.CachedDatasets.list_datasets" title="tslearn.datasets.CachedDatasets.list_datasets"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list_datasets</span></code></a>()</p></td>
+<td><p>List cached datasets.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tslearn.datasets.CachedDatasets.load_dataset" title="tslearn.datasets.CachedDatasets.load_dataset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_dataset</span></code></a>(dataset_name)</p></td>
+<td><p>Load a cached dataset from its name.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="tslearn.datasets.CachedDatasets.list_datasets">
+<code class="sig-name descname"><span class="pre">list_datasets</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/datasets/cached.py#L26-L45"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.datasets.CachedDatasets.list_datasets" title="Permalink to this definition">¶</a></dt>
+<dd><p>List cached datasets.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>list of str:</dt><dd><p>A list of names of all cached (univariate and multivariate) dataset
+namas.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">tslearn.datasets</span> <span class="kn">import</span> <span class="n">UCR_UEA_datasets</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">_</span> <span class="o">=</span> <span class="n">UCR_UEA_datasets</span><span class="p">()</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;Trace&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cached</span> <span class="o">=</span> <span class="n">UCR_UEA_datasets</span><span class="p">()</span><span class="o">.</span><span class="n">list_cached_datasets</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;Trace&quot;</span> <span class="ow">in</span> <span class="n">cached</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tslearn.datasets.CachedDatasets.load_dataset">
+<code class="sig-name descname"><span class="pre">load_dataset</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset_name</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/tslearn-team/tslearn/blob/None/tslearn/datasets/cached.py#L47-L87"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tslearn.datasets.CachedDatasets.load_dataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load a cached dataset from its name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>dataset_name</strong><span class="classifier">str</span></dt><dd><p>Name of the dataset. Should be in the list returned by
+<a class="reference internal" href="#tslearn.datasets.CachedDatasets.list_datasets" title="tslearn.datasets.CachedDatasets.list_datasets"><code class="xref py py-meth docutils literal notranslate"><span class="pre">list_datasets()</span></code></a>.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>numpy.ndarray of shape (n_ts_train, sz, d) or None</dt><dd><p>Training time series. None if unsuccessful.</p>
+</dd>
+<dt>numpy.ndarray of integers with shape (n_ts_train, ) or None</dt><dd><p>Training labels. None if unsuccessful.</p>
+</dd>
+<dt>numpy.ndarray of shape (n_ts_test, sz, d) or None</dt><dd><p>Test time series. None if unsuccessful.</p>
+</dd>
+<dt>numpy.ndarray of integers with shape (n_ts_test, ) or None</dt><dd><p>Test labels. None if unsuccessful.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>IOError</dt><dd><p>If the dataset does not exist or cannot be read.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data_loader</span> <span class="o">=</span> <span class="n">CachedDatasets</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">data_loader</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span>
+<span class="gp">... </span>                                       <span class="s2">&quot;Trace&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="go">(100, 275, 1)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">y_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="go">(100,)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<div class="section" id="examples-using-tslearn-datasets-cacheddatasets">
+<h2>Examples using <code class="docutils literal notranslate"><span class="pre">tslearn.datasets.CachedDatasets</span></code><a class="headerlink" href="#examples-using-tslearn-datasets-cacheddatasets" title="Permalink to this headline">¶</a></h2>
+<div class="sphx-glr-thumbcontainer" tooltip="This example illustrates how the &quot;Learning Shapelets&quot; method can quickly find a set of shapelet..."><div class="figure align-default" id="id3">
+<img alt="Learning Shapelets" src="../../_images/sphx_glr_plot_shapelets_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../../auto_examples/classification/plot_shapelets.html#sphx-glr-auto-examples-classification-plot-shapelets-py"><span class="std std-ref">Learning Shapelets</span></a></span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example illustrates the use of the &quot;Learning Shapelets&quot; method in order to learn a collect..."><div class="figure align-default" id="id4">
+<img alt="Aligning discovered shapelets with timeseries" src="../../_images/sphx_glr_plot_shapelet_locations_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../../auto_examples/classification/plot_shapelet_locations.html#sphx-glr-auto-examples-classification-plot-shapelet-locations-py"><span class="std std-ref">Aligning discovered shapelets with timeseries</span></a></span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example illustrates the use of the &quot;Learning Shapelets&quot; method in order to learn a collect..."><div class="figure align-default" id="id5">
+<img alt="Learning Shapelets: decision boundaries in 2D distance space" src="../../_images/sphx_glr_plot_shapelet_distances_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../../auto_examples/classification/plot_shapelet_distances.html#sphx-glr-auto-examples-classification-plot-shapelet-distances-py"><span class="std std-ref">Learning Shapelets: decision boundaries in 2D distance space</span></a></span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Many tslearn models can be saved to disk and used for predictions at a later time. This can be ..."><div class="figure align-default" id="id6">
+<img alt="Model Persistence" src="../../_images/sphx_glr_plot_serialize_models_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../../auto_examples/misc/plot_serialize_models.html#sphx-glr-auto-examples-misc-plot-serialize-models-py"><span class="std std-ref">Model Persistence</span></a></span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="clearer"></div></div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2017, Romain Tavenard.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

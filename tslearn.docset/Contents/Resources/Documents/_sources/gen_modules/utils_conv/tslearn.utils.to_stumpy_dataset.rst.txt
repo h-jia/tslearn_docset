@@ -1,0 +1,14 @@
+﻿.. _fun-tslearn.utils.to_stumpy_dataset:
+
+tslearn.utils.to_stumpy_dataset
+===============================
+
+.. currentmodule:: tslearn.utils
+
+.. autofunction:: to_stumpy_dataset
+
+.. include:: ../backreferences/tslearn.utils.to_stumpy_dataset.examples
+
+.. raw:: html
+
+     <div style='clear:both'></div>

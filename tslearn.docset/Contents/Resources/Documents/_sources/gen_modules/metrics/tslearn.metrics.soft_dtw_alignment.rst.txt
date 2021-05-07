@@ -1,0 +1,14 @@
+﻿.. _fun-tslearn.metrics.soft_dtw_alignment:
+
+tslearn.metrics.soft_dtw_alignment
+==================================
+
+.. currentmodule:: tslearn.metrics
+
+.. autofunction:: soft_dtw_alignment
+
+.. include:: ../backreferences/tslearn.metrics.soft_dtw_alignment.examples
+
+.. raw:: html
+
+     <div style='clear:both'></div>

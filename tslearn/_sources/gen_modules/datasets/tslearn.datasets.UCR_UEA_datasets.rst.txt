@@ -1,0 +1,17 @@
+﻿.. _class-tslearn.datasets.UCR_UEA_datasets:
+
+:mod:`tslearn.datasets`.UCR_UEA_datasets
+===============================================
+
+.. currentmodule:: tslearn.datasets
+
+.. autoclass:: UCR_UEA_datasets
+   :members:
+   :inherited-members:
+
+
+.. include:: ../backreferences/tslearn.datasets.UCR_UEA_datasets.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

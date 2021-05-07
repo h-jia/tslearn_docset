@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contributing &#8212; tslearn 0.5.0.5 documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/gallery.css" />
+    <link rel="stylesheet" type="text/css" href="_static/gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="_static/gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/gallery-rendered-html.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/custom.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="User Guide" href="user_guide/userguide.html" />
+    <link rel="prev" title="Integration with other Python packages" href="integration_other_software.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+          tslearn</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.5.0.5</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="quickstart.html">Quick Start</a></li>
+                <li><a href="user_guide/userguide.html">User Guide</a></li>
+                <li><a href="reference.html">API</a></li>
+                <li><a href="auto_examples/index.html">Examples</a></li>
+                <li><a href="citing.html">Citing tslearn</a></li>
+                <li><a href="https://github.com/tslearn-team/tslearn/">Code on GitHub</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site map <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"></ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="body col-md-12 content" role="main">
+      
+  <div class="section" id="contributing">
+<h1>Contributing<a class="headerlink" href="#contributing" title="Permalink to this headline">¶</a></h1>
+<p>First of all, thank you for considering contributing to <code class="docutils literal notranslate"><span class="pre">tslearn</span></code>.
+It’s people like you that will help make <code class="docutils literal notranslate"><span class="pre">tslearn</span></code> a great toolkit.</p>
+<p>Contributions are managed through GitHub Issues and Pull Requests.</p>
+<p>We are welcoming contributions in the following forms:</p>
+<ul class="simple">
+<li><p><strong>Bug reports</strong>: when filing an issue to report a bug, please use the search tool to ensure the bug hasn’t been reported yet;</p></li>
+<li><p><strong>New feature suggestions</strong>: if you think <code class="docutils literal notranslate"><span class="pre">tslearn</span></code> should include a new algorithm, please open an issue to ask for it (of course, you should always check that the feature has not been asked for yet :). Think about linking to a pdf version of the paper that first proposed the method when suggesting a new algorithm.</p></li>
+<li><p><strong>Bug fixes and new feature implementations</strong>: if you feel you can fix a reported bug/implement a suggested feature yourself, do not hesitate to:</p>
+<ol class="arabic simple">
+<li><p>fork the project;</p></li>
+<li><p>implement your bug fix;</p></li>
+<li><p>submit a pull request referencing the ID of the issue in which the bug was reported / the feature was suggested;</p></li>
+</ol>
+</li>
+</ul>
+<p>If you would like to contribute by implementing a new feature reported in the Issues, maybe starting with <a class="reference external" href="https://github.com/tslearn-team/tslearn/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22">Issues that are attached the “good first issue” label</a> would be a good idea.</p>
+<p>When submitting code, please think about code quality, adding proper docstrings including doctests with high code coverage.</p>
+<div class="section" id="more-details-on-pull-requests">
+<h2>More details on Pull requests<a class="headerlink" href="#more-details-on-pull-requests" title="Permalink to this headline">¶</a></h2>
+<p>The preferred workflow for contributing to tslearn is to fork the
+<a class="reference external" href="https://github.com/tslearn-team/tslearn">main repository</a> on
+GitHub, clone, and develop on a branch. Steps:</p>
+<ol class="arabic">
+<li><p>Fork the <a class="reference external" href="https://github.com/tslearn-team/tslearn">project repository</a>
+by clicking on the ‘Fork’ button near the top right of the page. This creates
+a copy of the code under your GitHub user account. For more details on
+how to fork a repository see <a class="reference external" href="https://help.github.com/articles/fork-a-repo/">this guide</a>.</p></li>
+<li><p>Clone your fork of the tslearn repo from your GitHub account to your local disk:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git clone git@github.com:YourLogin/tslearn.git
+$ cd tslearn
+</pre></div>
+</div>
+</li>
+<li><p>Create a <code class="docutils literal notranslate"><span class="pre">my-feature</span></code> branch to hold your development changes.
+Always use a <code class="docutils literal notranslate"><span class="pre">my-feature</span></code> branch. It’s good practice to never work on the <code class="docutils literal notranslate"><span class="pre">master</span></code> branch:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git checkout -b my-feature
+</pre></div>
+</div>
+</li>
+<li><p>Develop the feature on your feature branch. To record your changes in git,
+add changed files using <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code> and then <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code> files:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git add modified_files
+$ git commit
+</pre></div>
+</div>
+</li>
+<li><p>Push the changes to your GitHub account with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git push -u origin my-feature
+</pre></div>
+</div>
+</li>
+<li><p>Follow <a class="reference external" href="https://help.github.com/articles/creating-a-pull-request-from-a-fork">these instructions</a>
+to create a pull request from your fork. This will send an email to the committers.</p></li>
+</ol>
+<p>(If any of the above seems like magic to you, please look up the
+<a class="reference external" href="https://git-scm.com/documentation">Git documentation</a> on the web, or ask a friend or another contributor for help.)</p>
+<div class="section" id="pull-request-checklist">
+<h3>Pull Request Checklist<a class="headerlink" href="#pull-request-checklist" title="Permalink to this headline">¶</a></h3>
+<p>We recommended that your contribution complies with the
+following rules before you submit a pull request:</p>
+<ul class="simple">
+<li><p>Follow the PEP8 Guidelines.</p></li>
+<li><p>If your pull request addresses an issue, please use the pull request title
+to describe the issue and mention the issue number in the pull request description.
+This will make sure a link back to the original issue is created.</p></li>
+<li><p>All public methods should have informative docstrings with sample
+usage presented as doctests when appropriate.</p></li>
+<li><p>Please prefix the title of your pull request with <code class="docutils literal notranslate"><span class="pre">[MRG]</span></code> (Ready for
+Merge), if the contribution is complete and ready for a detailed review.
+An incomplete contribution – where you expect to do more work before
+receiving a full review – should be prefixed <code class="docutils literal notranslate"><span class="pre">[WIP]</span></code> (to indicate a work
+in progress) and changed to <code class="docutils literal notranslate"><span class="pre">[MRG]</span></code> when it matures. WIPs may be useful
+to: indicate you are working on something to avoid duplicated work,
+request broad review of functionality or API, or seek collaborators.
+WIPs often benefit from the inclusion of a
+<a class="reference external" href="https://github.com/blog/1375-task-lists-in-gfm-issues-pulls-comments">task list</a>
+in the PR description.</p></li>
+<li><p>When adding additional functionality, provide at least one
+example script in the <code class="docutils literal notranslate"><span class="pre">tslearn/docs/examples/</span></code> folder. Have a look at other
+examples for reference. Examples should demonstrate why the new
+functionality is useful in practice and, if possible, compare it
+to other methods available in tslearn.</p></li>
+<li><p>Documentation and high-coverage tests are necessary for enhancements to be
+accepted. Bug-fixes or new features should be provided with
+<a class="reference external" href="https://en.wikipedia.org/wiki/Non-regression_testing">non-regression tests</a>.
+These tests verify the correct behavior of the fix or feature. In this
+manner, further modifications on the code base are granted to be consistent
+with the desired behavior.
+For the Bug-fixes case, at the time of the PR, this tests should fail for
+the code base in master and pass for the PR code.</p></li>
+<li><p>At least one paragraph of narrative documentation with links to
+references in the literature (with PDF links when possible) and
+the example.</p></li>
+</ul>
+<p>Here is a description of useful tools to check your code locally:</p>
+<ul>
+<li><p>No <a class="reference external" href="https://www.python.org/dev/peps/pep-0008/">PEP8</a> or <a class="reference external" href="https://www.python.org/dev/peps/pep-0257/">PEP257</a> errors;
+check with the <a class="reference external" href="https://flake8.pycqa.org/en/latest/">flake8</a> Python package:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install flake8
+$ flake8 path/to/module.py  # check for errors in one file
+$ flake8 path/to/folder  # check for errors in all the files in a folder
+$ git diff -u | flake8 --diff  # check for errors in the modified code only
+</pre></div>
+</div>
+</li>
+<li><p>To run the tests locally and get code coverage, use the
+<a class="reference external" href="https://docs.pytest.org/en/latest/">pytest</a> and <a class="reference external" href="https://pytest-cov.readthedocs.io/en/latest/">pytest-cov</a> Python packages:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install pytest pytest-cov
+$ pytest --cov tslearn
+</pre></div>
+</div>
+</li>
+<li><p>To build the documentation locally, install the following packages and run
+the <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">html</span></code> command in the <code class="docutils literal notranslate"><span class="pre">tslearn/docs</span></code> folder:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install sphinx==1.8.5 sphinx-gallery sphinx-bootstrap-theme nbsphinx
+$ pip install numpydoc matplotlib
+$ cd tslearn/docs
+$ make html
+</pre></div>
+</div>
+<p>The documentation will be generated in the <code class="docutils literal notranslate"><span class="pre">_build/html</span></code>. You can double
+click on <code class="docutils literal notranslate"><span class="pre">index.html</span></code> to open the index page, which will look like
+the first page that you see on the online documentation. Then you can move to
+the pages that you modified and have a look at your changes.</p>
+</li>
+</ul>
+<p>Bonus points for contributions that include a performance analysis with
+a benchmark script and profiling output.</p>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2017, Romain Tavenard.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

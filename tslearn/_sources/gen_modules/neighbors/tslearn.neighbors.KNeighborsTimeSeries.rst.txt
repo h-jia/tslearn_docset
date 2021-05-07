@@ -1,0 +1,17 @@
+﻿.. _class-tslearn.neighbors.KNeighborsTimeSeries:
+
+:mod:`tslearn.neighbors`.KNeighborsTimeSeries
+====================================================
+
+.. currentmodule:: tslearn.neighbors
+
+.. autoclass:: KNeighborsTimeSeries
+   :members:
+   :inherited-members:
+
+
+.. include:: ../backreferences/tslearn.neighbors.KNeighborsTimeSeries.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>
